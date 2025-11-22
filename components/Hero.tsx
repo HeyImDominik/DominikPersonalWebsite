@@ -3,53 +3,50 @@ import { motion } from 'framer-motion';
 import { ChevronDown, Linkedin } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  // 1. Define a "stagger" container to trigger children one by one
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3, // Delay between each element
-        delayChildren: 0.2,   // Initial delay before starting
-      },
-    },
-  };
-
-  // 2. The "Cooler" Blur Effect
-  // Longer duration + subtle slide up + custom easing
-  const blurInVariants = {
+  // 1. The "Cooler" Blur + Float Effect
+  // Smoother easing curve and slightly longer duration (1.5s)
+  const contentVariants = {
     hidden: { 
       opacity: 0, 
-      filter: 'blur(15px)', 
-      y: 30 // Start slightly lower
+      filter: 'blur(10px)', 
+      y: 20 
     },
     visible: {
       opacity: 1,
       filter: 'blur(0px)',
       y: 0,
       transition: {
-        duration: 1.4, // Took a tiny bit longer (was likely ~0.8s before)
-        ease: [0.25, 0.1, 0.25, 1.0], // "Cinematic" easing curve
+        duration: 1.5, // Longer, more cinematic
+        ease: [0.25, 0.1, 0.25, 1.0], // Elegant "slow down" finish
       },
     },
   };
 
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center perspective-1000 overflow-hidden">
+      
       {/* Ambient Spotlights */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/20 blur-[150px] rounded-[100%] pointer-events-none" />
 
-      {/* Main Content Wrapper with Staggering */}
+      {/* Main Content Wrapper 
+          We use 'staggerChildren' here to trigger the items one by one.
+          viewport={{ once: true }} ensures it doesn't reset/flash if you scroll slightly.
+      */}
       <motion.div 
         className="relative z-10 max-w-6xl mx-auto space-y-8 flex flex-col items-center"
-        variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{
+          visible: {
+            transition: { staggerChildren: 0.3 }
+          }
+        }}
       >
         
-        {/* Name: Now uses Framer Motion for smoother blur */}
+        {/* Name */}
         <motion.h1 
-          variants={blurInVariants}
+          variants={contentVariants}
           className="text-7xl md:text-[10rem] font-display font-black tracking-tighter text-white leading-[0.85] drop-shadow-2xl"
         >
           <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400">
@@ -60,9 +57,9 @@ const Hero: React.FC = () => {
           </span>
         </motion.h1>
 
-        {/* Title: Inherits the stagger automatically */}
+        {/* Title */}
         <motion.div 
-          variants={blurInVariants}
+          variants={contentVariants}
           className="max-w-3xl mx-auto"
         >
             <p className="text-xl md:text-3xl text-gray-300 font-light leading-relaxed tracking-wide">
@@ -73,9 +70,9 @@ const Hero: React.FC = () => {
             </p>
         </motion.div>
 
-        {/* Button: Matches the specific blur/slide physics */}
+        {/* Button */}
         <motion.div 
-           variants={blurInVariants}
+           variants={contentVariants}
            className="pt-12"
         >
           <a 
@@ -91,6 +88,7 @@ const Hero: React.FC = () => {
             </div>
           </a>
         </motion.div>
+
       </motion.div>
 
       {/* 3D Background Elements */}
@@ -107,14 +105,16 @@ const Hero: React.FC = () => {
          />
       </div>
 
+      {/* Scroll Indicator */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }} // Delayed slightly more to wait for main intro
+        transition={{ delay: 2.5, duration: 1 }}
         className="absolute bottom-10 text-white/30 animate-bounce"
       >
         <ChevronDown size={32} />
       </motion.div>
+
     </section>
   );
 };
