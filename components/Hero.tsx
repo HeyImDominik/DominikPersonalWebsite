@@ -3,29 +3,66 @@ import { motion } from 'framer-motion';
 import { ChevronDown, Linkedin } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  // 1. Define a "stagger" container to trigger children one by one
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Delay between each element
+        delayChildren: 0.2,   // Initial delay before starting
+      },
+    },
+  };
+
+  // 2. The "Cooler" Blur Effect
+  // Longer duration + subtle slide up + custom easing
+  const blurInVariants = {
+    hidden: { 
+      opacity: 0, 
+      filter: 'blur(15px)', 
+      y: 30 // Start slightly lower
+    },
+    visible: {
+      opacity: 1,
+      filter: 'blur(0px)',
+      y: 0,
+      transition: {
+        duration: 1.4, // Took a tiny bit longer (was likely ~0.8s before)
+        ease: [0.25, 0.1, 0.25, 1.0], // "Cinematic" easing curve
+      },
+    },
+  };
+
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center perspective-1000 overflow-hidden">
       {/* Ambient Spotlights */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/20 blur-[150px] rounded-[100%] pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto space-y-8 flex flex-col items-center">
-
-        {/* Name with Blur-in + Scale */}
-        <motion.h1
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+      {/* Main Content Wrapper with Staggering */}
+      <motion.div 
+        className="relative z-10 max-w-6xl mx-auto space-y-8 flex flex-col items-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        
+        {/* Name: Now uses Framer Motion for smoother blur */}
+        <motion.h1 
+          variants={blurInVariants}
           className="text-7xl md:text-[10rem] font-display font-black tracking-tighter text-white leading-[0.85] drop-shadow-2xl"
         >
-          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400">DOMINIK</span>
-          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400">WALSER</span>
+          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400">
+            DOMINIK
+          </span>
+          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400">
+            WALSER
+          </span>
         </motion.h1>
 
-        {/* Title with delayed Blur-in + Scale */}
+        {/* Title: Inherits the stagger automatically */}
         <motion.div 
-          initial={{ opacity: 0, y: 30, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
+          variants={blurInVariants}
           className="max-w-3xl mx-auto"
         >
             <p className="text-xl md:text-3xl text-gray-300 font-light leading-relaxed tracking-wide">
@@ -36,13 +73,11 @@ const Hero: React.FC = () => {
             </p>
         </motion.div>
 
+        {/* Button: Matches the specific blur/slide physics */}
         <motion.div 
-           initial={{ opacity: 0, y: 20, scale: 0.95 }}
-           animate={{ opacity: 1, y: 0, scale: 1 }}
-           transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
+           variants={blurInVariants}
            className="pt-12"
         >
-          {/* Prominent LinkedIn Button */}
           <a 
             href="https://www.linkedin.com/in/walserdominik/" 
             target="_blank" 
@@ -56,7 +91,7 @@ const Hero: React.FC = () => {
             </div>
           </a>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* 3D Background Elements */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 perspective-1000 opacity-50">
@@ -75,7 +110,7 @@ const Hero: React.FC = () => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
+        transition={{ delay: 2.5, duration: 1 }} // Delayed slightly more to wait for main intro
         className="absolute bottom-10 text-white/30 animate-bounce"
       >
         <ChevronDown size={32} />
