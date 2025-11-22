@@ -76,7 +76,7 @@ const Projects: React.FC = () => {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true }}
-                        className="flex flex-wrap text-4xl md:text-6xl font-display font-black text-white tracking-tight drop-shadow-lg"
+                        className="flex flex-wrap text-3xl md:text-5xl font-display font-black text-white tracking-tight drop-shadow-lg"
                     >
                         {titleLetters.map((letter, i) => (
                             <motion.span key={i} variants={item} className={letter === " " ? "mr-4" : ""}>
