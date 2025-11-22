@@ -3,50 +3,55 @@ import { motion } from 'framer-motion';
 import { ChevronDown, Linkedin } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  // 1. The "Cooler" Blur + Float Effect
-  // Smoother easing curve and slightly longer duration (1.5s)
-  const contentVariants = {
+  // 1. Define a "stagger" container to trigger children one by one
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Delay between each element
+        delayChildren: 0.2,   // Initial delay before starting
+      },
+    },
+  };
+
+  // 2. The "Cooler" Blur Effect
+  const blurInVariants = {
     hidden: { 
       opacity: 0, 
-      filter: 'blur(10px)', 
-      y: 20 
+      filter: 'blur(15px)', 
+      y: 30 
     },
     visible: {
       opacity: 1,
       filter: 'blur(0px)',
       y: 0,
       transition: {
-        duration: 1.5, // Longer, more cinematic
-        ease: [0.25, 0.1, 0.25, 1.0], // Elegant "slow down" finish
+        duration: 1.4,
+        ease: [0.25, 0.1, 0.25, 1.0],
       },
     },
   };
 
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center perspective-1000 overflow-hidden">
-      
       {/* Ambient Spotlights */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/20 blur-[150px] rounded-[100%] pointer-events-none" />
 
-      {/* Main Content Wrapper 
-          We use 'staggerChildren' here to trigger the items one by one.
-          viewport={{ once: true }} ensures it doesn't reset/flash if you scroll slightly.
-      */}
+      {/* Main Content Wrapper with Staggering */}
       <motion.div 
         className="relative z-10 max-w-6xl mx-auto space-y-8 flex flex-col items-center"
+        variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          visible: {
-            transition: { staggerChildren: 0.3 }
-          }
-        }}
+        animate="visible"
       >
         
-        {/* Name */}
+        {/* Name: FIXED - Added style prop with willChange */}
         <motion.h1 
-          variants={contentVariants}
+          variants={blurInVariants}
+          // --- THE FIX IS HERE ---
+          // This forces the browser to keep the element on its own compositor layer
+          style={{ willChange: 'filter, transform' }} 
           className="text-7xl md:text-[10rem] font-display font-black tracking-tighter text-white leading-[0.85] drop-shadow-2xl"
         >
           <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400">
@@ -59,7 +64,9 @@ const Hero: React.FC = () => {
 
         {/* Title */}
         <motion.div 
-          variants={contentVariants}
+          variants={blurInVariants}
+          // Added here too just to be safe
+          style={{ willChange: 'filter, transform' }} 
           className="max-w-3xl mx-auto"
         >
             <p className="text-xl md:text-3xl text-gray-300 font-light leading-relaxed tracking-wide">
@@ -72,7 +79,8 @@ const Hero: React.FC = () => {
 
         {/* Button */}
         <motion.div 
-           variants={contentVariants}
+           variants={blurInVariants}
+           style={{ willChange: 'filter, transform' }} 
            className="pt-12"
         >
           <a 
@@ -88,7 +96,6 @@ const Hero: React.FC = () => {
             </div>
           </a>
         </motion.div>
-
       </motion.div>
 
       {/* 3D Background Elements */}
@@ -105,7 +112,6 @@ const Hero: React.FC = () => {
          />
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -114,7 +120,6 @@ const Hero: React.FC = () => {
       >
         <ChevronDown size={32} />
       </motion.div>
-
     </section>
   );
 };
