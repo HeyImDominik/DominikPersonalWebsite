@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Smartphone, ArrowRight, Brain, Zap, Loader2, AlertCircle } from 'lucide-react';
 
+// IMPORT THE IMAGE HERE
+// Ensure 'AVUI.jpg' is in the same directory as this component
+import avuiImage from './AVUI.jpg';
+
 const Projects: React.FC = () => {
   const [hovered, setHovered] = useState(false);
 
@@ -100,31 +104,30 @@ const Projects: React.FC = () => {
 
                 {/* Specific Stats Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-white/5 mt-4">
-                   <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">7,025+</div>
-                      <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">AI Training Params</div>
-                   </div>
-                   <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">5</div>
-                      <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">Malware Databases</div>
-                   </div>
-                   {/* REPLACED "5000+ Lines of Code" with "AI Powered" */}
-                   <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">AI Powered</div>
-                      <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">Core Technology</div>
-                   </div>
-                   <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">17</div>
-                      <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">Detection Modules</div>
-                   </div>
-                   <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">7+</div>
-                      <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">Original Innovations</div>
-                   </div>
-                   <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">30+</div>
-                      <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">Prototypes</div>
-                   </div>
+                    <div>
+                       <div className="text-2xl md:text-3xl font-bold text-white">7,025+</div>
+                       <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">AI Training Params</div>
+                    </div>
+                    <div>
+                       <div className="text-2xl md:text-3xl font-bold text-white">5</div>
+                       <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">Malware Databases</div>
+                    </div>
+                    <div>
+                       <div className="text-2xl md:text-3xl font-bold text-white">AI Powered</div>
+                       <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">Core Technology</div>
+                    </div>
+                    <div>
+                       <div className="text-2xl md:text-3xl font-bold text-white">17</div>
+                       <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">Detection Modules</div>
+                    </div>
+                    <div>
+                       <div className="text-2xl md:text-3xl font-bold text-white">7+</div>
+                       <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">Original Innovations</div>
+                    </div>
+                    <div>
+                       <div className="text-2xl md:text-3xl font-bold text-white">30+</div>
+                       <div className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">Prototypes</div>
+                    </div>
                 </div>
 
                 <div className="pt-6">
@@ -147,10 +150,11 @@ const Projects: React.FC = () => {
                 >
                     {/* Seamless Screen - No Notch */}
                     <div className="w-full h-full bg-gray-900 relative overflow-hidden">
+                        {/* MODIFIED IMAGE COMPONENT */}
                          <img 
-                           src="https://aistudio.google.com/fp/generated/09817a1d-6d3b-4a9e-b8e7-5734f5959c69" 
+                           src={avuiImage} 
                            alt="LAVAIQ Antivirus Interface" 
-                           className="w-full h-full object-cover"
+                           className="w-full h-full object-cover object-top"
                          />
 
                         {/* Subtle overlay gradient for depth */}
@@ -191,12 +195,12 @@ const Projects: React.FC = () => {
              </p>
              <div className="pt-4">
                 <a href="https://bit.ly/4p1E46Y" target="_blank" rel="noreferrer" className="text-sm font-bold text-white border-b border-white/20 pb-1 hover:border-white transition-colors">
-                    View Legacy Site
+                   View Legacy Site
                 </a>
              </div>
            </motion.div>
 
-           {/* AI Workflow - Kept Banner, Removed Badges */}
+           {/* AI Workflow */}
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
