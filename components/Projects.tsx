@@ -9,14 +9,15 @@ import avuiImage from './AVUI.jpg';
 const Projects: React.FC = () => {
   const [hovered, setHovered] = useState(false);
 
-  const titleLetters = "LAVAIQ".split("");
+  // Updated title text
+  const titleLetters = "Next-Gen Antivirus".split("");
 
   const container = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05, // Speed up slightly for longer text
         delayChildren: 0.3,
       },
     },
@@ -45,7 +46,7 @@ const Projects: React.FC = () => {
           <h3 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 opacity-0 animate-blur-in [animation-delay:100ms]">Selected Works</h3>
         </motion.div>
 
-        {/* LAVAIQ MAIN CARD */}
+        {/* MAIN CARD */}
         <motion.div 
           initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -69,21 +70,21 @@ const Projects: React.FC = () => {
                         <span className="text-xs font-bold text-yellow-500 tracking-widest uppercase">Currently in Development</span>
                     </div>
                     
-                    {/* Letter-by-letter animation with Display Font and Wide Tracking */}
+                    {/* Letter-by-letter animation - Font size adjusted to fit longer text */}
                     <motion.h3 
                         variants={container}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true }}
-                        className="flex text-7xl md:text-8xl font-display font-black text-white tracking-normal drop-shadow-lg"
+                        className="flex flex-wrap text-4xl md:text-6xl font-display font-black text-white tracking-tight drop-shadow-lg"
                     >
                         {titleLetters.map((letter, i) => (
-                            <motion.span key={i} variants={item}>
+                            <motion.span key={i} variants={item} className={letter === " " ? "mr-4" : ""}>
                                 {letter}
                             </motion.span>
                         ))}
                     </motion.h3>
-                    <p className="text-xl font-medium text-cyan-200 tracking-wide">Next-Generation Antivirus</p>
+                    <p className="text-xl font-medium text-cyan-200 tracking-wide">AI-Powered Security</p>
                 </div>
                 
                 <div className="space-y-6">
@@ -131,8 +132,8 @@ const Projects: React.FC = () => {
                 </div>
 
                 <div className="pt-6">
-                  <a href="https://www.lavaiq.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                    Visit LAVAIQ.com <ArrowRight size={18} />
+                  <a href="https://bit.ly/47IiTiU" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                    More info <ArrowRight size={18} />
                   </a>
                 </div>
               </div>
@@ -151,11 +152,11 @@ const Projects: React.FC = () => {
                     {/* Seamless Screen - No Notch */}
                     <div className="w-full h-full bg-gray-900 relative overflow-hidden">
                         {/* MODIFIED IMAGE COMPONENT */}
-                         <img 
-                           src={avuiImage} 
-                           alt="LAVAIQ Antivirus Interface" 
-                           className="w-full h-full object-cover object-top"
-                         />
+                          <img 
+                            src={avuiImage} 
+                            alt="Next-Gen Antivirus Interface" 
+                            className="w-full h-full object-cover object-top"
+                          />
 
                         {/* Subtle overlay gradient for depth */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
@@ -170,7 +171,7 @@ const Projects: React.FC = () => {
 
         {/* Secondary Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-           
+            
            {/* Rino Project */}
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
