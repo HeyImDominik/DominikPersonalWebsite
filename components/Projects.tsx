@@ -132,7 +132,7 @@ const Projects: React.FC = () => {
                 </div>
 
                 <div className="pt-6">
-                  <a href="https://bit.ly/47IiTiU" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                  <a href="https://761IvQ.short.gy/OCLIjD" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]">
                     More info <ArrowRight size={18} />
                   </a>
                 </div>
@@ -195,7 +195,7 @@ const Projects: React.FC = () => {
                Rino Personal Assistant was an Android voice assistant featuring Text-to-Speech and Speech-to-Text capabilities. Utilizing Firebase for real-time data, it integrated with online services to provide weather, news, and smart home control. The app achieved over 1,500 installs on Google Play. <span className="text-gray-600 italic block mt-2">Note: This project is no longer developed.</span>
              </p>
              <div className="pt-4">
-                <a href="https://bit.ly/4p1E46Y" target="_blank" rel="noreferrer" className="text-sm font-bold text-white border-b border-white/20 pb-1 hover:border-white transition-colors">
+                <a href="https://761IvQ.short.gy/DFCZFA" target="_blank" rel="noreferrer" className="text-sm font-bold text-white border-b border-white/20 pb-1 hover:border-white transition-colors">
                    View Legacy Site
                 </a>
              </div>
