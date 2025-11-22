@@ -9,27 +9,37 @@ const Hero: React.FC = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/20 blur-[150px] rounded-[100%] pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto space-y-8 flex flex-col items-center">
-        
-        {/* Name with Blur-in effect - Unified Color */}
-        <h1 className="text-7xl md:text-[10rem] font-display font-black tracking-tighter text-white leading-[0.85] drop-shadow-2xl opacity-0 animate-blur-in">
+
+        {/* Name with Blur-in + Scale */}
+        <motion.h1
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="text-7xl md:text-[10rem] font-display font-black tracking-tighter text-white leading-[0.85] drop-shadow-2xl"
+        >
           <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400">DOMINIK</span>
           <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400">WALSER</span>
-        </h1>
+        </motion.h1>
 
-        {/* Title with delayed blur-in */}
-        <div className="max-w-3xl mx-auto opacity-0 animate-blur-in [animation-delay:200ms]">
+        {/* Title with delayed Blur-in + Scale */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
+          className="max-w-3xl mx-auto"
+        >
             <p className="text-xl md:text-3xl text-gray-300 font-light leading-relaxed tracking-wide">
                 Next-Gen AI Android Antivirus Developer
             </p>
             <p className="mt-3 text-lg text-gray-500 font-mono tracking-widest uppercase">
                 LLM & Machine Learning Enthusiast
             </p>
-        </div>
+        </motion.div>
 
         <motion.div 
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ delay: 0.6, duration: 0.8 }}
+           initial={{ opacity: 0, y: 20, scale: 0.95 }}
+           animate={{ opacity: 1, y: 0, scale: 1 }}
+           transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
            className="pt-12"
         >
           {/* Prominent LinkedIn Button */}
