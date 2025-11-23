@@ -1,87 +1,135 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { ChevronDown, Linkedin } from 'lucide-react';
 
-const Hero: React.FC = () => {
-  // 1. Define a "stagger" container to trigger children one by one
-  const containerVariants = {
-    hidden: { opacity: 0 },
+// --- 1. Reusable Staggered Text Component ---
+// This splits text into letters for that "ultra-premium" flow
+const StaggeredText: React.FC<{ text: string; className?: string }> = ({ text, className }) => {
+  const sentenceVariants = {
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.3, // Delay between each element
-        delayChildren: 0.2,   // Initial delay before starting
-      },
+      transition: { staggerChildren: 0.05, delayChildren: 0.2 }, // Fast, ripple effect
     },
   };
 
-  // 2. The "Cooler" Blur Effect
-  const blurInVariants = {
-    hidden: { 
-      opacity: 0, 
-      filter: 'blur(15px)', 
-      y: 30 
-    },
+  const letterVariants = {
+    hidden: { opacity: 0, y: 20, filter: 'blur(20px)', scale: 1.1 },
     visible: {
       opacity: 1,
-      filter: 'blur(0px)',
       y: 0,
+      filter: 'blur(0px)',
+      scale: 1,
       transition: {
-        duration: 1.4,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        duration: 1.0,
+        ease: [0.2, 0.65, 0.3, 0.9], // "Cinematic" easing
       },
     },
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center perspective-1000 overflow-hidden">
-      {/* Ambient Spotlights */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/20 blur-[150px] rounded-[100%] pointer-events-none" />
+    <motion.h1
+      className={`flex flex-wrap justify-center gap-2 ${className}`}
+      variants={sentenceVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {text.split(" ").map((word, wIndex) => (
+        <span key={wIndex} className="flex">
+          {word.split("").map((char, cIndex) => (
+            <motion.span
+              key={`${wIndex}-${cIndex}`}
+              variants={letterVariants}
+              className="block will-change-transform" // Performance optimization
+              style={{ willChange: 'filter, transform' }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </span>
+      ))}
+    </motion.h1>
+  );
+};
 
-      {/* Main Content Wrapper with Staggering */}
-      <motion.div 
-        className="relative z-10 max-w-6xl mx-auto space-y-8 flex flex-col items-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+const Hero: React.FC = () => {
+  // --- 2. Variants for general elements ---
+  const blurUpVariants: Variants = {
+    hidden: { opacity: 0, y: 40, filter: 'blur(20px)' },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.5 },
+    },
+  };
+
+  // Animation for the pulsing background glow
+  const pulseVariants: Variants = {
+    animate: {
+      scale: [1, 1.1, 1],
+      opacity: [0.3, 0.6, 0.3],
+      filter: ['blur(100px)', 'blur(130px)', 'blur(100px)'], // "Focus and blur" loop
+      transition: {
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  return (
+    <section className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center perspective-1000 overflow-hidden bg-black">
+      
+      {/* --- Ambient Living Background --- */}
+      {/* Top Center Glow - Breaths */}
+      <motion.div
+        variants={pulseVariants}
+        animate="animate"
+        className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-blue-600/20 rounded-[100%] pointer-events-none"
+      />
+
+      {/* Main Content Wrapper */}
+      <div className="relative z-10 max-w-6xl mx-auto space-y-10 flex flex-col items-center">
         
-        {/* Name: FIXED - Added style prop with willChange */}
-        <motion.h1 
-          variants={blurInVariants}
-          // --- THE FIX IS HERE ---
-          // This forces the browser to keep the element on its own compositor layer
-          style={{ willChange: 'filter, transform' }} 
-          className="text-7xl md:text-[10rem] font-display font-black tracking-tighter text-white leading-[0.85] drop-shadow-2xl"
-        >
-          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400">
-            DOMINIK
-          </span>
-          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400">
-            WALSER
-          </span>
-        </motion.h1>
+        {/* --- Name with Ultra Stagger --- */}
+        <div className="space-y-[-1rem] md:space-y-[-3rem]"> {/* Tighter line height for impact */}
+           <StaggeredText 
+             text="DOMINIK" 
+             className="text-7xl md:text-[10rem] font-display font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400 drop-shadow-2xl" 
+           />
+           <StaggeredText 
+             text="WALSER" 
+             className="text-7xl md:text-[10rem] font-display font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-gray-100 via-gray-200 to-gray-500 drop-shadow-2xl" 
+           />
+        </div>
 
-        {/* Title */}
-        <motion.div 
-          variants={blurInVariants}
-          // Added here too just to be safe
-          style={{ willChange: 'filter, transform' }} 
-          className="max-w-3xl mx-auto"
+        {/* --- Titles with Smooth Blur Up --- */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          className="space-y-4"
         >
-            <p className="text-xl md:text-3xl text-gray-300 font-light leading-relaxed tracking-wide">
-                Next-Gen AI Android Antivirus Developer
-            </p>
-            <p className="mt-3 text-lg text-gray-500 font-mono tracking-widest uppercase">
-                LLM & Machine Learning Enthusiast
-            </p>
+          <motion.p 
+            variants={blurUpVariants}
+            className="text-xl md:text-3xl text-gray-200 font-light leading-relaxed tracking-wide"
+          >
+            Next-Gen AI Android Antivirus Developer
+          </motion.p>
+          <motion.p 
+            variants={blurUpVariants}
+            className="text-lg text-blue-400/80 font-mono tracking-[0.2em] uppercase"
+          >
+            LLM & Machine Learning Enthusiast
+          </motion.p>
         </motion.div>
 
-        {/* Button */}
+        {/* --- Button with Magnetic Feel --- */}
         <motion.div 
-           variants={blurInVariants}
-           style={{ willChange: 'filter, transform' }} 
-           className="pt-12"
+           initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
+           animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+           transition={{ delay: 1.2, duration: 1, ease: "circOut" }}
+           className="pt-8"
         >
           <a 
             href="https://www.linkedin.com/in/walserdominik/" 
@@ -89,34 +137,44 @@ const Hero: React.FC = () => {
             rel="noreferrer" 
             className="group relative inline-block"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl blur opacity-40 group-hover:opacity-80 transition duration-500 group-hover:duration-200 animate-pulse-glow"></div>
-            <div className="relative flex items-center justify-center gap-3 px-12 py-5 bg-[#050505] rounded-xl leading-none text-white border border-white/10 hover:bg-gray-900 transition-all">
-                <Linkedin className="w-6 h-6 text-cyan-400" />
-                <span className="font-bold text-lg tracking-wide">Connect on LinkedIn</span>
+            {/* Glow Effect behind button */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl blur-lg opacity-40 group-hover:opacity-100 transition duration-500 group-hover:duration-200"></div>
+            
+            <div className="relative flex items-center justify-center gap-3 px-10 py-4 bg-[#0a0a0a] rounded-xl leading-none text-white border border-white/10 group-hover:bg-gray-900/90 group-hover:scale-105 transition-all duration-300 ease-out">
+                <Linkedin className="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform" />
+                <span className="font-medium text-lg tracking-wide">Connect on LinkedIn</span>
             </div>
           </a>
         </motion.div>
-      </motion.div>
+      </div>
 
-      {/* 3D Background Elements */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 perspective-1000 opacity-50">
+      {/* --- 3D Background Elements (Rotating & Blurring) --- */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 perspective-1000 opacity-30 mix-blend-screen">
          <motion.div 
-            animate={{ rotateX: [0, 360], rotateY: [0, 360] }}
-            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[800px] h-[800px] border border-white/[0.02] rounded-full transform-style-3d"
+            animate={{ 
+                rotateX: [0, 360], 
+                rotateY: [0, 360],
+                scale: [1, 1.2, 1] // Adding slight scale breathing
+            }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[800px] h-[800px] border-[1px] border-white/[0.05] rounded-full transform-style-3d blur-[2px]"
          />
          <motion.div 
-            animate={{ rotateX: [360, 0], rotateY: [360, 0] }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[600px] h-[600px] border border-dashed border-white/[0.03] rounded-full transform-style-3d"
+            animate={{ 
+                rotateX: [360, 0], 
+                rotateY: [360, 0],
+                filter: ["blur(5px)", "blur(0px)", "blur(5px)"] // Dynamic focus shifting
+            }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[600px] h-[600px] border border-dashed border-white/[0.08] rounded-full transform-style-3d"
          />
       </div>
 
       <motion.div 
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
-        className="absolute bottom-10 text-white/30 animate-bounce"
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ delay: 2.5, duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 text-white/30"
       >
         <ChevronDown size={32} />
       </motion.div>
