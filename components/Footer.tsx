@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-20">
-           <a href="mailto:walser.dominik@outlook.com" className="relative z-20 flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all duration-300 group backdrop-blur-md">
+           <a href="mailto:hey@dominikwalser.com" className="relative z-20 flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all duration-300 group backdrop-blur-md">
              <Mail size={18} className="group-hover:scale-110 transition-transform" /> Contact Me
            </a>
            <a href="https://www.linkedin.com/in/walserdominik/" target="_blank" rel="noreferrer" className="relative z-20 flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#0077b5] text-white font-bold hover:scale-105 hover:shadow-[0_0_30px_rgba(0,119,181,0.5)] transition-all duration-300 shadow-lg shadow-black/50">
