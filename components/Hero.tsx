@@ -46,11 +46,9 @@ const Hero: React.FC = () => {
         animate="visible"
       >
         
-        {/* Name: FIXED - Added style prop with willChange */}
+        {/* Name */}
         <motion.h1 
           variants={blurInVariants}
-          // --- THE FIX IS HERE ---
-          // This forces the browser to keep the element on its own compositor layer
           style={{ willChange: 'filter, transform' }} 
           className="text-7xl md:text-[10rem] font-display font-black tracking-tighter text-white leading-[0.85] drop-shadow-2xl"
         >
@@ -65,11 +63,10 @@ const Hero: React.FC = () => {
         {/* Title */}
         <motion.div 
           variants={blurInVariants}
-          // Added here too just to be safe
           style={{ willChange: 'filter, transform' }} 
           className="max-w-3xl mx-auto"
         >
-            <p className="text-xl md:text-3xl text-gray-300 font-light leading-relaxed tracking-wide">
+            <p className="text-xl md:text-3xl text-gray-500 font-light leading-relaxed tracking-wide">
                 Next-Gen AI Android Antivirus Developer
             </p>
             <p className="mt-3 text-lg text-gray-500 font-mono tracking-widest uppercase">
