@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           Shaping a safer,<br/>smarter future for everyone.
         </h2>
         <p className="text-gray-400 max-w-xl mx-auto mb-12 text-lg font-light">
-          Open for collaborations on AI, Cybersecurity, and Next-Gen Android development.
+          Open to collaborations across AI, LLM development, cybersecurity, Android innovation, and a wide range of emerging technologies. If you think we could create something great together, feel free to reach out or connect with me on LinkedIn.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-20">
