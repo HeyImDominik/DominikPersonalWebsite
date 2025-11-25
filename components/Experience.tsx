@@ -98,7 +98,7 @@ const Experience: React.FC = () => {
                         <h4 className="text-xl font-bold text-white">SOSTAR</h4>
                         <p className="text-gray-400 text-sm mt-1">Mechanic of Computer Networks</p>
                         <p className="text-gray-500 text-sm mt-3 leading-relaxed">
-                            Secondary School focusing on network architecture, hardware security, and IT infrastructure.
+                            Secondary school specializing in IT hardware, software, and network architecture.
                         </p>
                     </div>
 
