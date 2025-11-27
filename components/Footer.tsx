@@ -12,19 +12,26 @@ const Footer: React.FC = () => {
           Shaping a safer,<br/>smarter future for everyone.
         </h2>
         
-        {/* Adjusted mb-12 to mb-8 to group closer with the email */}
         <p className="text-gray-400 max-w-xl mx-auto mb-8 text-lg font-light">
           Open to collaborating on a wide range of projects, from AI, cybersecurity, and emerging technologies to innovative ideas outside these areas. If you think we could create something great together, feel free to reach out or connect with me on LinkedIn.
         </p>
 
-        {/* Added Email Text */}
-        <a 
-          href="mailto:hey@dominikwalser.com" 
-          className="block text-gray-200 hover:text-white transition-colors duration-300 mb-12 text-lg font-medium"
-        >
-          hey@dominikwalser.com
-        </a>
+        {/* Email Box / Badge */}
+        <div className="flex justify-center mb-12">
+            <a 
+              href="mailto:hey@dominikwalser.com" 
+              className="group flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+            >
+                <div className="p-1.5 rounded-full bg-white/5 group-hover:bg-white/10 transition-colors">
+                    <Mail size={16} className="text-gray-300 group-hover:text-white" />
+                </div>
+                <span className="text-gray-300 group-hover:text-white font-mono text-sm tracking-wide">
+                    hey@dominikwalser.com
+                </span>
+            </a>
+        </div>
 
+        {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-20">
            <a href="mailto:hey@dominikwalser.com" className="relative z-20 flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all duration-300 group backdrop-blur-md">
              <Mail size={18} className="group-hover:scale-110 transition-transform" /> Contact Me
