@@ -11,9 +11,19 @@ const Footer: React.FC = () => {
         <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-8 tracking-tight leading-tight">
           Shaping a safer,<br/>smarter future for everyone.
         </h2>
-        <p className="text-gray-400 max-w-xl mx-auto mb-12 text-lg font-light">
+        
+        {/* Adjusted mb-12 to mb-8 to group closer with the email */}
+        <p className="text-gray-400 max-w-xl mx-auto mb-8 text-lg font-light">
           Open to collaborating on a wide range of projects, from AI, cybersecurity, and emerging technologies to innovative ideas outside these areas. If you think we could create something great together, feel free to reach out or connect with me on LinkedIn.
         </p>
+
+        {/* Added Email Text */}
+        <a 
+          href="mailto:hey@dominikwalser.com" 
+          className="block text-gray-200 hover:text-white transition-colors duration-300 mb-12 text-lg font-medium"
+        >
+          hey@dominikwalser.com
+        </a>
 
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-20">
            <a href="mailto:hey@dominikwalser.com" className="relative z-20 flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all duration-300 group backdrop-blur-md">
