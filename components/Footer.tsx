@@ -12,30 +12,25 @@ const Footer: React.FC = () => {
           Shaping a safer,<br/>smarter future for everyone.
         </h2>
         
-        <p className="text-gray-400 max-w-xl mx-auto mb-8 text-lg font-light">
+        <p className="text-gray-400 max-w-xl mx-auto mb-12 text-lg font-light">
           Open to collaborating on a wide range of projects, from AI, cybersecurity, and emerging technologies to innovative ideas outside these areas. If you think we could create something great together, feel free to reach out or connect with me on LinkedIn.
         </p>
 
-        {/* Email Box / Badge */}
-        <div className="flex justify-center mb-12">
-            <a 
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-20">
+           {/* New Email "Button" Box */}
+           <a 
               href="mailto:hey@dominikwalser.com" 
-              className="group flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+              className="relative z-20 group flex items-center gap-3 pr-6 pl-2 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
             >
-                <div className="p-1.5 rounded-full bg-white/5 group-hover:bg-white/10 transition-colors">
-                    <Mail size={16} className="text-gray-300 group-hover:text-white" />
+                <div className="p-3 rounded-full bg-white/10 group-hover:scale-105 transition-transform">
+                    <Mail size={20} className="text-white" />
                 </div>
-                <span className="text-gray-300 group-hover:text-white font-mono text-sm tracking-wide">
+                <span className="text-gray-200 group-hover:text-white font-mono text-base tracking-wide">
                     hey@dominikwalser.com
                 </span>
             </a>
-        </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center gap-6 mb-20">
-           <a href="mailto:hey@dominikwalser.com" className="relative z-20 flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all duration-300 group backdrop-blur-md">
-             <Mail size={18} className="group-hover:scale-110 transition-transform" /> Contact Me
-           </a>
+           {/* LinkedIn Button */}
            <a href="https://www.linkedin.com/in/walserdominik/" target="_blank" rel="noreferrer" className="relative z-20 flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#0077b5] text-white font-bold hover:scale-105 hover:shadow-[0_0_30px_rgba(0,119,181,0.5)] transition-all duration-300 shadow-lg shadow-black/50">
              <Linkedin size={18} /> LinkedIn
            </a>
