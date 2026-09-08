@@ -186,6 +186,7 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;
+  overflow-x:clip;
 }
 
 ::selection{background:rgba(44,116,230,.32);color:#fff}
@@ -318,9 +319,17 @@ section{position:relative}
    Nav
    ============================================================ */
 .nav{
-  position:fixed;top:14px;left:0;right:0;z-index:60;
-  display:flex;justify-content:center;padding-inline:14px;
-  transition:top .4s var(--ease);
+  position:fixed;
+  top:calc(14px + env(safe-area-inset-top,0px));
+  left:0;right:0;z-index:60;
+  display:flex;justify-content:center;
+  padding-left:max(14px,env(safe-area-inset-left,0px));
+  padding-right:max(14px,env(safe-area-inset-right,0px));
+  /* own compositing layer: stops the pill lagging behind / slipping under the
+     browser chrome while the mobile URL bar collapses and expands */
+  transform:translateZ(0);
+  will-change:transform;
+  backface-visibility:hidden;
 }
 .nav__inner{
   display:flex;align-items:center;gap:6px;
@@ -374,7 +383,10 @@ section{position:relative}
   .nav__cta{padding:9px 14px}
 }
 @media (max-width:480px){
-  .nav{padding-inline:10px}
+  .nav{
+    padding-left:max(10px,env(safe-area-inset-left,0px));
+    padding-right:max(10px,env(safe-area-inset-right,0px));
+  }
   .nav__inner{gap:3px;padding:6px 6px 6px 7px}
   .nav__brand{height:34px;padding:0 7px 0 10px}
   .nav__brand svg{width:17px;height:23px}
