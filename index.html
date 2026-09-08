@@ -157,7 +157,7 @@
   --r-xl:32px;
 
   --maxw:1180px;
-  --pad:clamp(22px,5vw,40px);
+  --pad:clamp(18px,5vw,40px);
   --sec:clamp(80px,9.5vw,148px);
 
   --ease:cubic-bezier(.22,.61,.36,1);
@@ -190,8 +190,8 @@ body{
 
 ::selection{background:rgba(44,116,230,.32);color:#fff}
 
-h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:-.035em;line-height:1.06}
-p{margin:0}
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:-.035em;line-height:1.06;overflow-wrap:break-word}
+p{margin:0;overflow-wrap:break-word}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
 ul{margin:0;padding:0;list-style:none}
@@ -324,6 +324,7 @@ section{position:relative}
 }
 .nav__inner{
   display:flex;align-items:center;gap:6px;
+  max-width:100%;min-width:0;
   padding:7px 7px 7px 8px;
   border-radius:999px;
   background:rgba(8,12,22,.52);
@@ -372,6 +373,15 @@ section{position:relative}
   .nav__links a{padding:7px 8px;font-size:12px}
   .nav__cta{padding:9px 14px}
 }
+@media (max-width:480px){
+  .nav{padding-inline:10px}
+  .nav__inner{gap:3px;padding:6px 6px 6px 7px}
+  .nav__brand{height:34px;padding:0 7px 0 10px}
+  .nav__brand svg{width:17px;height:23px}
+  .nav__links{margin:0}
+  .nav__links a{padding:7px 7px;font-size:11.5px}
+  .nav__cta{padding:8px 12px;font-size:12px}
+}
 @media (max-width:382px){
   .nav__links{display:none}
 }
@@ -388,12 +398,17 @@ section{position:relative}
     radial-gradient(ellipse 26% 30% at 50% 46%,rgba(44,116,230,.20),transparent 68%);
 }
 .hero{
+  position:relative;
+  overflow:hidden;
   min-height:100svh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
   padding:132px 0 108px;
 }
 @media (max-width:640px){.hero{padding:112px 0 92px}}
+@media (orientation:landscape) and (max-height:560px){
+  .hero{min-height:auto;padding:118px 0 76px}
+}
 
 
 /* huge DW watermark */
@@ -477,7 +492,8 @@ section{position:relative}
 .feature > *{position:relative;z-index:1}
 @media (max-width:940px){
   .feature{grid-template-columns:1fr}
-  .feature__media{order:-1}
+  .feature__media{order:-1;min-height:0}
+  .feature__media .device{width:min(252px,68%)}
 }
 
 .badge{
@@ -520,8 +536,8 @@ section{position:relative}
   border-radius:var(--r-m);
   overflow:hidden;
 }
-.stats div{background:rgba(6,10,20,.5);padding:18px 16px}
-.stats .k{font-size:1.35rem;font-weight:600;letter-spacing:-.035em;color:#fff;font-variant-numeric:tabular-nums}
+.stats div{background:rgba(6,10,20,.5);padding:18px 16px;min-width:0}
+.stats .k{font-size:clamp(1.05rem,3.6vw,1.35rem);font-weight:600;letter-spacing:-.035em;color:#fff;font-variant-numeric:tabular-nums}
 .stats .l{margin-top:6px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
   font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace}
 @media (max-width:520px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -538,7 +554,8 @@ section{position:relative}
 .link-arrow:hover svg{transform:translateX(4px)}
 
 /* device */
-.feature__media{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px}
+.feature__media{position:relative;display:flex;align-items:center;justify-content:center;min-width:0}
+@media (min-width:941px){.feature__media{min-height:400px}}
 .device{
   position:relative;width:min(272px,74%);aspect-ratio:620/1183;
   border-radius:38px;padding:7px;
@@ -714,7 +731,7 @@ section{position:relative}
   transition:transform .55s var(--ease-out),border-color .45s var(--ease),background .45s var(--ease);
 }
 .award:hover{transform:translateY(-3px);border-color:var(--line-2)}
-.award__meta{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:12px}
+.award__meta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 14px;margin-bottom:12px}
 .award__rank{
   font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--brand-3);
   font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
@@ -733,7 +750,7 @@ section{position:relative}
 .award__issuer svg{width:12px;height:12px;flex:none;margin-top:3px}
 
 /* timeline */
-.tl{position:relative;padding-left:30px}
+.tl{position:relative;--tl-pad:30px;padding-left:var(--tl-pad)}
 .tl::before{
   content:"";position:absolute;left:5px;top:8px;bottom:24px;width:1px;
   background:var(--brand-2);opacity:.55;
@@ -741,7 +758,7 @@ section{position:relative}
 .tl__item{position:relative;padding-bottom:38px}
 .tl__item:last-child{padding-bottom:0}
 .tl__item::before{
-  content:"";position:absolute;left:-30px;top:6px;width:11px;height:11px;border-radius:50%;
+  content:"";position:absolute;left:calc(-1 * var(--tl-pad));top:6px;width:11px;height:11px;border-radius:50%;
   background:var(--bg);border:2px solid var(--brand-2);
   box-shadow:0 0 0 4px rgba(4,7,14,1);
 }
@@ -788,7 +805,7 @@ section{position:relative}
   font-size:11.5px;color:var(--ink-4);
   font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
 }
-.foot__bar .mono-links{display:flex;gap:18px}
+.foot__bar .mono-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px}
 @media (max-width:560px){.foot__bar{justify-content:center;text-align:center}}
 .foot__bar a{transition:color .3s var(--ease)}
 .foot__bar a:hover{color:var(--ink-2)}
@@ -801,7 +818,7 @@ section{position:relative}
    runs on the compositor. `will-change` is added just before an element
    moves and dropped the moment it lands.
    ============================================================ */
-.rv,.rvg>.rvc{
+.rv,.rvg>.rvc,.letters .lt{
   opacity:0;
   transform:translate3d(var(--rx,0px),var(--ry,26px),0) scale(var(--rs,1));
   filter:blur(var(--rb,12px));
@@ -810,8 +827,8 @@ section{position:relative}
     transform var(--rt,1.15s) var(--ease-out) var(--d,0s),
     filter    var(--rf,.6s)   var(--ease-out) var(--d,0s);
 }
-.rv.in,.rvg.in>.rvc{opacity:1;transform:none;filter:blur(0px)}
-.rv.priming,.rvg.priming>.rvc{will-change:opacity,transform,filter}
+.rv.in,.rvg.in>.rvc,.letters.in .lt{opacity:1;transform:none;filter:blur(0px)}
+.rv.priming,.rvg.priming>.rvc,.letters.priming .lt{will-change:opacity,transform,filter}
 
 /* direction + weight modifiers */
 /* blur cost scales with element AREA, so the big surfaces get the small radius
@@ -833,7 +850,7 @@ section{position:relative}
 .rvg.hero-name>.rvc{--rs:1.06;--ry:24px;--rb:30px;--ro:1.65s;--rt:1.95s;--rf:1.6s}
 
 /* letter-by-letter headline */
-.rvg.letters>.rvc{--rb:10px;--ry:24px;--rs:1.06;--ro:.7s;--rt:.8s;--rf:.4s}
+.letters .lt{--rb:10px;--ry:24px;--rs:1.06;--ro:.7s;--rt:.8s;--rf:.4s}
 
 /* Touch devices and small screens: keep every movement, spend the blur only
    where it carries the look — the hero name, section titles and the two big cards. */
@@ -844,7 +861,7 @@ section{position:relative}
   .rvg.hero-name>.rvc{--rb:20px;--rf:1.35s;--ro:1.4s;--rt:1.65s}
   .rvg.chips>.rvc,.rvg.stack>.rvc,.rvg.stats>.rvc,
   .rvg.skill-list>.rvc,.rvg.award-list>.rvc,.rvg.tl>.rvc,
-  .rvg.letters>.rvc{--rb:0px}
+  .letters .lt{--rb:0px}
   .rvg.skill-list>.rvc{--rx:-24px}
   .rvg.award-list>.rvc,.rvg.tl>.rvc{--rx:-20px}
   .from-l{--rx:-24px}
@@ -853,13 +870,14 @@ section{position:relative}
   .tex .grain{opacity:.2}
 }
 .letters .lt{display:inline-block}
+.letters .wd{display:inline-block;white-space:nowrap}
 .letters .sp{display:inline-block;width:.3em}
 
-.no-js .rv,.no-js .rvg>.rvc{opacity:1;transform:none;filter:none}
+.no-js .rv,.no-js .rvg>.rvc,.no-js .letters .lt{opacity:1;transform:none;filter:none}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .rv,.rvg>.rvc{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+  .rv,.rvg>.rvc,.letters .lt{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
   .bg i{animation:none!important}
   .hero__mark{opacity:.07}
   .badge .pip{animation:none!important}
@@ -872,7 +890,7 @@ section{position:relative}
    Small screens: larger, more confident type
    ============================================================ */
 @media (max-width:640px){
-  .hero h1{font-size:clamp(3.5rem,15.6vw,5.2rem);letter-spacing:-.052em}
+  .hero h1{font-size:min(15.6vw,5.2rem);letter-spacing:-.052em}
   .hero__tag{margin-top:22px}
   .hero__tag .t1{font-size:1.34rem}
   .hero__tag .t2{margin-top:11px;font-size:.7rem;letter-spacing:.26em}
@@ -880,14 +898,14 @@ section{position:relative}
   .btn{padding:15px 26px;font-size:15px}
 
   .sec-head{margin-bottom:38px}
-  .sec-head h2{font-size:clamp(2.6rem,9.6vw,3.4rem);letter-spacing:-.042em}
+  .sec-head h2{font-size:clamp(2.1rem,9.6vw,3.4rem);letter-spacing:-.042em}
 
   .feature{padding:26px 22px}
-  .feature h3{font-size:clamp(2.05rem,8.6vw,2.7rem)}
+  .feature h3{font-size:clamp(1.7rem,8.6vw,2.7rem)}
   .feature .sub{font-size:1rem}
   .feature .body{font-size:1.04rem;line-height:1.7}
   .chip{font-size:13.5px;padding:8px 14px}
-  .stats .k{font-size:1.28rem}
+  .stats .k{font-size:clamp(1.02rem,4.4vw,1.28rem)}
   .stats div{padding:16px 14px}
   .link-arrow{padding:14px 24px;font-size:15px}
 
@@ -918,7 +936,7 @@ section{position:relative}
   .award p{font-size:.94rem;line-height:1.65}
   .award__issuer{font-size:11.5px}
 
-  .tl{padding-left:28px}
+  .tl{--tl-pad:26px}
   .tl__item{padding-bottom:34px}
   .tl__item h4{font-size:1.18rem}
   .tl__role{font-size:.95rem}
@@ -929,199 +947,8 @@ section{position:relative}
   .foot .lede{font-size:1.02rem;line-height:1.72}
   .foot__cta{margin-top:36px}
 }
-
-
-/* ============================================================
-   Responsive layout hardening
-   Keeps the original design while making every section fluid.
-   ============================================================ */
-
-/* Grid/flex children must be allowed to shrink instead of forcing overflow. */
-.feature > *,
-.cards > *,
-.arsenal__grid > *,
-.awards__grid > *,
-.nav__inner,
-.nav__links,
-.feature__body,
-.feature__media,
-.card,
-.award,
-.langs{min-width:0}
-
-/* Long labels/content should never widen the viewport. */
-.feature h3,
-.feature .body,
-.card h4,
-.card p,
-.award h4,
-.award p,
-.tl__item h4,
-.tl__item p,
-.spotlight h3,
-.spotlight .body,
-.foot h2,
-.foot .lede{overflow-wrap:anywhere}
-
-/* Avoid 100vw-style overflow when browser scrollbars / safe areas are present. */
-.wrap{
-  width:min(100%,var(--maxw));
-  padding-left:max(var(--pad),env(safe-area-inset-left));
-  padding-right:max(var(--pad),env(safe-area-inset-right));
-}
-
-.nav{
-  padding-left:max(12px,env(safe-area-inset-left));
-  padding-right:max(12px,env(safe-area-inset-right));
-}
-.nav__inner{max-width:100%}
-
-/* Smooth the tablet transition instead of keeping desktop proportions too long. */
-@media (max-width:1100px){
-  :root{--pad:clamp(22px,3.5vw,34px)}
-  .feature{grid-template-columns:minmax(0,1fr) minmax(260px,.82fr);gap:clamp(26px,3.5vw,44px)}
-  .arsenal__grid,.awards__grid{gap:clamp(30px,4vw,52px)}
-}
-
-@media (max-width:940px){
-  .feature{grid-template-columns:1fr;padding:clamp(28px,5vw,46px)}
-  .feature__media{
-    order:-1;
-    min-height:clamp(300px,52vw,430px);
-  }
-  .device{width:min(250px,52vw)}
-  .feature .body{max-width:62ch}
-}
-
-@media (max-width:760px){
-  :root{
-    --pad:clamp(18px,5vw,28px);
-    --sec:clamp(68px,14vw,96px);
-  }
-
-  html{scroll-padding-top:88px}
-
-  .nav{top:10px}
-  .nav__inner{padding:6px;gap:3px}
-  .nav__brand{height:34px;padding:0 8px 0 10px}
-  .nav__brand svg{width:17px;height:24px}
-  .nav__links{gap:0;margin:0}
-  .nav__links a{padding:7px 8px;font-size:11.5px}
-  .nav__cta{padding:8px 13px;font-size:12.5px}
-
-  .hero{
-    min-height:100dvh;
-    padding:110px 0 78px;
-  }
-  .hero::before{width:150vw;height:86vh;top:-12%}
-  .hero__mark{width:min(44vh,56vw);translate:-50% -53%}
-  .hero h1{font-size:clamp(3.35rem,14.5vw,5.8rem);line-height:.92}
-  .hero__tag .t1{font-size:clamp(1.12rem,4.5vw,1.34rem)}
-  .hero__tag .t2{font-size:clamp(.64rem,2.4vw,.72rem);letter-spacing:.22em}
-
-  .sec-head{margin-bottom:36px}
-  .sec-head h2{font-size:clamp(2.35rem,9vw,3.3rem)}
-  .sec-head .lede{font-size:1rem}
-
-  .feature{padding:clamp(24px,5vw,30px);gap:24px;border-radius:24px}
-  .feature__media{min-height:clamp(275px,75vw,370px)}
-  .device{width:min(232px,58vw);border-radius:32px;padding:6px}
-  .device__screen{border-radius:26px}
-
-  .cards{gap:16px;margin-top:16px}
-  .card{border-radius:22px}
-
-  .arsenal__grid,.awards__grid{gap:42px}
-  .spotlight{border-radius:24px}
-
-  .skill-row{gap:12px}
-  .skill-row .idx{min-width:20px}
-
-  .foot__bar{gap:18px;justify-content:center;text-align:center}
-  .foot__sig{justify-content:center;width:100%}
-  .foot__bar .mono-links{justify-content:center;flex-wrap:wrap}
-}
-
-/* Phone layout: remove nav crowding and make controls/cards fit naturally. */
-@media (max-width:560px){
-  .nav__links{display:none}
-  .nav__inner{justify-content:space-between;width:min(100%,360px)}
-  .nav__brand{padding-inline:11px}
-  .nav__cta{padding:9px 15px}
-
-  .hero{padding-top:96px;padding-bottom:64px}
-  .hero h1{font-size:clamp(3.15rem,16vw,4.75rem)}
-  .hero__tag{margin-top:20px}
-  .hero__cta{width:100%;margin-top:34px;gap:10px}
-  .hero__cta .btn{justify-content:center;min-width:0}
-
-  .feature__media{min-height:260px}
-  .device{width:min(218px,62vw)}
-
-  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .stats div{min-width:0}
-  .stats .k{font-size:clamp(1.05rem,5vw,1.28rem);overflow-wrap:anywhere}
-  .stats .l{font-size:9px;letter-spacing:.12em;overflow-wrap:anywhere}
-
-  .award__meta{align-items:flex-start;gap:8px}
-  .award__rank{line-height:1.4}
-  .award__year{flex:none}
-
-  .lang{align-items:flex-start}
-  .lang .v{margin-top:1px}
-
-  .stampline{align-items:flex-start}
-  .stampline__t{white-space:normal}
-}
-
-@media (max-width:430px){
-  :root{--pad:18px}
-
-  .hero h1{font-size:clamp(3rem,15.5vw,4rem)}
-  .hero__tag .t1{font-size:1.16rem}
-  .hero__tag .t2{font-size:.64rem;letter-spacing:.18em}
-  .hero__cta{flex-direction:column;align-items:stretch;max-width:320px;margin-inline:auto;margin-top:32px}
-  .hero__cta .btn{width:100%}
-
-  .feature{padding:22px 18px}
-  .feature h3{font-size:clamp(1.9rem,9.2vw,2.35rem)}
-  .feature .body{font-size:.98rem}
-  .feature__media{min-height:238px}
-  .device{width:min(202px,64vw)}
-
-  .card{padding:23px 18px}
-  .card__top{margin-bottom:20px}
-  .spotlight{padding:27px 18px}
-  .award{padding:20px 17px}
-  .langs{padding:22px 18px}
-
-  .award__meta{flex-direction:column;margin-bottom:10px}
-  .award__year{white-space:normal}
-
-  .foot__cta{flex-direction:column;align-items:stretch;max-width:320px;margin-inline:auto;margin-top:34px}
-  .foot__cta .btn{justify-content:center;width:100%}
-}
-
-/* Very narrow phones should still never clip horizontally. */
-@media (max-width:350px){
-  :root{--pad:15px}
-  .nav{padding-inline:8px}
-  .nav__inner{width:100%}
-  .nav__cta{padding-inline:12px}
-  .hero h1{font-size:2.85rem}
-  .stats{grid-template-columns:1fr}
-  .feature,.card,.spotlight,.award,.langs{border-radius:20px}
-}
-
-/* Landscape phones: don't force a tall hero or oversized media block. */
-@media (max-height:560px) and (orientation:landscape){
-  .hero{min-height:auto;padding:104px 0 72px}
-  .hero__mark{width:min(62vh,34vw)}
-  .feature__media{min-height:300px}
-}
-
 </style>
-<noscript><style>.rv,.rvg>.rvc{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+<noscript><style>.rv,.rvg>.rvc,.letters .lt{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
 </head>
 <body>
 
@@ -1526,16 +1353,34 @@ section{position:relative}
   // Split flagged headings into per-letter spans. The plain text ships in the
   // HTML, so crawlers and no-JS visitors still read the heading normally.
   document.querySelectorAll("[data-letters]").forEach(function(el){
-    var text = el.textContent, frag = document.createDocumentFragment();
-    for (var i = 0; i < text.length; i++){
-      var span = document.createElement("span");
-      if (text[i] === " ") { span.className = "sp"; span.innerHTML = "&nbsp;"; }
-      else { span.className = "lt"; span.textContent = text[i]; }
-      frag.appendChild(span);
-    }
+    var step = parseFloat(el.getAttribute("data-letters")) || 0.036;
+    var base = parseFloat(el.style.getPropertyValue("--d")) || 0;
+    var words = el.textContent.trim().split(/\s+/);
+    var frag = document.createDocumentFragment();
+    var n = 0;
+    words.forEach(function(word, wi){
+      var wrap = document.createElement("span");
+      wrap.className = "wd";
+      for (var i = 0; i < word.length; i++){
+        var span = document.createElement("span");
+        span.className = "lt";
+        span.textContent = word[i];
+        span.style.setProperty("--d", (base + n * step).toFixed(3) + "s");
+        n++;
+        wrap.appendChild(span);
+      }
+      frag.appendChild(wrap);
+      if (wi < words.length - 1){
+        var sp = document.createElement("span");
+        sp.className = "sp";
+        sp.innerHTML = "&nbsp;";
+        n++;
+        frag.appendChild(sp);
+      }
+    });
     el.textContent = "";
     el.appendChild(frag);
-    el.setAttribute("data-stagger", el.getAttribute("data-letters") || "0.036");
+    el.classList.add("rvg");
   });
 
   // Staggered groups: one observer entry per group, delays baked onto children.
