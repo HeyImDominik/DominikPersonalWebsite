@@ -233,12 +233,12 @@ ul{margin:0;padding:0;list-style:none}
 .tex i{position:absolute;display:block;inset:0}
 
 .bg .a1{
-  top:-34vh;left:-14%;width:86%;height:86vw;max-width:none;
+  top:-34vh;left:-14vw;width:86vw;height:86vw;
   background:radial-gradient(circle at 50% 50%,rgba(0,64,154,.30),rgba(0,50,124,.11) 40%,rgba(0,64,154,0) 70%);
   animation:drift-a 52s ease-in-out infinite;
 }
 .bg .a2{
-  top:2vh;right:-26%;width:74%;height:74vw;
+  top:2vh;right:-26vw;width:74vw;height:74vw;
   background:radial-gradient(circle at 50% 50%,rgba(28,74,168,.20),rgba(16,44,110,.07) 42%,rgba(0,0,0,0) 72%);
   animation:drift-b 61s ease-in-out infinite;
 }
@@ -406,8 +406,8 @@ section{position:relative}
    Hero
    ============================================================ */
 .hero::before{
-  content:"";position:absolute;top:-24%;left:50%;translate:-50% 0;
-  width:min(1500px,100%);height:min(1000px,104vh);pointer-events:none;max-width:100%;
+  content:"";position:absolute;top:-18%;left:50%;translate:-50% 0;
+  width:min(1500px,132vw);height:min(1000px,104vh);pointer-events:none;
   background:
     radial-gradient(ellipse 50% 50% at 50% 50%,rgba(0,64,154,.50),rgba(0,52,128,.16) 44%,transparent 72%),
     radial-gradient(ellipse 26% 30% at 50% 46%,rgba(44,116,230,.20),transparent 68%);
@@ -420,9 +420,21 @@ section{position:relative}
   text-align:center;
   padding:132px 0 108px;
 }
-@media (max-width:640px){.hero{padding:112px 0 92px}}
+@media (max-width:640px){
+  .hero{padding:120px 0 88px;min-height:100svh}
+  .hero::before{
+    top:18%;
+    width:180vw;
+    height:78vh;
+    translate:-50% -12%;
+    background:
+      radial-gradient(ellipse 48% 52% at 50% 42%,rgba(0,64,154,.58),rgba(0,52,128,.18) 46%,transparent 74%),
+      radial-gradient(ellipse 28% 32% at 50% 40%,rgba(44,116,230,.24),transparent 68%);
+  }
+}
 @media (orientation:landscape) and (max-height:560px){
   .hero{min-height:auto;padding:118px 0 76px}
+  .hero::before{top:0;height:120%;translate:-50% 0}
 }
 
 
@@ -430,11 +442,18 @@ section{position:relative}
 .hero__mark{
   position:absolute;top:50%;left:50%;
   translate:-50% -54%;
-  width:min(52vh,42%);aspect-ratio:1378/1916;height:auto;max-width:90%;
+  width:min(52vh,42vw);aspect-ratio:1378/1916;height:auto;
   color:#B4D0FA;opacity:.088;
   -webkit-mask-image:radial-gradient(ellipse 72% 68% at 50% 50%,#000 34%,transparent 91%);
   mask-image:radial-gradient(ellipse 72% 68% at 50% 50%,#000 34%,transparent 91%);
   pointer-events:none;
+}
+@media (max-width:640px){
+  .hero__mark{
+    width:min(58vh,78vw);
+    translate:-50% -48%;
+    opacity:.07;
+  }
 }
 
 @keyframes beat{0%,100%{opacity:1}50%{opacity:.35}}
@@ -863,7 +882,7 @@ section{position:relative}
 .rvg.cards>.rvc{--rb:11px;--ry:34px;--ro:1s;--rt:1.15s;--rf:.55s}
  /* The name is two elements, animating once, before anything else moves.
     It is the one place worth spending a big slow blur, so it gets one. */
-.rvg.hero-name>.rvc{--rs:1.06;--ry:24px;--rb:30px;--ro:1.65s;--rt:1.95s;--rf:1.6s}
+.rvg.hero-name>.rvc{--rs:1.06;--ry:24px;--rb:30px;--ro:1.9s;--rt:2.2s;--rf:1.85s}
 
 /* letter-by-letter headline */
 .letters .lt{--rb:10px;--ry:24px;--rs:1.06;--ro:.7s;--rt:.8s;--rf:.4s}
@@ -874,7 +893,7 @@ section{position:relative}
   .rv{--rb:9px}
   .lift{--rb:7px}
   .zoom{--rb:12px}
-  .rvg.hero-name>.rvc{--rb:20px;--rf:1.35s;--ro:1.4s;--rt:1.65s}
+  .rvg.hero-name>.rvc{--rb:22px;--rf:1.6s;--ro:1.65s;--rt:1.95s}
   .rvg.chips>.rvc,.rvg.stack>.rvc,.rvg.stats>.rvc,
   .rvg.skill-list>.rvc,.rvg.award-list>.rvc,.rvg.tl>.rvc,
   .letters .lt{--rb:0px}
