@@ -553,7 +553,19 @@ section{position:relative}
 .feature .body{margin-top:22px;color:var(--ink-2);line-height:1.68;max-width:48ch;font-size:1.0rem}
 .feature .body b{color:var(--ink);font-weight:600}
 
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;max-width:496px}
+/* Below the feature's two-column breakpoint the row is wide enough to strand a
+   single pill on a line of its own, and exactly where it does that shifts with
+   every label. A fixed two-column grid takes the guesswork out: both lists hold
+   an even number of pills, so the rows always come out square. */
+@media (min-width:941px){
+  /* six pills, capped so they break 3 and 3 rather than 4 and 2 */
+  .feature:not(.feature--lz) .chips{max-width:400px}
+}
+@media (max-width:940px){
+  .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .chip{text-align:center}
+}
 .chip{
   padding:7px 13px;border-radius:999px;
   background:rgba(255,255,255,.04);
@@ -986,6 +998,11 @@ section{position:relative}
   .feature .sub{font-size:1rem}
   .feature .body{font-size:1.04rem;line-height:1.7}
   .chip{font-size:13.5px;padding:8px 14px}
+  /* keep the longest label on one line inside its grid column */
+  @media (max-width:400px){.chip{font-size:12.5px;padding:8px 10px}}
+  /* Below this the two columns are too narrow for the longest label, so the
+     pills go full width rather than wrapping onto two lines inside the pill. */
+  @media (max-width:344px){.chips{grid-template-columns:1fr}}
   .stats .k{font-size:clamp(1.02rem,4.4vw,1.28rem)}
   .stats div{padding:16px 14px}
   .link-arrow{padding:14px 24px;font-size:15px}
@@ -1133,11 +1150,12 @@ section{position:relative}
             </p>
 
             <ul class="chips" data-stagger=".045">
-              <li class="chip">AI</li>
+              <li class="chip">4-Layer Detection</li>
+              <li class="chip">On-Device ML</li>
+              <li class="chip">AI Agent</li>
+              <li class="chip">Privacy-First</li>
               <li class="chip">TensorFlow Lite</li>
-              <li class="chip">Heuristic Analysis</li>
-              <li class="chip">Privacy-First Design</li>
-              <li class="chip">Firebase</li>
+              <li class="chip">Fine-Tuned LLM</li>
             </ul>
 
             <div class="stats" data-stagger=".05">
@@ -1169,18 +1187,20 @@ section{position:relative}
           <div class="feature__body">
             <p class="badge">Student Research Demo</p>
             <h3 class="letters" data-letters=".032">LAZULIQ 1.2 PHOTON</h3>
-            <p class="sub">A Fine-Tuned Small Language Model</p>
+            <p class="sub">A Fine-Tuned Large Language Model</p>
 
             <p class="body">
-              A student research demo I run to learn how LLMs work from the inside: an open-source
-              <b>3.1B model</b> I fine-tuned for better style, reasoning and recall, paired with
-              <b>StartumRAG</b> for offline retrieval. A demo, not a product &mdash; it will get things wrong.
+              A student research demo I built to understand how language models really work.
+              I took an open-weight <b>3.1B model</b> and fine-tuned it for a cleaner voice, sharper
+              reasoning and better recall, then added <b>StartumRAG</b> so it can pull in facts
+              offline. It is a demo rather than a product, so expect it to get things wrong.
             </p>
 
             <ul class="chips" data-stagger=".045">
               <li class="chip">Fine-Tuning</li>
               <li class="chip">Reasoning</li>
               <li class="chip">StartumRAG</li>
+              <li class="chip">Offline Retrieval</li>
             </ul>
 
             <a class="link-arrow" href="https://dominikwalser.com/lazuliq" target="_blank" rel="noopener noreferrer">
