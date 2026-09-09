@@ -614,6 +614,32 @@ section{position:relative}
   position:absolute;top:12%;left:50%;translate:-50% 0;width:96%;height:74%;pointer-events:none;
   background:radial-gradient(circle at 50% 50%,rgba(0,64,154,.5),transparent 66%);
 }
+/* ── LazuliQ island ─────────────────────────────────────────
+   Same feature shell as LAVAIQ, but the media column holds a
+   canvas orb instead of a device. The canvas only builds and
+   animates while it is actually on screen. */
+.feature--lz{margin-top:20px}
+.feature--lz .feature__media{min-height:0}
+@media (min-width:941px){.feature--lz .feature__media{min-height:360px}}
+.orb-slot{
+  position:relative;width:min(340px,80%);aspect-ratio:1;
+}
+.orb-slot canvas{
+  position:absolute;inset:-26%;width:152%;height:152%;
+  opacity:0;transform:scale(.965);
+  transition:opacity 1.2s var(--ease),transform 1.5s var(--ease-out);
+}
+.orb-slot canvas.lit{opacity:1;transform:scale(1)}
+@media (max-width:940px){.feature--lz .orb-slot{width:min(280px,70%)}}
+@media (max-width:520px){
+  /* three short figures still fit on one row at this size */
+  .feature--lz .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .feature--lz .stats div{padding:15px 11px}
+}
+@media (prefers-reduced-motion:reduce){
+  .orb-slot canvas{opacity:1;transform:none}
+}
+
 /* secondary cards */
 .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
 @media (max-width:860px){.cards{grid-template-columns:1fr}}
@@ -1121,6 +1147,45 @@ section{position:relative}
           </div>
         </article>
 
+        <article class="feature feature--lz glass rv lift" style="--d:.05s">
+          <div class="feature__body">
+            <p class="badge"><span class="pip"></span> Student Research Demo</p>
+            <h3 class="letters" data-letters=".036">LAZULIQ 1.2 PHOTON</h3>
+            <p class="sub">A Fine-Tuned Small Language Model</p>
+
+            <p class="body">
+              A personal research project I run to understand <b>how language models actually work</b> from the inside.
+              I took an open-source 3.1B base model and fine-tuned it to improve its style, tone, knowledge,
+              and <b>step-by-step reasoning</b>, then paired it with <b>StartumRAG</b>, an offline retrieval layer
+              that gives a small model access to facts it was never big enough to hold.
+              It is a <b>student research demo, not a product</b> &mdash; at this size it will get things wrong,
+              and finding out where it breaks is the point.
+            </p>
+
+            <ul class="chips" data-stagger=".045">
+              <li class="chip">Fine-Tuning</li>
+              <li class="chip">Reasoning</li>
+              <li class="chip">StartumRAG</li>
+              <li class="chip">Offline Retrieval</li>
+              <li class="chip">Qwen2.5 Base</li>
+            </ul>
+
+            <div class="stats" data-stagger=".05">
+              <div><p class="k">3.09B</p><p class="l">Params</p></div>
+              <div><p class="k">128K</p><p class="l">Context</p></div>
+              <div><p class="k">36</p><p class="l">Layers</p></div>
+            </div>
+
+            <a class="link-arrow" href="https://dominikwalser.com/lazuliq" target="_blank" rel="noopener noreferrer">
+              Try out LazuliQ <svg><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+
+          <div class="feature__media">
+            <div class="orb-slot"><canvas id="lz-orb" aria-hidden="true"></canvas></div>
+          </div>
+        </article>
+
         <div class="cards" data-stagger=".13">
           <article class="card glass">
             <div class="card__top">
@@ -1455,6 +1520,263 @@ section{position:relative}
   }, {rootMargin:"0px 0px -10% 0px", threshold:0.04});
 
   items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+<!-- LazuliQ orb: the same glass sphere as the LazuliQ landing page.
+     Nothing is built until the island scrolls into view, and the loop stops
+     the moment it leaves again or the tab is hidden, so the rest of the page
+     never pays for it. -->
+<script>
+(function(){
+  "use strict";
+  var cv = document.getElementById("lz-orb");
+  if (!cv || !cv.getContext || !("IntersectionObserver" in window)) return;
+
+  var ctx = cv.getContext("2d");
+  var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var W=0,H=0,DPR=1,R=0,CX=0,CY=0;
+  var glass=null, motes=[], veins=[], built=false, running=false, raf=0, visible=false;
+
+  function rand(a,b){ return a + Math.random()*(b-a); }
+
+  function build(){
+    var N = W < 300 ? 130 : 240;
+    motes = [];
+    for (var i=0;i<N;i++){
+      var u = Math.random()*2-1, th = Math.random()*Math.PI*2;
+      var rr = Math.pow(Math.random(), .55) * .93;
+      var sp = Math.sqrt(1-u*u);
+      motes.push({
+        x: rr*sp*Math.cos(th), y: rr*u, z: rr*sp*Math.sin(th),
+        r: rand(.4,1.4),
+        gold: Math.random() < .07,
+        tw: Math.random()*Math.PI*2,
+        tws: rand(.5,1.5)
+      });
+    }
+    veins = [];
+    for (var j=0;j<5;j++){
+      veins.push({
+        a: Math.random()*Math.PI*2,
+        sp: rand(.02,.06)*(Math.random()<.5?-1:1),
+        d: rand(.10,.52),
+        w: rand(.16,.42),
+        h: rand(.75,1.35),
+        hue: j===1 ? "gold" : (j%2 ? "violet" : "lapis"),
+        al: rand(.10,.24)
+      });
+    }
+  }
+
+  // The shell is static, so it is painted once per resize and stamped after.
+  function bakeGlass(){
+    var g = document.createElement("canvas");
+    g.width = Math.round(W*DPR); g.height = Math.round(H*DPR);
+    var c = g.getContext("2d");
+    c.setTransform(DPR,0,0,DPR,0,0);
+
+    var thick = c.createRadialGradient(CX,CY,R*.55,CX,CY,R);
+    thick.addColorStop(0,"rgba(3,5,12,0)");
+    thick.addColorStop(.82,"rgba(3,5,12,.34)");
+    thick.addColorStop(1,"rgba(2,3,8,.82)");
+    c.save(); c.beginPath(); c.arc(CX,CY,R,0,Math.PI*2); c.clip();
+    c.fillStyle = thick; c.fillRect(0,0,W,H);
+    c.restore();
+
+    c.globalCompositeOperation = "lighter";
+    var rim;
+    if (typeof c.createConicGradient === "function"){
+      rim = c.createConicGradient(-1.1, CX, CY);
+      rim.addColorStop(0.00,"rgba(180,205,255,.85)");
+      rim.addColorStop(0.13,"rgba(61,107,255,.55)");
+      rim.addColorStop(0.30,"rgba(120,90,220,.45)");
+      rim.addColorStop(0.47,"rgba(201,162,74,.55)");
+      rim.addColorStop(0.62,"rgba(90,200,255,.42)");
+      rim.addColorStop(0.80,"rgba(61,107,255,.60)");
+      rim.addColorStop(1.00,"rgba(180,205,255,.85)");
+    } else {
+      rim = c.createLinearGradient(CX-R,CY-R,CX+R,CY+R);
+      rim.addColorStop(0,"rgba(180,205,255,.8)");
+      rim.addColorStop(.5,"rgba(61,107,255,.5)");
+      rim.addColorStop(1,"rgba(201,162,74,.6)");
+    }
+    c.strokeStyle = rim;
+    c.lineWidth = Math.max(1.1, R*.012);
+    c.beginPath(); c.arc(CX,CY,R*.995,0,Math.PI*2); c.stroke();
+    c.globalAlpha = .5;
+    c.lineWidth = Math.max(3, R*.045);
+    c.filter = "blur(" + Math.max(3,R*.035) + "px)";
+    c.beginPath(); c.arc(CX,CY,R*.985,0,Math.PI*2); c.stroke();
+    c.filter = "none"; c.globalAlpha = 1;
+
+    c.save(); c.beginPath(); c.arc(CX,CY,R,0,Math.PI*2); c.clip();
+    var hx = CX - R*.36, hy = CY - R*.44;
+    var spec = c.createRadialGradient(hx,hy,0,hx,hy,R*.46);
+    spec.addColorStop(0,"rgba(255,255,255,.18)");
+    spec.addColorStop(.4,"rgba(200,220,255,.05)");
+    spec.addColorStop(1,"rgba(255,255,255,0)");
+    c.fillStyle = spec; c.fillRect(0,0,W,H);
+
+    var bx = CX + R*.30, by = CY + R*.42;
+    var bounce = c.createRadialGradient(bx,by,R*.10,bx,by,R*.62);
+    bounce.addColorStop(0,"rgba(120,160,255,.20)");
+    bounce.addColorStop(1,"rgba(120,160,255,0)");
+    c.fillStyle = bounce; c.fillRect(0,0,W,H);
+    c.restore();
+
+    c.globalCompositeOperation = "source-over";
+    glass = g;
+  }
+
+  var lastW = -1;
+  function resize(rebuild){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    var w = cv.clientWidth, h = cv.clientHeight;
+    if (!w || !h) return false;
+    W = w; H = h;
+    cv.width = Math.round(W*DPR); cv.height = Math.round(H*DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    R = Math.min(W,H) * 0.32;
+    CX = W/2; CY = H/2;
+    // Motes are only regenerated on a real size change. Mobile browsers fire
+    // resize every time the URL bar hides, and rebuilding would teleport them.
+    if (rebuild || !motes.length) build();
+    bakeGlass();
+    return true;
+  }
+
+  var yaw = 0, spin = 0.0034, tilt = 0.30;
+
+  function draw(now){
+    raf = 0;
+    if (!W) return;
+    var t = now*0.001;
+    ctx.clearRect(0,0,W,H);
+
+    if (!reduced) yaw += spin;
+    var breathe = reduced ? 1 : 1 + Math.sin(t*.55)*.012;
+    var ox = CX, oy = CY, r = R*breathe;
+
+    var halo = ctx.createRadialGradient(ox,oy,r*.86,ox,oy,r*2.05);
+    halo.addColorStop(0,"rgba(48,84,210,.30)");
+    halo.addColorStop(.45,"rgba(30,52,140,.11)");
+    halo.addColorStop(1,"rgba(10,16,50,0)");
+    ctx.fillStyle = halo;
+    ctx.beginPath(); ctx.arc(ox,oy,r*2.05,0,Math.PI*2); ctx.fill();
+
+    ctx.save();
+    ctx.beginPath(); ctx.arc(ox,oy,r,0,Math.PI*2); ctx.clip();
+
+    var body = ctx.createRadialGradient(ox-r*.30,oy-r*.34,r*.05,ox,oy,r*1.06);
+    body.addColorStop(0,"#16255E");
+    body.addColorStop(.40,"#0A1234");
+    body.addColorStop(.78,"#05081C");
+    body.addColorStop(1,"#02030A");
+    ctx.fillStyle = body; ctx.fillRect(ox-r,oy-r,r*2,r*2);
+
+    ctx.globalCompositeOperation = "lighter";
+    for (var v=0; v<veins.length; v++){
+      var sv = veins[v];
+      var ang = sv.a + (reduced ? 0 : t*sv.sp) + yaw*0.55;
+      ctx.save();
+      ctx.translate(ox,oy);
+      ctx.rotate(ang);
+      var px = (sv.d*2-1)*r*.72;
+      var gw = r*sv.w, gh = r*sv.h;
+      var vg = ctx.createRadialGradient(px,0,0,px,0,gw);
+      var col = sv.hue==="gold" ? "201,162,74" : (sv.hue==="violet" ? "116,86,214" : "58,104,235");
+      var pulse = reduced ? 1 : (.75 + .25*Math.sin(t*.7 + v));
+      vg.addColorStop(0,"rgba("+col+","+(sv.al*pulse)+")");
+      vg.addColorStop(1,"rgba("+col+",0)");
+      ctx.fillStyle = vg;
+      ctx.save(); ctx.scale(1, gh/gw);
+      ctx.beginPath(); ctx.arc(px,0,gw,0,Math.PI*2); ctx.fill();
+      ctx.restore();
+      ctx.restore();
+    }
+
+    var sy = Math.sin(yaw), cy2 = Math.cos(yaw);
+    var st = Math.sin(tilt), ct2 = Math.cos(tilt);
+    for (var i=0;i<motes.length;i++){
+      var pm = motes[i];
+      var x1 = pm.x*cy2 - pm.z*sy;
+      var z1 = pm.x*sy  + pm.z*cy2;
+      var y2 = pm.y*ct2 - z1*st;
+      var z2 = pm.y*st + z1*ct2;
+
+      var lens = 1 - .07*(1 - z2*.5);
+      var px2 = ox + x1*r*lens;
+      var py2 = oy + y2*r*lens;
+
+      var depth = (z2+1)/2;
+      var al = (.12 + depth*depth*.88);
+      var tw = reduced ? 1 : (.72 + .28*Math.sin(t*pm.tws + pm.tw));
+      var rad = pm.r * (.55 + depth*.75) * (r/190);
+      if (rad < .15) continue;
+
+      var col2 = pm.gold ? "232,199,126" : (depth>.72 ? "235,242,255" : "150,186,255");
+      var mg = ctx.createRadialGradient(px2,py2,0,px2,py2,rad*3.4);
+      mg.addColorStop(0,"rgba("+col2+","+(al*tw*.95)+")");
+      mg.addColorStop(.32,"rgba("+col2+","+(al*tw*.22)+")");
+      mg.addColorStop(1,"rgba("+col2+",0)");
+      ctx.fillStyle = mg;
+      ctx.beginPath(); ctx.arc(px2,py2,rad*3.4,0,Math.PI*2); ctx.fill();
+    }
+
+    var core = ctx.createRadialGradient(ox-r*.05,oy+r*.04,0,ox,oy,r*.62);
+    var cp = reduced ? 1 : (.85 + .15*Math.sin(t*.8));
+    core.addColorStop(0,"rgba(150,185,255,"+(.16*cp)+")");
+    core.addColorStop(.5,"rgba(61,107,255,"+(.07*cp)+")");
+    core.addColorStop(1,"rgba(61,107,255,0)");
+    ctx.fillStyle = core;
+    ctx.beginPath(); ctx.arc(ox,oy,r*.62,0,Math.PI*2); ctx.fill();
+
+    ctx.globalCompositeOperation = "source-over";
+    ctx.restore();
+
+    if (glass) ctx.drawImage(glass, 0, 0, W, H);
+
+    if (running) raf = requestAnimationFrame(draw);
+  }
+
+  function start(){
+    if (running || !built) return;
+    if (reduced){ requestAnimationFrame(draw); return; }   // one static frame
+    running = true;
+    raf = requestAnimationFrame(draw);
+  }
+  function stop(){
+    running = false;
+    if (raf){ cancelAnimationFrame(raf); raf = 0; }
+  }
+  function sync(){ if (visible && document.visibilityState !== "hidden") start(); else stop(); }
+
+  new IntersectionObserver(function(entries){
+    visible = entries[0].isIntersecting;
+    if (visible && !built){
+      if (!resize(true)) return;
+      lastW = cv.clientWidth;
+      built = true;
+      setTimeout(function(){ cv.classList.add("lit"); }, 60);
+    }
+    sync();
+  }, {rootMargin:"180px 0px"}).observe(cv);
+
+  document.addEventListener("visibilitychange", sync);
+
+  var rt;
+  addEventListener("resize", function(){
+    if (!built) return;
+    clearTimeout(rt);
+    rt = setTimeout(function(){
+      var w = cv.clientWidth;
+      if (Math.abs(w - lastW) <= 2) return;  // URL bar only: leave it alone
+      lastW = w;
+      resize(true);
+      if (!running) requestAnimationFrame(draw);
+    }, 160);
+  }, {passive:true});
 })();
 </script>
 
