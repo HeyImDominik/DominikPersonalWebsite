@@ -457,7 +457,6 @@ section{position:relative}
   }
 }
 
-@keyframes beat{0%,100%{opacity:1}50%{opacity:.35}}
 
 .hero h1{
   margin-top:0;
@@ -534,14 +533,13 @@ section{position:relative}
 
 .badge{
   display:inline-flex;align-items:center;gap:9px;
-  padding:6px 13px 6px 10px;border-radius:999px;
+  padding:6px 13px;border-radius:999px;
   background:rgba(225,189,124,.09);
   border:1px solid rgba(225,189,124,.22);
   color:var(--gold);
   font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
   font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
 }
-.badge .pip{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:beat 2.6s ease-in-out infinite}
 
 .feature h3{
   margin-top:22px;
@@ -615,26 +613,47 @@ section{position:relative}
   background:radial-gradient(circle at 50% 50%,rgba(0,64,154,.5),transparent 66%);
 }
 /* ── LazuliQ island ─────────────────────────────────────────
-   Same feature shell as LAVAIQ, but the media column holds a
-   canvas orb instead of a device. The canvas only builds and
-   animates while it is actually on screen. */
-.feature--lz{margin-top:20px}
-.feature--lz .feature__media{min-height:0}
-@media (min-width:941px){.feature--lz .feature__media{min-height:360px}}
-.orb-slot{
-  position:relative;width:min(340px,80%);aspect-ratio:1;
+   The same feature shell as LAVAIQ, deliberately scaled to about
+   half its height: LAVAIQ stays the headline project. The media
+   column holds a canvas orb instead of a device, and that canvas
+   only builds and animates while it is actually on screen. */
+.feature--lz{
+  margin-top:20px;
+  padding:clamp(24px,3vw,40px);
+  gap:clamp(20px,3vw,44px);
+  grid-template-columns:1.18fr .82fr;
 }
+.feature--lz::after{background:radial-gradient(64% 56% at 84% 10%,rgba(0,64,154,.24),transparent 64%)}
+.feature--lz h3{margin-top:16px;font-size:clamp(1.5rem,2.7vw,2.1rem);letter-spacing:.05em}
+.feature--lz .sub{margin-top:9px;font-size:.875rem}
+.feature--lz .body{margin-top:16px;font-size:.95rem;line-height:1.62;max-width:46ch}
+.feature--lz .chips{margin-top:20px}
+.feature--lz .link-arrow{margin-top:24px;padding:11px 19px;font-size:13.5px}
+.feature--lz .feature__media{min-height:0}
+
+.orb-slot{position:relative;width:min(238px,86%);aspect-ratio:1}
+/* The canvas is twice the sphere's box on purpose: the halo is drawn out to
+   2.05x the sphere radius, and it has to fade to nothing inside the bitmap
+   or the box crops the glow into a square. */
 .orb-slot canvas{
-  position:absolute;inset:-26%;width:152%;height:152%;
+  position:absolute;inset:-50%;width:200%;height:200%;
   opacity:0;transform:scale(.965);
   transition:opacity 1.2s var(--ease),transform 1.5s var(--ease-out);
 }
 .orb-slot canvas.lit{opacity:1;transform:scale(1)}
-@media (max-width:940px){.feature--lz .orb-slot{width:min(280px,70%)}}
-@media (max-width:520px){
-  /* three short figures still fit on one row at this size */
-  .feature--lz .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .feature--lz .stats div{padding:15px 11px}
+@media (min-width:941px){.feature--lz .orb-slot{width:min(254px,94%)}}
+@media (max-width:940px){
+  /* .feature--lz sets its own columns, so it has to opt back into the
+     single-column stack the shared .feature rule applies here. */
+  .feature--lz{grid-template-columns:1fr}
+  .feature--lz .orb-slot{width:min(180px,46%)}
+}
+@media (max-width:640px){
+  .feature--lz{padding:24px 22px}
+  .feature--lz h3{font-size:clamp(1.5rem,6.6vw,2rem)}
+  .feature--lz .sub{font-size:.92rem}
+  .feature--lz .body{font-size:.98rem;line-height:1.66}
+  .feature--lz .link-arrow{padding:13px 22px;font-size:14.5px}
 }
 @media (prefers-reduced-motion:reduce){
   .orb-slot canvas{opacity:1;transform:none}
@@ -943,7 +962,6 @@ section{position:relative}
   .rv,.rvg>.rvc,.letters .lt{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
   .bg i{animation:none!important}
   .hero__mark{opacity:.07}
-  .badge .pip{animation:none!important}
   *{transition-duration:.01ms!important}
 }
 @media (prefers-reduced-transparency:reduce){
@@ -1103,7 +1121,7 @@ section{position:relative}
 
         <article class="feature glass rv lift" style="--d:.05s">
           <div class="feature__body">
-            <p class="badge"><span class="pip"></span> Currently in Development</p>
+            <p class="badge">Currently in Development</p>
             <h3 class="letters" data-letters=".036">LAVAIQ</h3>
             <p class="sub">AI-Powered Security</p>
 
@@ -1149,32 +1167,21 @@ section{position:relative}
 
         <article class="feature feature--lz glass rv lift" style="--d:.05s">
           <div class="feature__body">
-            <p class="badge"><span class="pip"></span> Student Research Demo</p>
-            <h3 class="letters" data-letters=".036">LAZULIQ 1.2 PHOTON</h3>
+            <p class="badge">Student Research Demo</p>
+            <h3 class="letters" data-letters=".032">LAZULIQ 1.2 PHOTON</h3>
             <p class="sub">A Fine-Tuned Small Language Model</p>
 
             <p class="body">
-              A personal research project I run to understand <b>how language models actually work</b> from the inside.
-              I took an open-source 3.1B base model and fine-tuned it to improve its style, tone, knowledge,
-              and <b>step-by-step reasoning</b>, then paired it with <b>StartumRAG</b>, an offline retrieval layer
-              that gives a small model access to facts it was never big enough to hold.
-              It is a <b>student research demo, not a product</b> &mdash; at this size it will get things wrong,
-              and finding out where it breaks is the point.
+              A student research demo I run to learn how LLMs work from the inside: an open-source
+              <b>3.1B model</b> I fine-tuned for better style, reasoning and recall, paired with
+              <b>StartumRAG</b> for offline retrieval. A demo, not a product &mdash; it will get things wrong.
             </p>
 
             <ul class="chips" data-stagger=".045">
               <li class="chip">Fine-Tuning</li>
               <li class="chip">Reasoning</li>
               <li class="chip">StartumRAG</li>
-              <li class="chip">Offline Retrieval</li>
-              <li class="chip">Qwen2.5 Base</li>
             </ul>
-
-            <div class="stats" data-stagger=".05">
-              <div><p class="k">3.09B</p><p class="l">Params</p></div>
-              <div><p class="k">128K</p><p class="l">Context</p></div>
-              <div><p class="k">36</p><p class="l">Layers</p></div>
-            </div>
 
             <a class="link-arrow" href="https://dominikwalser.com/lazuliq" target="_blank" rel="noopener noreferrer">
               Try out LazuliQ <svg><use href="#i-arrow"/></svg>
@@ -1536,7 +1543,7 @@ section{position:relative}
   var ctx = cv.getContext("2d");
   var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var W=0,H=0,DPR=1,R=0,CX=0,CY=0;
-  var glass=null, motes=[], veins=[], built=false, running=false, raf=0, visible=false;
+  var glass=null, halo=null, gS=0, motes=[], veins=[], built=false, running=false, raf=0, visible=false;
 
   function rand(a,b){ return a + Math.random()*(b-a); }
 
@@ -1569,12 +1576,17 @@ section{position:relative}
     }
   }
 
-  // The shell is static, so it is painted once per resize and stamped after.
+  // The shell and the halo are both static, so they are painted once per resize
+  // and stamped each frame. That keeps the per-frame work down to the interior:
+  // no viewport-sized gradient fills in the animation loop.
   function bakeGlass(){
+    // Only the sphere plus its bloom, not the whole (much larger) canvas.
+    gS = Math.ceil(R*2.24);
     var g = document.createElement("canvas");
-    g.width = Math.round(W*DPR); g.height = Math.round(H*DPR);
+    g.width = Math.round(gS*DPR); g.height = Math.round(gS*DPR);
     var c = g.getContext("2d");
     c.setTransform(DPR,0,0,DPR,0,0);
+    var CX = gS/2, CY = gS/2, W = gS, H = gS;
 
     var thick = c.createRadialGradient(CX,CY,R*.55,CX,CY,R);
     thick.addColorStop(0,"rgba(3,5,12,0)");
@@ -1629,6 +1641,20 @@ section{position:relative}
     glass = g;
   }
 
+  function bakeHalo(){
+    var g = document.createElement("canvas");
+    g.width = Math.round(W*DPR); g.height = Math.round(H*DPR);
+    var c = g.getContext("2d");
+    c.setTransform(DPR,0,0,DPR,0,0);
+    var grd = c.createRadialGradient(CX,CY,R*.86,CX,CY,R*2.05);
+    grd.addColorStop(0,"rgba(48,84,210,.30)");
+    grd.addColorStop(.45,"rgba(30,52,140,.11)");
+    grd.addColorStop(1,"rgba(10,16,50,0)");
+    c.fillStyle = grd;
+    c.beginPath(); c.arc(CX,CY,R*2.05,0,Math.PI*2); c.fill();
+    halo = g;
+  }
+
   var lastW = -1;
   function resize(rebuild){
     DPR = Math.min(window.devicePixelRatio || 1, 2);
@@ -1637,16 +1663,30 @@ section{position:relative}
     W = w; H = h;
     cv.width = Math.round(W*DPR); cv.height = Math.round(H*DPR);
     ctx.setTransform(DPR,0,0,DPR,0,0);
-    R = Math.min(W,H) * 0.32;
+    R = Math.min(W,H) * 0.244;   // 2.05R halo fits inside the box
     CX = W/2; CY = H/2;
     // Motes are only regenerated on a real size change. Mobile browsers fire
     // resize every time the URL bar hides, and rebuilding would teleport them.
     if (rebuild || !motes.length) build();
     bakeGlass();
+    bakeHalo();
     return true;
   }
 
-  var yaw = 0, spin = 0.0034, tilt = 0.30;
+  // Pointer control, as on the LazuliQ landing page: the pointer does not push
+  // the orb around, it drives how it turns. Horizontal position sets spin
+  // direction and speed, vertical position tips the axis toward the viewer.
+  // Real pointers only — on a touch screen every scroll is a touchmove, which
+  // would yank the spin around. The listener is only attached while the orb is
+  // on screen, so scrolling elsewhere on the page costs nothing.
+  var yaw = 0, spin = 0.0034, tilt = 0.30, mx = 0, my = 0, tx = 0, ty = 0;
+  var BASE_SPIN = 0.0034;
+  var finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  function onMove(e){
+    tx = (e.clientX / innerWidth  - .5);
+    ty = (e.clientY / innerHeight - .5);
+  }
 
   function draw(now){
     raf = 0;
@@ -1654,16 +1694,16 @@ section{position:relative}
     var t = now*0.001;
     ctx.clearRect(0,0,W,H);
 
-    if (!reduced) yaw += spin;
+    if (!reduced){
+      mx += (tx-mx)*.05; my += (ty-my)*.05;
+      spin += ((BASE_SPIN + mx*0.020) - spin)*.035;
+      tilt += ((0.30 + my*0.62) - tilt)*.045;
+      yaw += spin;
+    }
     var breathe = reduced ? 1 : 1 + Math.sin(t*.55)*.012;
     var ox = CX, oy = CY, r = R*breathe;
 
-    var halo = ctx.createRadialGradient(ox,oy,r*.86,ox,oy,r*2.05);
-    halo.addColorStop(0,"rgba(48,84,210,.30)");
-    halo.addColorStop(.45,"rgba(30,52,140,.11)");
-    halo.addColorStop(1,"rgba(10,16,50,0)");
-    ctx.fillStyle = halo;
-    ctx.beginPath(); ctx.arc(ox,oy,r*2.05,0,Math.PI*2); ctx.fill();
+    if (halo) ctx.drawImage(halo, 0, 0, W, H);
 
     ctx.save();
     ctx.beginPath(); ctx.arc(ox,oy,r,0,Math.PI*2); ctx.clip();
@@ -1735,7 +1775,7 @@ section{position:relative}
     ctx.globalCompositeOperation = "source-over";
     ctx.restore();
 
-    if (glass) ctx.drawImage(glass, 0, 0, W, H);
+    if (glass) ctx.drawImage(glass, CX-gS/2, CY-gS/2, gS, gS);
 
     if (running) raf = requestAnimationFrame(draw);
   }
@@ -1744,9 +1784,11 @@ section{position:relative}
     if (running || !built) return;
     if (reduced){ requestAnimationFrame(draw); return; }   // one static frame
     running = true;
+    if (finePointer) addEventListener("mousemove", onMove, {passive:true});
     raf = requestAnimationFrame(draw);
   }
   function stop(){
+    if (running && finePointer) removeEventListener("mousemove", onMove);
     running = false;
     if (raf){ cancelAnimationFrame(raf); raf = 0; }
   }
