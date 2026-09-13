@@ -966,6 +966,7 @@ section{position:relative}
   .letters .lt{--rb:0px}
   .rvg.skill-list>.rvc{--rx:-24px}
   .rvg.award-list>.rvc,.rvg.tl>.rvc{--rx:-20px}
+  .rvg.avail>.rvc{--rb:0px}
   .from-l{--rx:-24px}
   .from-r{--rx:24px}
   .nav__inner{-webkit-backdrop-filter:blur(14px) saturate(170%);backdrop-filter:blur(14px) saturate(170%);background:rgba(8,12,22,.72)}
@@ -982,11 +983,265 @@ section{position:relative}
   .rv,.rvg>.rvc,.letters .lt{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
   .bg i{animation:none!important}
   .hero__mark{opacity:.07}
+  .lane__track{animation:none!important;transform:none!important}
+  .film__view{
+    overflow-x:hidden;
+    -webkit-mask-image:none;mask-image:none;
+  }
+  .shot img{filter:none!important;opacity:1!important}
+  .shot img{transform:none!important}
+  .shot__detail{grid-template-rows:1fr!important;margin-top:6px!important}
+  .shot__desc{opacity:1!important;transform:none!important;filter:none!important}
   *{transition-duration:.01ms!important}
 }
 @media (prefers-reduced-transparency:reduce){
   .nav__inner{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(8,12,22,.94)}
 }
+
+/* ============================================================
+   Beyond the projects — restrained, cinematic photo ribbon
+   ============================================================ */
+.life{padding-block:var(--sec) clamp(34px,5vw,68px);position:relative}
+.life .sec-head{margin-bottom:clamp(26px,3.5vw,42px)}
+
+.film{
+  position:relative;
+  padding:clamp(48px,5vw,66px) 0;
+  user-select:none;
+}
+.film__view{
+  position:relative;
+  overflow:hidden;
+  cursor:grab;
+  touch-action:pan-y;
+  padding-block:72px;
+  margin-block:-72px;
+  --film-fade:clamp(12px,1.6vw,30px);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.04) calc(var(--film-fade)*.15),rgba(0,0,0,.16) calc(var(--film-fade)*.3),rgba(0,0,0,.5) calc(var(--film-fade)*.5),rgba(0,0,0,.84) calc(var(--film-fade)*.7),rgba(0,0,0,.96) calc(var(--film-fade)*.85),#000 var(--film-fade),#000 calc(100% - var(--film-fade)),rgba(0,0,0,.96) calc(100% - var(--film-fade)*.85),rgba(0,0,0,.84) calc(100% - var(--film-fade)*.7),rgba(0,0,0,.5) calc(100% - var(--film-fade)*.5),rgba(0,0,0,.16) calc(100% - var(--film-fade)*.3),rgba(0,0,0,.04) calc(100% - var(--film-fade)*.15),transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.04) calc(var(--film-fade)*.15),rgba(0,0,0,.16) calc(var(--film-fade)*.3),rgba(0,0,0,.5) calc(var(--film-fade)*.5),rgba(0,0,0,.84) calc(var(--film-fade)*.7),rgba(0,0,0,.96) calc(var(--film-fade)*.85),#000 var(--film-fade),#000 calc(100% - var(--film-fade)),rgba(0,0,0,.96) calc(100% - var(--film-fade)*.85),rgba(0,0,0,.84) calc(100% - var(--film-fade)*.7),rgba(0,0,0,.5) calc(100% - var(--film-fade)*.5),rgba(0,0,0,.16) calc(100% - var(--film-fade)*.3),rgba(0,0,0,.04) calc(100% - var(--film-fade)*.15),transparent 100%);
+}
+.film.is-drag .film__view{cursor:grabbing}
+.film__track{
+  display:flex;
+  align-items:center;
+  gap:clamp(12px,1.5vw,18px);
+  width:max-content;
+  will-change:transform;
+}
+
+.film__btn{
+  position:absolute;
+  top:50%;
+  z-index:8;
+  translate:0 -50%;
+  appearance:none;-webkit-appearance:none;
+  width:44px;height:44px;padding:0;margin:0;
+  display:grid;place-items:center;
+  border-radius:50%;
+  border:1px solid var(--line-2);
+  background:rgba(8,12,22,.78);
+  box-shadow:var(--hl),0 12px 30px -18px rgba(0,0,0,.9);
+  color:var(--ink);
+  opacity:.82;
+  -webkit-backdrop-filter:blur(12px) saturate(140%);
+  backdrop-filter:blur(12px) saturate(140%);
+  transition:opacity .3s var(--ease),background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease-out);
+}
+.film__btn--prev{left:clamp(10px,2.5vw,30px)}
+.film__btn--next{right:clamp(10px,2.5vw,30px)}
+.film__btn svg{width:16px;height:16px}
+.film__btn--prev svg{transform:rotate(180deg)}
+.film__btn:hover{opacity:1;background:rgba(16,24,40,.94);border-color:rgba(255,255,255,.24);transform:scale(1.06)}
+.film__btn:active{transform:scale(.96)}
+
+.shot{
+  position:relative;
+  flex:none;
+  width:clamp(232px,22vw,280px);
+  aspect-ratio:4/5;
+  margin:0;
+  border-radius:var(--r-l);
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#0a101c;
+  box-shadow:var(--hl),var(--shadow-lift);
+  cursor:grab;
+  transform-origin:center center;
+  isolation:isolate;
+  transition:border-color .4s var(--ease),box-shadow .6s var(--ease);
+}
+.shot img{
+  width:100%;height:100%;object-fit:cover;
+  /* A little overscan keeps the blur from exposing a dark rim inside the image. */
+  transform:scale(1.065) translateZ(0);
+  filter:blur(var(--edge-blur,0px));
+}
+.shot figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  padding:58px 16px 15px;
+  background:linear-gradient(180deg,transparent 0%,rgba(4,7,14,.46) 46%,rgba(4,7,14,.92) 100%);
+  opacity:1;
+  transition:opacity .4s var(--ease-out);
+}
+.shot__title{
+  font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(224,232,246,.82);
+  font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+.shot__detail{
+  display:grid;grid-template-rows:0fr;
+  margin-top:0;
+  transition:grid-template-rows .28s var(--ease-out),margin-top .28s var(--ease-out);
+}
+.shot__desc{
+  min-height:0;overflow:hidden;
+  font-size:14px;font-weight:400;letter-spacing:-.012em;line-height:1.45;
+  color:var(--ink-2);max-width:26ch;
+  opacity:0;transform:translateY(7px);filter:blur(2px);
+  transition:opacity .16s ease,transform .24s var(--ease-out),filter .18s ease;
+}
+.shot.is-on .shot__detail{
+  grid-template-rows:1fr;margin-top:6px;
+  transition-duration:.38s;
+}
+.shot.is-on .shot__desc{
+  opacity:1;transform:translateY(0);filter:blur(0);
+  transition:opacity .24s ease 45ms,transform .38s var(--ease-out) 25ms,filter .28s ease 25ms;
+}
+.film.is-loop .shot.is-on{
+  z-index:5;
+  border-color:rgba(255,255,255,.25);
+  box-shadow:var(--hl),0 42px 90px -28px rgba(0,0,0,.96),0 0 0 1px rgba(132,180,255,.045);
+}
+.film.is-loop .film__track{position:relative;width:100%;will-change:auto}
+.film.is-loop .shot{position:absolute;left:0;top:0;will-change:transform}
+/* Native touch scrolling lets the browser own swipes, momentum and page gestures. */
+.film.is-touch .film__view{
+  overflow-x:auto;overflow-y:hidden;
+  touch-action:pan-x pan-y pinch-zoom;
+  overscroll-behavior-x:contain;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.film.is-touch .film__view::-webkit-scrollbar{display:none}
+.film.is-touch .film__track{position:relative}
+.film.is-touch .film__btn{display:none}
+.film.is-touch .shot{
+  cursor:auto;box-shadow:var(--hl);
+  transform-origin:center center;
+  transition:transform .42s var(--ease-out),border-color .35s var(--ease),box-shadow .45s var(--ease);
+}
+.film.is-touch.is-focus .shot.is-on{
+  z-index:5;
+  transform:scale(1.38);
+  border-color:rgba(255,255,255,.24);
+  box-shadow:var(--hl),0 34px 68px -28px rgba(0,0,0,.96),0 0 0 1px rgba(132,180,255,.04);
+}
+.film.is-touch.is-focus .film__view{
+  overflow-x:hidden;
+  touch-action:pan-y pinch-zoom;
+}
+.film.is-touch.is-focus .shot.is-before{transform:translateX(calc(-1 * var(--touch-spread,28px)))}
+.film.is-touch.is-focus .shot.is-after{transform:translateX(var(--touch-spread,28px))}
+.film.is-touch .shot__title{font-size:11px;letter-spacing:.09em;line-height:1.45}
+.film.is-touch.is-focus .shot.is-on .shot__title{font-size:7.5px;letter-spacing:.11em}
+.film.is-touch.is-focus .shot.is-on .shot__desc{font-size:9px;line-height:1.5}
+/* ============================================================
+   Open — roles band
+   ============================================================ */
+.open{padding-block:clamp(30px,4vw,52px) var(--sec);position:relative}
+.open .sec-head{margin-bottom:clamp(30px,4vw,50px)}
+.open .sec-head .lede{
+  font-size:clamp(1.12rem,2vw,1.36rem);
+  max-width:40ch;
+  color:var(--ink-2);
+}
+
+.avail{
+  display:grid;gap:14px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  margin-bottom:clamp(38px,5vw,58px);
+}
+.avail article{
+  position:relative;
+  min-width:0;
+  padding:29px 27px 30px;
+  border-radius:var(--r-l);
+  border:1px solid var(--line);
+  background:linear-gradient(155deg,rgba(255,255,255,.042),rgba(255,255,255,.018) 56%,rgba(44,116,230,.022));
+  box-shadow:var(--hl),0 22px 54px -38px rgba(0,0,0,.92);
+  overflow:hidden;
+  transition:border-color .4s var(--ease),transform .48s var(--ease-out),background .4s var(--ease),box-shadow .48s var(--ease);
+}
+.avail article:hover{
+  border-color:var(--line-2);
+  transform:translateY(-4px);
+  background:linear-gradient(155deg,rgba(255,255,255,.058),rgba(255,255,255,.02) 56%,rgba(44,116,230,.04));
+  box-shadow:var(--hl),0 30px 68px -38px rgba(0,0,0,.94);
+}
+.avail h3{font-size:1.18rem;letter-spacing:-.03em;margin:0 0 10px}
+.avail p{margin:0;color:var(--ink-2);font-size:.95rem;line-height:1.68}
+
+.lanes{
+  position:relative;
+  border-block:1px solid var(--line);
+  padding-block:10px;
+  overflow:hidden;
+  background:rgba(255,255,255,.008);
+}
+.lane{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+}
+.lane + .lane{margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
+.lane__track{
+  display:flex;width:max-content;
+  animation:lane-move var(--dur,44s) linear infinite;
+  animation-play-state:paused;
+  will-change:transform;
+}
+.lanes.is-visible .lane__track{animation-play-state:running}
+.lane--rev .lane__track{animation-direction:reverse;animation-duration:var(--dur,51s)}
+.lane__group{display:flex;align-items:center;gap:10px;flex:none;padding-right:10px}
+@keyframes lane-move{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(calc(-1 * var(--lane-distance,50%)),0,0)}
+}
+.tag{
+  flex:none;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 14px 9px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--ink-2);
+  font-size:13px;font-weight:500;letter-spacing:.01em;
+  white-space:nowrap;
+  transition:color .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease);
+}
+.tag svg{width:17px;height:17px;flex:none;color:var(--brand-3)}
+
+.foot h2{max-width:16ch}
+.foot .lede{
+  font-size:clamp(1.08rem,1.7vw,1.28rem);
+  max-width:38ch;
+  color:var(--ink-2);
+}
+.foot__cta .btn{padding:16px 28px;font-size:15px}
+
+@media (max-width:900px){
+  .avail{grid-template-columns:1fr}
+}
+
+@media (pointer:coarse){
+  .film{cursor:auto}
+  .film__view{cursor:auto}
+  .shot{cursor:auto}
+  .film__btn{display:none}
+}
+
 /* ============================================================
    Small screens: larger, more confident type
    ============================================================ */
@@ -1050,8 +1305,24 @@ section{position:relative}
 
   .foot{padding-block:82px 40px}
   .foot h2{font-size:clamp(2.15rem,8.8vw,3rem);max-width:14ch}
-  .foot .lede{font-size:1.02rem;line-height:1.72}
+  .foot .lede{font-size:1.06rem;line-height:1.72}
   .foot__cta{margin-top:36px}
+
+  .open .sec-head .lede{font-size:1.12rem;line-height:1.64}
+  .tag{font-size:12.5px;padding:8px 12px 8px 10px}
+  .tag svg{width:16px;height:16px}
+  .avail article{padding:24px 22px}
+  .avail h3{font-size:1.22rem}
+  .avail p{font-size:1rem}
+  .shot{width:clamp(148px,42vw,184px)}
+  .shot figcaption{padding:40px 12px 12px}
+  .shot__title{font-size:10px;letter-spacing:.12em}
+  .shot__desc{font-size:13px}
+  .film{padding-block:36px 30px;padding-inline:0}
+  .film__view{padding-block:82px;margin-block:-82px;--film-fade:12px;--touch-spread:clamp(20px,5.5vw,28px)}
+  .film__btn{width:38px;height:38px}
+  .film__btn--prev{left:8px}
+  .film__btn--next{right:8px}
 }
 </style>
 <noscript><style>.rv,.rvg>.rvc,.letters .lt{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
@@ -1079,6 +1350,31 @@ section{position:relative}
     <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
     <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></symbol>
+
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4M16 8l4 4-4 4"/></symbol>
+    <symbol id="i-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4l13 5V5zM7 15l1 5h3l-1-4M20 9v6"/></symbol>
+    <symbol id="i-brush" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6 4 4M4 20l4-1 12-12a2.8 2.8 0 0 0-4-4L4 15z"/><path d="m4 15 5 5"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M16 7.5a5 5 0 1 0 0 9M6.5 10h7M6.5 13h6"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c3-4 6-5 9-5 0 3-1 6-5 9l-4 3-3-3z"/><path d="m9 9-4 1-2 4 5-1M15 12l-1 7-4 2 1-5M7 16c-2 0-3 2-3 4 2 0 4-1 4-3"/><circle cx="16" cy="7" r="1"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12h18"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.6 19c.5-3 2.6-4.8 5.4-4.8S14.3 16 14.8 19"/><circle cx="17" cy="9" r="2.4"/><path d="M16.2 14.3c2.2.3 3.8 1.8 4.2 4.2"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.2 2.8 7.4 7 8.8C16.2 19.4 19 16.2 19 12V6z"/></symbol>
+    <symbol id="i-research" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5.5 9.2A1.8 1.8 0 0 0 6 21h12a1.8 1.8 0 0 0 1.5-2.8L14 9V3"/><path d="M7.5 16h9M9 13h6"/></symbol>
+    <symbol id="i-safety" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.2 2.8 7.4 7 8.8C16.2 19.4 19 16.2 19 12V6z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></symbol>
+    <symbol id="i-alignment" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></symbol>
+    <symbol id="i-agent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6"/><circle cx="12" cy="3" r="1"/></symbol>
+    <symbol id="i-eval" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M8.5 10.5l1.4 1.4 2.6-3M8.5 16.5l1.4 1.4 2.6-3M14.5 11h2M14.5 17h2"/></symbol>
+    <symbol id="i-cyber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.2 2.8 7.4 7 8.8C16.2 19.4 19 16.2 19 12V6z"/><rect x="9" y="10" width="6" height="5" rx="1"/><path d="M10.5 10V8.7a1.5 1.5 0 0 1 3 0V10"/></symbol>
+    <symbol id="i-cofound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 12 4-4 4 3 2-2 8 7-3 3-4-2-2 2-4-3-2 1-3-3z"/><path d="m8 9 3-3 4 1 3 3M11 11l2 2"/></symbol>
+    <symbol id="i-internship" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12h18M12 10v4"/></symbol>
+    <symbol id="i-role" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2.5"/><circle cx="9" cy="11" r="2.3"/><path d="M5.8 17c.5-2 1.6-3 3.2-3s2.7 1 3.2 3M14.5 10H18M14.5 14H18"/></symbol>
+    <symbol id="i-sideproject" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5a2.5 2.5 0 1 1 0 5v6h6a2.5 2.5 0 1 0 5 0h5v-6a2.5 2.5 0 1 0 0-5V4h-6a2.5 2.5 0 1 1-5 0z"/></symbol>
+    <symbol id="i-earlycompany" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9M12 14c-4 0-6-2-6-6 4 0 6 2 6 6zM12 11c0-4 2-6 6-6 0 4-2 6-6 6z"/><path d="M5 21h14"/></symbol>
+    <symbol id="i-firstteam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="3"/><circle cx="16.5" cy="10" r="2.3"/><path d="M3 20c.5-3.2 2.3-5 5-5s4.5 1.8 5 5M13.5 15.5c2.3.2 4 1.7 4.5 4.5M19 4v5M19 4h3l-1 1.8L22 8h-3"/></symbol>
+    <symbol id="i-validation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 15.5c-1.6-1.1-2.5-2.8-2.5-4.8a6 6 0 1 1 9.5 4.9c-.9.6-1.5 1.4-1.5 2.4h-4c0-1-.6-1.9-1.5-2.5zM10 21h4"/><path d="m9.5 10.5 1.7 1.7 3.3-3.5"/></symbol>
+    <symbol id="i-strategy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/><circle cx="12" cy="12" r="1"/></symbol>
   </defs>
 </svg>
 
@@ -1102,6 +1398,7 @@ section{position:relative}
       <a href="#projects">Portfolio</a>
       <a href="#skills"><span class="lbl-l">Personal Skills</span><span class="lbl-s">Skills</span></a>
       <a href="#awards">Awards</a>
+      <a href="#open">Open</a>
       <a href="#contact">Contact</a>
     </div>
     <a class="nav__cta" href="https://www.linkedin.com/in/walserdominik/" target="_blank" rel="noopener noreferrer">Connect</a>
@@ -1410,6 +1707,140 @@ section{position:relative}
         </div>
       </div>
     </section>
+
+    <!-- ==================== BEYOND THE PROJECTS ==================== -->
+    <section class="life" id="life" aria-labelledby="life-h">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow rv from-l"><span class="n">04</span> Personal</p>
+          <h2 id="life-h" class="rv zoom" style="--d:.1s">Beyond the projects</h2>
+          <p class="lede rv" style="--d:.16s">A few frames from the places, projects, and moments around the work. Hover on desktop or tap on mobile to bring a photo forward, then move through the strip.</p>
+        </div>
+      </div>
+      <div class="film" aria-label="Photo strip">
+        <button class="film__btn film__btn--prev" type="button" aria-label="Previous photos"><svg><use href="#i-arrow"/></svg></button>
+        <div class="film__view">
+        <div class="film__track">
+          <figure class="shot">
+            <img src="photos/portrait-01.webp" alt="Dominik presenting on stage" width="268" height="335" loading="lazy" decoding="async">
+            <figcaption><span class="shot__title">Presenting my work</span><span class="shot__detail"><span class="shot__desc">Sharing one of my projects on stage.</span></span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="photos/portrait-03.webp" alt="Portrait of Dominik" width="268" height="335" loading="lazy" decoding="async">
+            <figcaption><span class="shot__title">Portrait</span><span class="shot__detail"><span class="shot__desc">A portrait away from the stage.</span></span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="photos/portugal-2023.webp" alt="Dominik on the coast in Portugal in 2023" width="268" height="335" loading="lazy" decoding="async">
+            <figcaption><span class="shot__title">Erasmus+ · Portugal</span><span class="shot__detail"><span class="shot__desc">From my 2023 Erasmus+ internship in Portugal.</span></span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="photos/festival-01.webp" alt="Dominik presenting LAVAIQ at the Festival of Science and Technology" width="268" height="335" loading="lazy" decoding="async">
+            <figcaption><span class="shot__title">Festival of Science &amp; Technology</span><span class="shot__detail"><span class="shot__desc">Presenting LAVAIQ at the national competition.</span></span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="photos/portrait-02.webp" alt="Dominik speaking on stage with a microphone" width="268" height="335" loading="lazy" decoding="async">
+            <figcaption><span class="shot__title">Presenting my work</span><span class="shot__detail"><span class="shot__desc">Talking through one of my projects on stage.</span></span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="photos/summer-2024.webp" alt="Dominik spending free time by a lake" width="268" height="335" loading="lazy" decoding="async">
+            <figcaption><span class="shot__title">Off the clock</span><span class="shot__detail"><span class="shot__desc">A summer moment by the lake, away from projects and events.</span></span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="photos/festival-02.webp" alt="Dominik receiving the award to represent Slovakia at EUCYS 2026" width="268" height="335" loading="lazy" decoding="async">
+            <figcaption><span class="shot__title">Representing Slovakia</span><span class="shot__detail"><span class="shot__desc">Receiving the award that selected me to represent Slovakia at EUCYS 2026.</span></span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="photos/evening-2025.webp" alt="Dominik seated beside his trophy after placing third at the national SOČ competition" width="268" height="335" loading="lazy" decoding="async">
+            <figcaption><span class="shot__title">SOČ · 3rd place</span><span class="shot__detail"><span class="shot__desc">After placing third in Slovakia’s national Secondary School Professional Activity competition.</span></span></figcaption>
+          </figure>
+        </div>
+        </div>
+        <button class="film__btn film__btn--next" type="button" aria-label="Next photos"><svg><use href="#i-arrow"/></svg></button>
+      </div>
+    </section>
+
+    <!-- ==================== OPEN ==================== -->
+    <section class="open" id="open" aria-labelledby="open-h">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow rv from-l"><span class="n">05</span> Collaborate</p>
+          <h2 id="open-h" class="rv zoom" style="--d:.1s">Open to opportunities</h2>
+          <p class="lede rv" style="--d:.16s">I’m most useful where product, technology, creativity, and business overlap. I’m open to the right team or project.</p>
+        </div>
+        <div class="avail rvg" data-stagger=".08">
+          <article>
+            <h3>Cofounding</h3>
+            <p>Early-stage IT and AI companies where I can contribute across product, prototyping, and the business side of the first team.</p>
+          </article>
+          <article>
+            <h3>Roles &amp; internships</h3>
+            <p>Full-time, part-time, or short-term opportunities with ambitious teams building real technology.</p>
+          </article>
+          <article>
+            <h3>Projects</h3>
+            <p>Focused collaborations across AI, cybersecurity, product, branding, and go-to-market work.</p>
+          </article>
+        </div>
+      </div>
+      <div class="lanes rv" aria-hidden="true">
+        <div class="lane">
+          <div class="lane__track">
+            <div class="lane__group">
+              <span class="tag"><svg><use href="#i-layers"/></svg> Product management</span>
+              <span class="tag"><svg><use href="#i-code"/></svg> AI-assisted prototyping</span>
+              <span class="tag"><svg><use href="#i-megaphone"/></svg> Marketing</span>
+              <span class="tag"><svg><use href="#i-brush"/></svg> Branding</span>
+              <span class="tag"><svg><use href="#i-coin"/></svg> Finance</span>
+              <span class="tag"><svg><use href="#i-rocket"/></svg> Startups</span>
+              <span class="tag"><svg><use href="#i-research"/></svg> Applied AI research</span>
+              <span class="tag"><svg><use href="#i-safety"/></svg> AI safety</span>
+              <span class="tag"><svg><use href="#i-alignment"/></svg> AI alignment</span>
+              <span class="tag"><svg><use href="#i-agent"/></svg> AI agents</span>
+              <span class="tag"><svg><use href="#i-eval"/></svg> Model evaluation</span>
+              <span class="tag"><svg><use href="#i-cyber"/></svg> Cybersecurity</span>
+            </div>
+            <div class="lane__group">
+              <span class="tag"><svg><use href="#i-layers"/></svg> Product management</span>
+              <span class="tag"><svg><use href="#i-code"/></svg> AI-assisted prototyping</span>
+              <span class="tag"><svg><use href="#i-megaphone"/></svg> Marketing</span>
+              <span class="tag"><svg><use href="#i-brush"/></svg> Branding</span>
+              <span class="tag"><svg><use href="#i-coin"/></svg> Finance</span>
+              <span class="tag"><svg><use href="#i-rocket"/></svg> Startups</span>
+              <span class="tag"><svg><use href="#i-research"/></svg> Applied AI research</span>
+              <span class="tag"><svg><use href="#i-safety"/></svg> AI safety</span>
+              <span class="tag"><svg><use href="#i-alignment"/></svg> AI alignment</span>
+              <span class="tag"><svg><use href="#i-agent"/></svg> AI agents</span>
+              <span class="tag"><svg><use href="#i-eval"/></svg> Model evaluation</span>
+              <span class="tag"><svg><use href="#i-cyber"/></svg> Cybersecurity</span>
+            </div>
+          </div>
+        </div>
+        <div class="lane lane--rev">
+          <div class="lane__track">
+            <div class="lane__group">
+              <span class="tag"><svg><use href="#i-cofound"/></svg> Cofounding</span>
+              <span class="tag"><svg><use href="#i-internship"/></svg> Internships</span>
+              <span class="tag"><svg><use href="#i-role"/></svg> Roles</span>
+              <span class="tag"><svg><use href="#i-sideproject"/></svg> Side projects</span>
+              <span class="tag"><svg><use href="#i-earlycompany"/></svg> Early companies</span>
+              <span class="tag"><svg><use href="#i-firstteam"/></svg> First teams</span>
+              <span class="tag"><svg><use href="#i-validation"/></svg> Idea validation</span>
+              <span class="tag"><svg><use href="#i-strategy"/></svg> Product strategy</span>
+            </div>
+            <div class="lane__group">
+              <span class="tag"><svg><use href="#i-cofound"/></svg> Cofounding</span>
+              <span class="tag"><svg><use href="#i-internship"/></svg> Internships</span>
+              <span class="tag"><svg><use href="#i-role"/></svg> Roles</span>
+              <span class="tag"><svg><use href="#i-sideproject"/></svg> Side projects</span>
+              <span class="tag"><svg><use href="#i-earlycompany"/></svg> Early companies</span>
+              <span class="tag"><svg><use href="#i-firstteam"/></svg> First teams</span>
+              <span class="tag"><svg><use href="#i-validation"/></svg> Idea validation</span>
+              <span class="tag"><svg><use href="#i-strategy"/></svg> Product strategy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ==================== FOOTER ==================== -->
@@ -1417,9 +1848,7 @@ section{position:relative}
     <div class="wrap">
       <h2 class="rv zoom">Shaping a safer, smarter future for everyone.</h2>
       <p class="lede rv" style="--d:.1s">
-        Open to collaborating on a wide range of projects, from AI, cybersecurity, and emerging technologies to innovative
-        ideas outside these areas. If you think we could create something great together, feel free to reach out or connect
-        with me on LinkedIn.
+        If you think we could build something worth the time, write or find me on LinkedIn.
       </p>
 
       <div class="foot__cta rv" style="--d:.18s">
@@ -1437,6 +1866,7 @@ section{position:relative}
           <a href="#projects">Portfolio</a>
           <a href="#skills">Personal Skills</a>
           <a href="#awards">Awards</a>
+          <a href="#open">Open</a>
         </p>
       </div>
     </div>
@@ -1551,6 +1981,546 @@ section{position:relative}
   }, {rootMargin:"0px 0px -10% 0px", threshold:0.04});
 
   items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+
+<script>
+(function(){
+  "use strict";
+  var film = document.querySelector(".film");
+  if (!film) return;
+  var view = film.querySelector(".film__view");
+  var track = film.querySelector(".film__track");
+  var originals = Array.from(track.children);
+  var motion = matchMedia("(prefers-reduced-motion: reduce)");
+  var fine = matchMedia("(hover: hover) and (pointer: fine)");
+  if(!fine.matches){
+    initTouchStrip();
+    return;
+  }
+  function initTouchStrip(){
+    film.classList.add("is-touch");
+    view.tabIndex=0;
+    view.setAttribute("role","region");
+    view.setAttribute("aria-label","Photos. Swipe left or right to explore, or tap a photo to bring it forward.");
+    // Three full sets provide room to swipe in either direction from the start.
+    for(var set=0;set<2;set++) originals.forEach(function(node){
+      var copy=node.cloneNode(true);
+      copy.setAttribute("aria-hidden","true");
+      track.appendChild(copy);
+    });
+    var photos=Array.from(track.children),loop=0,lastTime=performance.now();
+    var inView=false,held=false,resumeAt=0,written=-1,position=0,previousWidth=0;
+    var focused=null,gesture=null,scrollTimer=0,paintFrame=0,programmaticUntil=0,settle=null;
+    photos.forEach(function(node,index){
+      node.querySelector("img").draggable=false;
+      node.dataset.touchIndex=String(index%originals.length);
+    });
+    function nearestPhoto(){
+      var center=view.scrollLeft+view.clientWidth/2;
+      return photos.reduce(function(best,node){
+        var distance=Math.abs(node.offsetLeft+node.offsetWidth/2-center);
+        return !best || distance<best.distance ? {node:node,distance:distance} : best;
+      },null).node;
+    }
+    function markFocused(node){
+      if(focused===node) return;
+      photos.forEach(function(photo){
+        photo.classList.remove("is-on","is-before","is-after");
+        photo.removeAttribute("aria-current");
+      });
+      focused=node;
+      if(!focused) return;
+      focused.classList.add("is-on");
+      focused.setAttribute("aria-current","true");
+      if(focused.previousElementSibling) focused.previousElementSibling.classList.add("is-before");
+      if(focused.nextElementSibling) focused.nextElementSibling.classList.add("is-after");
+    }
+    function centerPhoto(node,smooth){
+      if(!node) return;
+      var target=node.offsetLeft-(view.clientWidth-node.offsetWidth)/2;
+      settle=null;
+      if(smooth && !motion.matches){
+        settle={from:view.scrollLeft,to:target,start:performance.now(),duration:280};
+      }else{
+        write(target);wrap();paint();
+      }
+    }
+    function openPhoto(node){
+      film.classList.add("is-focus");
+      markFocused(node);
+      clearTimeout(scrollTimer);
+      resumeAt=Infinity;
+      requestAnimationFrame(function(){centerPhoto(node,true);});
+    }
+    function closePhoto(){
+      if(!film.classList.contains("is-focus")) return;
+      settle=null;gesture=null;
+      film.classList.remove("is-focus");
+      markFocused(null);
+      position=view.scrollLeft;
+      held=false;
+      resumeAt=performance.now()+500;
+    }
+    function paint(){
+      var left=view.scrollLeft,vw=view.clientWidth;
+      photos.forEach(function(node){
+        var x=node.offsetLeft-left,w=node.offsetWidth;
+        if(x+w<0 || x>vw) return;
+        // Most of a partially visible photo stays sharp; blur peaks only as it leaves.
+        var shown=Math.max(0,Math.min(vw,x+w)-Math.max(0,x))/w;
+        var edge=Math.max(0,Math.min(1,(.48-shown)/.48));
+        edge=edge*edge*(3-2*edge);
+        node.style.setProperty("--edge-blur",(edge*2.4).toFixed(2)+"px");
+      });
+    }
+    function write(value){
+      position=value;
+      view.scrollLeft=value;
+      written=view.scrollLeft;
+    }
+    function wrap(){
+      var x=view.scrollLeft;
+      if(!gesture && !settle && loop && (x<loop*.5 || x>=loop*1.5)){
+        var focusedIndex=photos.indexOf(focused);
+        var shift=x<loop*.5 ? originals.length : -originals.length;
+        write(x<loop*.5 ? x+loop : x-loop);
+        if(focusedIndex>=0 && film.classList.contains("is-focus")){
+          var replacement=photos[focusedIndex+shift];
+          if(replacement) markFocused(replacement);
+        }
+      }
+    }
+    function measureTouch(){
+      var vw=view.clientWidth;
+      var oldLoop=loop;
+      loop=photos[originals.length].offsetLeft-photos[0].offsetLeft;
+      if(!loop) return;
+      if(vw!==previousWidth || !oldLoop){
+        var phase=oldLoop ? ((view.scrollLeft-oldLoop)%oldLoop+oldLoop)%oldLoop/oldLoop : 0;
+        write(loop+phase*loop);
+        previousWidth=vw;
+      }
+      paint();
+    }
+    view.addEventListener("scroll",function(){
+      var external=Math.abs(view.scrollLeft-written)>1;
+      if(external){
+        position=view.scrollLeft;
+        if(!film.classList.contains("is-focus")){
+          resumeAt=performance.now()+1400;
+          clearTimeout(scrollTimer);
+          scrollTimer=setTimeout(function(){
+            if(!gesture){held=false;wrap();}
+          },180);
+        }
+      }
+      if(!gesture && !settle) wrap();
+      if(!paintFrame) paintFrame=requestAnimationFrame(function(){paintFrame=0;paint();});
+    },{passive:true});
+    view.addEventListener("pointerdown",function(e){
+      if(!e.isPrimary || gesture) return;
+      // Stop our settling animation at its visible position before taking over.
+      if(settle) markFocused(nearestPhoto());
+      settle=null;wrap();
+      gesture={
+        id:e.pointerId,x:e.clientX,y:e.clientY,
+        target:e.target.closest(".shot"),axis:null,moved:false,
+        dx:0,startScroll:view.scrollLeft,started:performance.now()
+      };
+      if(film.classList.contains("is-focus")) view.setPointerCapture(e.pointerId);
+    },{passive:true});
+    window.addEventListener("pointermove",function(e){
+      if(!gesture || e.pointerId!==gesture.id || gesture.axis==="y") return;
+      var dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;
+      gesture.dx=dx;
+      if(Math.max(Math.abs(dx),Math.abs(dy))>8) gesture.moved=true;
+      if(!gesture.axis && gesture.moved){
+        if(Math.abs(dx)>Math.abs(dy)*1.2) gesture.axis="x";
+        else if(Math.abs(dy)>Math.abs(dx)*1.2) gesture.axis="y";
+        // Diagonal movement stays undecided until intent is clear.
+        if(gesture.axis==="x"){
+          held=true;
+          resumeAt=film.classList.contains("is-focus") ? Infinity : performance.now()+1400;
+        }
+      }
+      if(gesture.axis==="x" && film.classList.contains("is-focus")){
+        if(e.cancelable) e.preventDefault();
+        var spacing=photos[1].offsetLeft-photos[0].offsetLeft;
+        var travel=Math.max(-spacing,Math.min(spacing,dx));
+        write(gesture.startScroll-travel);
+        paint();
+      }
+    },{passive:false});
+    function stepFocused(direction){
+      var index=photos.indexOf(focused);
+      var target=photos[index+direction];
+      if(!target) target=nearestPhoto();
+      markFocused(target);
+      centerPhoto(target,true);
+    }
+    function release(e,cancelled){
+      if(!gesture || (e.pointerId!==undefined && e.pointerId!==gesture.id)) return;
+      var tap=!cancelled && !gesture.moved && performance.now()-gesture.started<500 && gesture.target;
+      var pointerId=gesture.id;
+      var horizontal=gesture.axis==="x";
+      var dx=gesture.dx;
+      var elapsed=Math.max(1,performance.now()-gesture.started);
+      gesture=null;
+      held=false;
+      if(view.hasPointerCapture(pointerId)) view.releasePointerCapture(pointerId);
+      if(tap){
+        openPhoto(tap);
+      }else if(horizontal && film.classList.contains("is-focus")){
+        var direction=!cancelled && (Math.abs(dx)>34 || (Math.abs(dx)>14 && Math.abs(dx)/elapsed>.32)) ? (dx<0 ? 1 : -1) : 0;
+        if(direction) stepFocused(direction);
+        else centerPhoto(focused,true);
+      }else if(film.classList.contains("is-focus")){
+        centerPhoto(focused,true);
+      }else if(horizontal){
+        resumeAt=performance.now()+1000;
+      }
+    }
+    window.addEventListener("pointerup",function(e){release(e,false);},{passive:true});
+    window.addEventListener("pointercancel",function(e){release(e,true);},{passive:true});
+    window.addEventListener("blur",function(){gesture=null;held=false;if(focused) centerPhoto(focused,false);});
+    view.addEventListener("wheel",function(){
+      held=true;
+      resumeAt=film.classList.contains("is-focus") ? Infinity : performance.now()+1400;
+      clearTimeout(scrollTimer);
+      scrollTimer=setTimeout(function(){held=false;},180);
+    },{passive:true});
+    view.addEventListener("dragstart",function(e){e.preventDefault();});
+    document.addEventListener("click",function(e){
+      if(film.classList.contains("is-focus") && !film.contains(e.target)) closePhoto();
+    });
+    view.addEventListener("keydown",function(e){
+      if(e.key!=="ArrowLeft" && e.key!=="ArrowRight") return;
+      e.preventDefault();resumeAt=film.classList.contains("is-focus") ? Infinity : performance.now()+1400;
+      var distance=photos[1].offsetLeft-photos[0].offsetLeft;
+      view.scrollBy({left:distance*(e.key==="ArrowRight" ? 1 : -1),behavior:motion.matches ? "instant" : "smooth"});
+    });
+    new ResizeObserver(measureTouch).observe(view);
+    if(document.fonts) document.fonts.ready.then(measureTouch);
+    new IntersectionObserver(function(entries){
+      inView=entries[0].isIntersecting;lastTime=performance.now();
+    },{rootMargin:"80px 0px"}).observe(film);
+    measureTouch();
+    function frame(now){
+      var dt=Math.min(40,now-lastTime);lastTime=now;
+      if(settle){
+        var progress=Math.min(1,(now-settle.start)/settle.duration);
+        var ease=1-Math.pow(1-progress,3);
+        write(settle.from+(settle.to-settle.from)*ease);paint();
+        if(progress===1){settle=null;wrap();paint();}
+      }
+      if(inView && !document.hidden && !motion.matches && !held && !film.classList.contains("is-focus") && now>resumeAt && loop){
+        // Keep fractional progress even when a browser rounds scrollLeft to whole pixels.
+        write(position+dt*.022);wrap();paint();
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  var cells = [], width = 0, stepWidth = 1, period = 1, viewport = 0;
+  var offset = 0, active = null, anchor = 0, follow = false, tween = null;
+  var pointer = null, intent = null, intentTimer = 0, leaveTimer = 0;
+  var visible = false, last = performance.now(), pauseUntil = 0, suppressUntil = 0;
+  var suppressClickUntil = 0, axis = null, wheelTimer = 0, lastHoverX = null, lastHoverY = null;
+  var boost = 1.26, spread = 0;
+  var mod = function(n,d){ return ((n % d) + d) % d; };
+  var clamp = function(n,a,b){ return Math.max(a,Math.min(b,n)); };
+  function addCell(node,index,clone){
+    node.dataset.shotIndex = String(index);
+    node.querySelector("img").draggable = false;
+    // Copies stay operable by touch/mouse; only originals participate in tab order.
+    node.tabIndex = clone ? -1 : 0;
+    node.setAttribute("role","button");
+    node.setAttribute("aria-pressed","false");
+    node.setAttribute("aria-label","Bring forward: " + node.querySelector(".shot__title").textContent);
+    cells.push({node:node,scale:1,shift:0,base:0,edge:0});
+  }
+  originals.forEach(function(node,i){ addCell(node,i,false); });
+  film.classList.add("is-loop");
+  function positionCells(){
+    cells.forEach(function(c,i){ c.base = mod(i * stepWidth + offset + 2 * stepWidth,period) - 2 * stepWidth; });
+  }
+  function nearest(at){
+    return cells.reduce(function(best,c){
+      return !best || Math.abs(c.base+width/2-at) < Math.abs(best.base+width/2-at) ? c : best;
+    },null);
+  }
+  function cancelIntent(){ clearTimeout(intentTimer); intentTimer=0; intent=null; }
+  function checkIntent(){
+    if(!intent) return;
+    var now=performance.now(),age=now-intent.since;
+    if(pointer || tween || now<suppressUntil){cancelIntent();return;}
+    var speed=intent.travel/Math.max(1,now-intent.sampleAt);
+    var delay=active ? 90 : 120;
+    if(age>=delay && speed<.18){
+      var cell=intent.cell;
+      select(cell);anchor=cell.base+width/2;follow=false;
+      cancelIntent();return;
+    }
+    intent.travel=0;intent.sampleAt=now;
+    intentTimer=setTimeout(checkIntent,Math.max(45,delay-age));
+  }
+  function select(cell){
+    if (active === cell) return;
+    if (active) {
+      active.node.classList.remove("is-on");
+      active.node.setAttribute("aria-pressed","false");
+    }
+    active = cell;
+    if (active) {
+      active.node.classList.add("is-on");
+      active.node.setAttribute("aria-pressed","true");
+    }
+  }
+  function clear(){
+    var hadActive=!!active;
+    cancelIntent(); select(null); follow=false;
+    if(hadActive) pauseUntil=performance.now()+650;
+  }
+  function measure(){
+    var oldStep=stepWidth;
+    width=originals[0].getBoundingClientRect().width;
+    // offsetWidth is not affected by the selected photo's transform.
+    width=originals[0].offsetWidth || width;
+    viewport=view.clientWidth;
+    stepWidth=width+(parseFloat(getComputedStyle(track).gap)||18);
+    var needed=Math.ceil((viewport/stepWidth+6)/originals.length)*originals.length;
+    while(cells.length < needed){
+      var index=cells.length%originals.length;
+      var node=originals[index].cloneNode(true);
+      node.classList.remove("is-on"); node.style.cssText="";
+      track.appendChild(node); addCell(node,index,true);
+    }
+    period=cells.length*stepWidth;
+    offset=oldStep>1 ? offset/oldStep*stepWidth : -stepWidth*.42;
+    offset=mod(offset,period);
+    boost=viewport<640 || !fine.matches ? 1.14 : viewport<900 ? 1.20 : 1.26;
+    spread=width*(boost-1)/2+9;
+    track.style.height=(width*1.25)+"px";
+    tween=null; pointer=null; film.classList.remove("is-drag");
+    anchor=clamp(anchor,width/2,Math.max(width/2,viewport-width/2));
+    positionCells();
+    if(active){
+      anchor=viewport/2;
+      offset+=anchor-(active.base+width/2);
+      positionCells();
+    }
+    draw(1);
+  }
+  function draw(alpha){
+    positionCells();
+    if(follow && active) select(nearest(anchor));
+    var activeCenter=active ? active.base+width/2 : 0;
+    cells.forEach(function(c){
+      var on=c===active;
+      var targetShift=active && !on ? (c.base+width/2 < activeCenter ? -spread : spread) : 0;
+      c.scale+=( (on ? boost : 1)-c.scale)*alpha;
+      c.shift+=(targetShift-c.shift)*alpha;
+      // Use the unexpanded position: hovering must not change a photo's blur/dimming.
+      var shown=Math.max(0,Math.min(viewport,c.base+width)-Math.max(0,c.base))/width;
+      var edge=clamp((.96-shown)/.78,0,1);
+      edge=edge*edge*(3-2*edge);
+      c.edge+=(edge-c.edge)*alpha;
+      c.node.style.transform="translate3d("+(c.base+c.shift).toFixed(3)+"px,0,0) scale("+c.scale.toFixed(5)+")";
+      c.node.style.setProperty("--edge-blur",(c.edge*5.2).toFixed(2)+"px");
+      c.node.style.zIndex=on ? "5" : c.scale>1.02 ? "3" : "1";
+    });
+  }
+  function tick(now){
+    var dt=Math.min(40,now-last); last=now;
+    if(!document.hidden && visible){
+      if(tween){
+        var p=clamp((now-tween.start)/tween.duration,0,1);
+        offset=tween.from+(tween.to-tween.from)*(1-Math.pow(1-p,3));
+        if(p===1){ tween=null; follow=false; }
+      }else if(!motion.matches && fine.matches && !active && !pointer && now>pauseUntil){
+        offset-=dt*.028;
+      }
+      // Offset wraps only in the math; DOM nodes recycle beyond both clipped edges.
+      if(!tween && !pointer) offset=mod(offset,period);
+      draw(motion.matches ? 1 : 1-Math.exp(-dt/100));
+    }
+    requestAnimationFrame(tick);
+  }
+  measure(); requestAnimationFrame(tick);
+  new IntersectionObserver(function(entries){
+    visible=entries[0].isIntersecting;
+    last=performance.now();
+    if(!visible){cancelIntent(); tween=null;}
+  },{rootMargin:"120px 0px"}).observe(film);
+  new ResizeObserver(measure).observe(view);
+  if(document.fonts) document.fonts.ready.then(measure);
+  motion.addEventListener("change",function(){ tween=null; draw(1); });
+  fine.addEventListener("change",measure);
+
+  view.addEventListener("pointermove",function(e){
+    if(pointer){
+      if(e.pointerId!==pointer.id) return;
+      var dx=e.clientX-pointer.x,dy=e.clientY-pointer.y;
+      if(!pointer.drag){
+        if(Math.max(Math.abs(dx),Math.abs(dy))<9) return;
+        if(Math.abs(dy)>Math.abs(dx)){
+          pointer=null; suppressClickUntil=performance.now()+600; clear(); return;
+        }
+        pointer.drag=true; cancelIntent(); film.classList.add("is-drag");
+        follow=!!active;
+        if(active) anchor=clamp(active.base+width/2,width/2,Math.max(width/2,viewport-width/2));
+        view.setPointerCapture(e.pointerId);
+      }
+      e.preventDefault(); offset=pointer.offset+dx; draw(motion.matches ? 1 : .2); return;
+    }
+    if(!fine.matches || e.pointerType!=="mouse" || performance.now()<suppressUntil || tween) return;
+    // Ignore synthetic hover changes caused by animated cards beneath a stationary pointer.
+    var distance=lastHoverX===null ? 0 : Math.hypot(e.clientX-lastHoverX,e.clientY-lastHoverY);
+    if(lastHoverX!==null && distance<.5) return;
+    lastHoverX=e.clientX;lastHoverY=e.clientY;
+    var target=e.target.closest(".shot");
+    if(!target || !track.contains(target)){cancelIntent();return;}
+    var rect=view.getBoundingClientRect(),local=e.clientX-rect.left;
+    var cell=nearest(local);
+    // Blank padding and a grazing pass along the card's edge are not hover intent.
+    if(!cell || cell===active || Math.abs(cell.base+width/2-local)>width/2-12){cancelIntent();return;}
+    if(intent && intent.cell===cell){intent.travel+=distance;return;}
+    cancelIntent();
+    var now=performance.now();
+    intent={cell:cell,since:now,sampleAt:now,travel:0};
+    intentTimer=setTimeout(checkIntent,active ? 90 : 120);
+
+  });
+  film.addEventListener("pointerenter",function(){clearTimeout(leaveTimer);});
+  film.addEventListener("pointerleave",function(e){
+    cancelIntent(); lastHoverX=null;
+    if(e.pointerType==="mouse" && !pointer) leaveTimer=setTimeout(clear,280);
+  });
+  view.addEventListener("pointerdown",function(e){
+    if(!e.isPrimary || (e.pointerType==="mouse" && e.button!==0)) return;
+    clearTimeout(leaveTimer); cancelIntent(); tween=null;
+    pointer={id:e.pointerId,type:e.pointerType,x:e.clientX,y:e.clientY,offset:offset,drag:false};
+    view.setPointerCapture(e.pointerId);
+  });
+  function finish(e,cancelled){
+    if(!pointer || e.pointerId!==pointer.id) return;
+    var dragged=pointer.drag;
+    var pointerType=pointer.type;
+    pointer=null; follow=false; film.classList.remove("is-drag");
+    if(view.hasPointerCapture(e.pointerId)) view.releasePointerCapture(e.pointerId);
+    if(dragged || cancelled) suppressClickUntil=performance.now()+500;
+    suppressUntil=performance.now()+450; pauseUntil=performance.now()+1100;
+    if(cancelled){clear();return;}
+    if(dragged && active){
+      // Settle the new hero at the same reading position after a deliberate swipe.
+      var delta=anchor-(active.base+width/2);
+      animateBy(delta);
+    }else if(dragged && pointerType==="touch"){
+      // Mobile is a manual strip: settle the nearest photo cleanly after a swipe.
+      var target=nearest(viewport/2);
+      animateBy(viewport/2-(target.base+width/2));
+    }
+  }
+  window.addEventListener("pointerup",function(e){finish(e,false);});
+  window.addEventListener("pointercancel",function(e){finish(e,true);});
+  view.addEventListener("lostpointercapture",function(e){if(pointer) finish(e,true);});
+  view.addEventListener("dragstart",function(e){e.preventDefault();});
+  view.addEventListener("click",function(e){
+    if(performance.now()<suppressClickUntil){e.preventDefault();return;}
+    // Touch interaction is deliberately swipe-only. Keep keyboard activation
+    // available for accessibility, while ordinary taps never enlarge a card.
+    if(!fine.matches && e.detail!==0){e.preventDefault();return;}
+    var node=e.target.closest(".shot"),cell=cells.find(function(c){return c.node===node;});
+    if(!cell) return;
+    if(cell===active){clear();return;}
+    select(cell); follow=false;
+    anchor=clamp(cell.base+width/2,width*boost/2+8,Math.max(width*boost/2+8,viewport-width*boost/2-8));
+    animateBy(anchor-(cell.base+width/2));
+  });
+  function animateBy(delta){
+    if(motion.matches){offset+=delta;draw(1);return;}
+    tween={from:offset,to:offset+delta,start:performance.now(),duration:460};
+    pauseUntil=performance.now()+1150; suppressUntil=performance.now()+550;
+  }
+  function step(dir){
+    cancelIntent(); clearTimeout(leaveTimer);
+    var base=active || nearest(viewport/2);
+    var next=nearest(base.base+width/2+dir*stepWidth);
+    // At an offscreen recycled boundary use the adjacent logical cell.
+    if(next===base) next=cells[mod(cells.indexOf(base)+dir,cells.length)];
+    anchor=active ? clamp(anchor,width*boost/2+8,Math.max(width*boost/2+8,viewport-width*boost/2-8)) : viewport/2;
+    select(next); follow=false;
+    var delta=anchor-(next.base+width/2);
+    if(delta>period/2) delta-=period;
+    if(delta<-period/2) delta+=period;
+    animateBy(delta);
+  }
+  film.querySelector(".film__btn--prev").addEventListener("click",function(){step(-1);});
+  film.querySelector(".film__btn--next").addEventListener("click",function(){step(1);});
+  view.addEventListener("wheel",function(e){
+    var dx=e.deltaX,dy=e.deltaY;
+    if(!axis){if(Math.abs(dx)+Math.abs(dy)<1)return;axis=e.shiftKey||Math.abs(dx)>Math.abs(dy)*1.15 ? "x" : "y";}
+    clearTimeout(wheelTimer);
+    wheelTimer=setTimeout(function(){
+      axis=null; follow=false;
+      if(active) animateBy(anchor-(active.base+width/2));
+    },180);
+    cancelIntent(); suppressUntil=performance.now()+450;
+    if(axis==="y"){clear();return;}
+    e.preventDefault(); tween=null;
+    if(active && !follow){anchor=clamp(anchor,width/2,Math.max(width/2,viewport-width/2));follow=true;}
+    var units=e.deltaMode===1 ? 16 : e.deltaMode===2 ? viewport : 1;
+    offset-=(e.shiftKey ? dy||dx : dx)*units;
+    pauseUntil=performance.now()+1100; draw(motion.matches ? 1 : .2);
+  },{passive:false});
+  track.addEventListener("keydown",function(e){
+    if(e.key==="ArrowLeft" || e.key==="ArrowRight"){e.preventDefault();step(e.key==="ArrowLeft" ? -1 : 1);}
+    else if(e.key==="Escape"){e.preventDefault();clear();}
+    else if(e.key==="Enter" || e.key===" "){e.preventDefault();e.target.click();}
+  });
+  track.addEventListener("focusin",function(e){
+    if(!e.target.matches(":focus-visible")) return;
+    var cell=cells.find(function(c){return c.node===e.target;});
+    if(cell){select(cell);anchor=viewport/2;follow=false;animateBy(anchor-(cell.base+width/2));}
+  });
+  track.addEventListener("focusout",function(e){if(!film.contains(e.relatedTarget)) clear();});
+  document.addEventListener("pointerdown",function(e){if(!film.contains(e.target)) clear();});
+  window.addEventListener("scroll",function(){
+    cancelIntent(); suppressUntil=performance.now()+600; lastHoverX=null;
+    if(active) clear();
+  },{passive:true});
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+  var rail=document.querySelector(".lanes");
+  if(!rail) return;
+  var rows=Array.from(rail.querySelectorAll(".lane")).map(function(lane){
+    var track=lane.querySelector(".lane__track");
+    var group=track.firstElementChild;
+    return {lane:lane,track:track,group:group,items:Array.from(group.children).map(function(tag){return tag.cloneNode(true);})};
+  });
+  function fill(){
+    rows.forEach(function(row){
+      // Each repeat must cover the viewport BEFORE the reverse row starts at -100%.
+      row.group.replaceChildren.apply(row.group,row.items.map(function(tag){return tag.cloneNode(true);}));
+      var unit=row.group.getBoundingClientRect().width;
+      var repeats=Math.max(1,Math.ceil((row.lane.clientWidth+1)/Math.max(1,unit)));
+      for(var i=1;i<repeats;i++) row.items.forEach(function(tag){row.group.appendChild(tag.cloneNode(true));});
+      var distance=row.group.getBoundingClientRect().width;
+      row.track.replaceChildren(row.group,row.group.cloneNode(true));
+      row.track.style.setProperty("--lane-distance",distance+"px");
+      row.track.style.setProperty("--dur",(distance/(row.lane.classList.contains("lane--rev") ? 24 : 28))+"s");
+    });
+  }
+  fill();
+  new ResizeObserver(fill).observe(rail);
+  if(document.fonts) document.fonts.ready.then(fill);
+  new IntersectionObserver(function(entries){rail.classList.toggle("is-visible",entries[0].isIntersecting);},{rootMargin:"80px 0px"}).observe(rail);
 })();
 </script>
 
