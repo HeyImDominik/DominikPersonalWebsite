@@ -971,15 +971,17 @@ section{position:relative}
 .institution-mark img{opacity:1;filter:none}
 .institution-mark img[src$="amavet.png"]{filter:brightness(0) saturate(100%) invert(30%) sepia(85%) saturate(1900%) hue-rotate(190deg) brightness(90%) contrast(96%)}
 .institution-mark img[src$="bratislava.png"]{filter:brightness(0) saturate(100%) invert(20%) sepia(83%) saturate(2800%) hue-rotate(342deg) brightness(90%) contrast(98%)}
+.institution-mark--amavet{width:56px;height:56px}
+.institution-mark--amavet img{width:32px;height:32px;padding:2px;box-sizing:border-box;object-fit:contain}
 .institution-mark--soc{width:82px;height:64px}
-.institution-mark--soc img{width:68px;height:52px;filter:saturate(1.35) contrast(1.28) brightness(.72)}
+.institution-mark--soc img{width:58px;height:52px;filter:none}
 .institution-mark--uniza{width:68px;height:68px}
 .institution-mark--uniza img{
   width:50px;height:50px;
   filter:brightness(0) saturate(100%) invert(18%) sepia(32%) saturate(1490%) hue-rotate(176deg) brightness(82%) contrast(94%);
 }
-.institution-mark--founders{width:64px;height:108px}
-.institution-mark--founders img{width:32px;height:80px;filter:none}
+.institution-mark--founders{width:78px;height:78px}
+.institution-mark--founders img{width:60px;height:60px;filter:none}
 .institution-mark--sostar img,
 .institution-mark--erasmus img{padding:0;border:0;background:none;border-radius:0;filter:none}
 .institution-mark--pair{width:116px;height:104px;padding:12px;grid-template-rows:32px 32px;gap:14px}
@@ -990,8 +992,10 @@ section{position:relative}
 .spotlight > .institution-mark{width:100px;height:88px}
 .spotlight > .institution-mark img{width:76px;height:64px;filter:none}
 @media(max-width:640px){
-  .institution-mark--founders{width:58px;height:98px}
-  .institution-mark--founders img{width:28px;height:70px}
+  .institution-mark--amavet{width:48px;height:48px}
+  .institution-mark--amavet img{width:28px;height:28px;padding:2px}
+  .institution-mark--founders{width:66px;height:66px}
+  .institution-mark--founders img{width:50px;height:50px}
   .institution-mark--soc{width:68px;height:56px}
   .institution-mark--soc img{width:56px;height:44px}
   .institution-mark--uniza{width:58px;height:58px}
@@ -1312,7 +1316,7 @@ section{position:relative}
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
 }
-.lane + .lane{margin-top:8px;padding-top:8px}
+.lane + .lane{margin-top:6px;padding-top:6px}
 .lane__track{
   display:flex;width:max-content;
   animation:lane-move var(--dur,44s) linear infinite;
@@ -1753,7 +1757,7 @@ section{position:relative}
 
             <div class="award-list" data-stagger=".09">
             <article class="award glass">
-              <span class="institution-mark" aria-hidden="true" data-nosnippet><img src="logos/marks/amavet.png" alt="" loading="lazy" decoding="async"></span>
+              <span class="institution-mark institution-mark--amavet" aria-hidden="true" data-nosnippet><img src="logos/marks/amavet-complete.svg" alt="" loading="lazy" decoding="async"></span>
               <div class="award__meta"><span class="award__rank is-gold">Regional Silver</span><span class="award__year">Oct 2025</span></div>
               <h4>2nd Place - Festival of Science and Technology (Festival vedy a techniky) - Bratislava Regional Round</h4>
               <p>Achieved 2nd place in the Bratislava Regional Round of the 28th Annual Festival of Science and Technology with my LAVAIQ Android antivirus project. This recognition placed my project among the top innovations from the Bratislava and Trnava regions.</p>
@@ -1769,7 +1773,7 @@ section{position:relative}
             </article>
 
             <article class="award glass has-wide">
-              <span class="institution-mark institution-mark--soc" aria-hidden="true" data-nosnippet><img src="logos/marks/soc-official.png" alt="" loading="lazy" decoding="async"></span>
+              <span class="institution-mark institution-mark--soc" aria-hidden="true" data-nosnippet><img src="logos/marks/soc-clean-v2.svg" alt="" loading="lazy" decoding="async"></span>
               <div class="award__meta"><span class="award__rank is-gold">National Bronze</span><span class="award__year">Apr 2025</span></div>
               <h4>3rd Place in the National Round – Secondary School Professional Activity (SOČ)</h4>
               <p>Achieved 3rd place in the National Round of the Secondary School Professional Activity Competition (Stredoškolská odborná činnosť) with my LAVAIQ Android antivirus project.</p>
@@ -1777,7 +1781,7 @@ section{position:relative}
             </article>
 
             <article class="award glass has-wide">
-              <span class="institution-mark institution-mark--soc" aria-hidden="true" data-nosnippet><img src="logos/marks/soc-official.png" alt="" loading="lazy" decoding="async"></span>
+              <span class="institution-mark institution-mark--soc" aria-hidden="true" data-nosnippet><img src="logos/marks/soc-clean-v2.svg" alt="" loading="lazy" decoding="async"></span>
               <div class="award__meta"><span class="award__rank is-gold">Regional Gold</span><span class="award__year">Mar 2025</span></div>
               <h4>1st Place in the Regional Round – Secondary School Professional Activity (SOČ)</h4>
               <p>Achieved 1st place in the Regional Round of the Secondary School Professional Activity Competition (Stredoškolská odborná činnosť) with my LAVAIQ Android antivirus project.</p>
@@ -1810,7 +1814,7 @@ section{position:relative}
               </div>
 
               <div class="tl__item is-past">
-                <span class="institution-mark institution-mark--founders" aria-hidden="true" data-nosnippet><img src="logos/marks/future-founders.png" alt="" loading="lazy" decoding="async"></span>
+                <span class="institution-mark institution-mark--founders" aria-hidden="true" data-nosnippet><img src="logos/marks/the-spot.svg" alt="" loading="lazy" decoding="async"></span>
                 <p class="tl__date">Oct 2025 – Aug 2026</p>
                 <h4>Future Founders by The Spot</h4>
                 <p class="tl__role"><svg><use href="#i-pin"/></svg> Member · Bratislava, Slovakia</p>
