@@ -39,9 +39,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap"></noscript>
 
 <script type="application/ld+json">
 {
@@ -188,6 +188,7 @@ html{
   -webkit-text-size-adjust:100%;
   scroll-behavior:smooth;
   scroll-padding-top:72px;
+  scrollbar-gutter:stable;
   overflow-x:clip;
   max-width:100%;
   overscroll-behavior-x:none;
@@ -346,7 +347,7 @@ section{position:relative}
   display:flex;justify-content:center;
   padding-top:max(10px,env(safe-area-inset-top,0px));
   padding-left:max(14px,env(safe-area-inset-left,0px));
-  padding-right:max(14px,env(safe-area-inset-right,0px));
+  padding-right:calc(max(14px,env(safe-area-inset-right,0px)) + var(--lock-gutter,0px));
   padding-bottom:10px;
 }
 .nav__inner{
@@ -1890,7 +1891,7 @@ section{position:relative}
           <p class="body">
             Selected from the National Round of the 28th Annual Festival of Science and Technology to represent Slovakia at the European Union Contest for Young Scientists (EUCYS) 2026 with my LAVAIQ Android antivirus project.
           </p>
-          <button class="context-button" type="button" data-context="eucys" hidden>What is EUCYS?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg></button>
+          <button class="context-button" type="button" data-context="eucys" hidden>What is EUCYS?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.75 12.75 10 7.5 15.25"/></svg></button>
           <p class="stamp"><svg><use href="#i-cal"/></svg> Nov 2025 · AMAVET</p>
         </article>
 
@@ -1905,7 +1906,7 @@ section{position:relative}
               <h4>2nd Place - Festival of Science and Technology (Festival vedy a techniky) - Bratislava Regional Round</h4>
               <p>Achieved 2nd place in the Bratislava Regional Round of the 28th Annual Festival of Science and Technology with my LAVAIQ Android antivirus project. This recognition placed my project among the top innovations from the Bratislava and Trnava regions.</p>
               <p class="award__issuer"><svg><use href="#i-medal"/></svg> AMAVET - Association for Youth, Science, and Technology</p>
-              <button class="context-button" type="button" data-context="amavet" hidden>What is the AMAVET festival?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg></button>
+              <button class="context-button" type="button" data-context="amavet" hidden>What is the AMAVET festival?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.75 12.75 10 7.5 15.25"/></svg></button>
             </article>
 
             <article class="award glass">
@@ -1914,7 +1915,7 @@ section{position:relative}
               <h4>Award for Exceptional Results and School Representation (Ocenenie za výnimočné výsledky a reprezentáciu školy)</h4>
               <p>Received a prestigious award for exceptional results and representation of the school, recognizing my achievements with the LAVAIQ Android antivirus project.</p>
               <p class="award__issuer"><svg><use href="#i-medal"/></svg> Bratislava Region (Associated with SOSTAR)</p>
-              <button class="context-button" type="button" data-context="bratislava" hidden>About this regional award<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg></button>
+              <button class="context-button" type="button" data-context="bratislava" hidden>About this regional award<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.75 12.75 10 7.5 15.25"/></svg></button>
             </article>
 
             <article class="award glass has-wide">
@@ -1923,7 +1924,7 @@ section{position:relative}
               <h4>3rd Place in the National Round – Secondary School Professional Activity (SOČ)</h4>
               <p>Achieved 3rd place in the National Round of the Secondary School Professional Activity Competition (Stredoškolská odborná činnosť) with my LAVAIQ Android antivirus project.</p>
               <p class="award__issuer"><svg><use href="#i-medal"/></svg> State Institute of Professional Education (SIOV)</p>
-              <button class="context-button" type="button" data-context="soc" data-context-result="I received 3rd place in my subject field at the national round in April 2025 with LAVAIQ, my Android antivirus project, after winning at the Bratislava regional round." hidden>What is SOČ?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg></button>
+              <button class="context-button" type="button" data-context="soc" data-context-result="I received 3rd place in my subject field at the national round in April 2025 with LAVAIQ, my Android antivirus project, after winning at the Bratislava regional round." hidden>What is SOČ?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.75 12.75 10 7.5 15.25"/></svg></button>
             </article>
 
             <article class="award glass has-wide">
@@ -1932,7 +1933,7 @@ section{position:relative}
               <h4>1st Place in the Regional Round – Secondary School Professional Activity (SOČ)</h4>
               <p>Achieved 1st place in the Regional Round of the Secondary School Professional Activity Competition (Stredoškolská odborná činnosť) with my LAVAIQ Android antivirus project.</p>
               <p class="award__issuer"><svg><use href="#i-medal"/></svg> State Institute of Professional Education (SIOV)</p>
-              <button class="context-button" type="button" data-context="soc" data-context-result="I received 1st place in my subject field at the Bratislava regional round in March 2025 with LAVAIQ. This was the regional milestone before my project went on to receive 3rd place at the national round." hidden>What is SOČ?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg></button>
+              <button class="context-button" type="button" data-context="soc" data-context-result="I received 1st place in my subject field at the Bratislava regional round in March 2025 with LAVAIQ. This was the regional milestone before my project went on to receive 3rd place at the national round." hidden>What is SOČ?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.75 12.75 10 7.5 15.25"/></svg></button>
             </article>
 
             <article class="award glass">
@@ -1941,7 +1942,7 @@ section{position:relative}
               <h4>Certificate of Successful Completion - Junior Coder Competition</h4>
               <p>Awarded for the successful completion of the JUNIOR KÓDER (Junior Coder) competition organized by the University of Žilina by the Faculty of Management Science and Informatics (Žilinská univerzita v Žiline, Fakulta riadenia a informatiky).</p>
               <p class="award__issuer"><svg><use href="#i-medal"/></svg> University of Žilina</p>
-              <button class="context-button" type="button" data-context="junior" hidden>What is Junior Coder?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg></button>
+              <button class="context-button" type="button" data-context="junior" hidden>What is Junior Coder?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.75 12.75 10 7.5 15.25"/></svg></button>
             </article>
             </div>
           </div>
@@ -1959,7 +1960,7 @@ section{position:relative}
                 <h4>FEI STU &amp; NHF EUBA, Bratislava</h4>
                 <p class="tl__role"><svg><use href="#i-cap"/></svg> Bachelor's Degree, Computer Science, Economics and Management</p>
                 <p>FinTech and Financial Innovation, a joint bachelor's degree programme between the Faculty of Electrical Engineering and Information Technology (FEI STU) and the Faculty of National Economy (NHF EUBA). It combines computer science, mathematics, economics, finance and management, including programming, data analysis, financial technologies, banking, cybersecurity and software engineering.</p>
-                <button class="context-button" type="button" data-context="universities" hidden>Meet STU &amp; EUBA<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg></button>
+                <button class="context-button" type="button" data-context="universities" hidden>Meet STU &amp; EUBA<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.75 12.75 10 7.5 15.25"/></svg></button>
               </div>
 
               <div class="tl__item is-past">
@@ -1968,7 +1969,7 @@ section{position:relative}
                 <h4>Future Founders by The Spot</h4>
                 <p class="tl__role"><svg><use href="#i-pin"/></svg> Member · Bratislava, Slovakia</p>
                 <p>Selected for an intensive innovation and startup education programme. Working with a team to build a startup project from the ground up, with mentoring and masterclasses from founders and industry experts, practical workshops on product development and strategy, and a real-world team project taken from concept to viable product.</p>
-                <button class="context-button" type="button" data-context="founders" hidden>What is Future Founders?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg></button>
+                <button class="context-button" type="button" data-context="founders" hidden>What is Future Founders?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.75 12.75 10 7.5 15.25"/></svg></button>
               </div>
 
               <div class="tl__item is-past">
@@ -1977,7 +1978,7 @@ section{position:relative}
                 <h4>SOSTAR</h4>
                 <p class="tl__role"><svg><use href="#i-cap"/></svg> Mechanic of Computer Networks</p>
                 <p>Secondary school specializing in IT hardware, software, and network architecture.</p>
-                <button class="context-button" type="button" data-context="sostar" hidden>What is SOSTAR?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg></button>
+                <button class="context-button" type="button" data-context="sostar" hidden>What is SOSTAR?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.75 12.75 10 7.5 15.25"/></svg></button>
               </div>
 
               <div class="tl__item is-past has-wide">
@@ -1986,7 +1987,7 @@ section{position:relative}
                 <h4>Erasmus+ Internship</h4>
                 <p class="tl__role"><svg><use href="#i-pin"/></svg> GreenTek, Portugal</p>
                 <p>Specialized professional internship focusing on computer hardware recycling and sustainable IT practices.</p>
-                <button class="context-button" type="button" data-context="erasmus" hidden>What is Erasmus+?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg></button>
+                <button class="context-button" type="button" data-context="erasmus" hidden>What is Erasmus+?<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.75 12.75 10 7.5 15.25"/></svg></button>
               </div>
             </div>
           </div>
@@ -3199,7 +3200,7 @@ section{position:relative}
 </script>
 <dialog class="context-dialog" id="recognition-dialog" aria-labelledby="context-title">
   <div class="context-bar">
-    <span class="context-bar__label">Recognition / explained</span>
+    <span class="context-bar__label"></span>
     <button class="context-close" type="button" aria-label="Close explanation"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
   </div>
   <div class="context-scroll"></div>

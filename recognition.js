@@ -1,128 +1,298 @@
-/* Official context is separate from the personal achievements supplied by Dominik. */
+/* Reference entries for the institutions behind each award and programme.
+   Every figure here is traceable to the sources listed at the foot of its entry.
+   Official context is kept separate from the personal note at the end.
+   Writing and layout rules for this component live in DESIGN.md. */
 (() => {
   'use strict';
+
   const topics = {
     eucys: {
-      title: 'EUCYS', category: 'International science · Kiel, Germany',
-      subtitle: 'European Union Contest for Young Scientists', logo: 'eucys-black.svg',
-      facts: [['~40', 'countries expected in 2026'], ['14–20', 'age range'], ['National', 'selection route']],
+      short: 'EUCYS',
+      title: 'European Union Contest for Young Scientists',
+      category: 'European Commission · Kiel, Germany',
+      subtitle: 'The European Commission has run a science contest for 14 to 20 year olds since 1989. You cannot enter it directly; your country sends you.',
+      logo: 'eucys-black.svg',
+      lead: ['1989', 'First held in Brussels, with 53 entrants'],
+      facts: [
+        ['37th edition', 'Kiel, 22–27 September 2026'],
+        ['~150 a year', 'entrants now'],
+        ['14 to 20', 'eligible ages']
+      ],
       sections: [
-        ['What it is', 'EUCYS is the European Commission’s international competition for young researchers. Entrants bring original scientific or engineering projects selected through national competitions. The 37th edition takes place in Kiel, Germany, on 22–27 September 2026.'],
-        ['Why it matters', 'Reaching EUCYS means earning a place through a national selection process. Projects are examined by an international scientific jury through written work, exhibition displays and interviews. Judges consider originality, the quality of the investigation, the results and how well the researchers can defend their work.']
+        ['Getting a place', 'There is no open application. Each participating country runs its own science competition and sends the projects that win it, which is why the field is small and the age range so wide. In Kiel an international jury reads the written work, walks the exhibition stands and interviews the researchers. Originality counts, but so does whether you can defend your method under questioning.'],
+        ['What winners get', 'Cash prizes are split across first, second and third places. The awards that tend to matter more are the visits: CERN, the European Space Agency, EMBL and other European research institutions host EUCYS winners. The contest was set up in 1989 under Jacques Delors after a challenge from Philips, and it has grown from 53 entrants to roughly 150 a year.']
       ],
-      chapters: [{title:'The route through AMAVET', kicker:'From Slovakia to the international stage', logo:'amavet-complete.svg', paragraphs:['Slovakia’s Festival of Science and Technology, organised by AMAVET, provides a route to international science competitions. Its 2025 national final brought together 81 students presenting 60 projects, assessed by 27 experts from universities, the Slovak Academy of Sciences and professional practice.']}],
-      connection: 'Selected in November 2025 to represent Slovakia at EUCYS 2026 with LAVAIQ, my Android antivirus project using machine learning. This milestone is the national selection for the upcoming international contest.',
-      sources: [['European Commission · EUCYS', 'https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/eucys_en'], ['AMAVET · 2025 national final', 'https://www.festivalvedy.sk/wp2/festival-vedy-a-techniky-amavet-2025-otvoril-tyzden-vedy-a-techniky-na-slovensku/']]
+      chapters: [{
+        title: 'AMAVET runs the Slovak route',
+        kicker: 'How a project gets out of Slovakia',
+        logo: 'amavet-complete.svg',
+        paragraphs: ['Slovakia fills its EUCYS place through the Festival of Science and Technology, organised by AMAVET. The 2025 national final put 81 students and 60 projects in front of 27 judges drawn from universities, the Slovak Academy of Sciences and industry. The nominations for international contests come out of that room.']
+      }],
+      connection: 'In November 2025 I was selected to represent Slovakia at EUCYS 2026 with LAVAIQ, my Android antivirus built on machine learning. The national round is the selection; the contest itself is still ahead.',
+      sources: [
+        ['European Commission, EUCYS', 'https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/eucys_en'],
+        ['European Commission, past contests', 'https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/eucys/past-contests_en'],
+        ['AMAVET, 2025 national final', 'https://www.festivalvedy.sk/wp2/festival-vedy-a-techniky-amavet-2025-otvoril-tyzden-vedy-a-techniky-na-slovensku/']
+      ]
     },
+
     amavet: {
-      title:'Festival of Science & Technology', category:'Student research · Slovakia',
-      subtitle:'Festival vedy a techniky AMAVET', logo:'amavet-complete.svg',
-      facts:[['28th','edition in 2025'],['Regional → national','competition pathway'],['60','projects at the 2025 national final']],
-      sections:[
-        ['What it is','An annual Slovak science fair where young people develop their own research or technical projects and present them to experts. AMAVET is the Association for Youth, Science and Technology. The regional round on this page covers the Bratislava and Trnava regions.'],
-        ['Why it matters','The festival is part of Slovakia’s progression-based student competition system: regional events lead to a national final, where selected projects can earn nominations to international events such as EUCYS and Regeneron ISEF. It gives students an opportunity to have their ideas evaluated beyond the classroom.']
+      short: 'Festival of Science and Technology',
+      title: 'Festival of Science and Technology',
+      category: 'AMAVET · Slovakia',
+      subtitle: 'Festival vedy a techniky AMAVET. A science fair where students defend their own research in front of working scientists, first regionally, then nationally.',
+      logo: 'amavet-complete.svg',
+      lead: ['28th', 'edition of the festival in 2025'],
+      facts: [
+        ['60 projects', 'at the 2025 national final'],
+        ['81 students', 'presenting them'],
+        ['27 judges', 'universities, SAV, industry']
       ],
-      connection:'I received 2nd place at the Bratislava regional round in October 2025 with LAVAIQ. My project subsequently reached the national round and earned selection for EUCYS 2026.',
-      sources:[['AMAVET · regional competition','https://www.festivalvedy.sk/wp2/bratislavsky-a-trnavsky-kraj/'],['AMAVET · 2025 national final','https://www.festivalvedy.sk/wp2/festival-vedy-a-techniky-amavet-2025-otvoril-tyzden-vedy-a-techniky-na-slovensku/']]
+      sections: [
+        ['Regional first', 'The round on this page covers the Bratislava and Trnava regions. Placing there is what puts a project into the national final, and the national final is where nominations to EUCYS and Regeneron ISEF are handed out. It is a ladder, not a single event, and each rung has a different jury.'],
+        ['Who AMAVET is', 'The Association for Youth, Science and Technology has been running since 1990. It is a volunteer organisation more than an institution: clubs across Slovakia, several thousand active members, teachers and researchers who give up weekends. Astronomy, robotics, informatics, biotechnology and earth sciences all sit under the same roof.']
+      ],
+      connection: 'I took 2nd place at the Bratislava regional round in October 2025 with LAVAIQ. The project went on to the national round and was selected there for EUCYS 2026.',
+      sources: [
+        ['AMAVET, regional competition', 'https://www.festivalvedy.sk/wp2/bratislavsky-a-trnavsky-kraj/'],
+        ['AMAVET, 2025 national final', 'https://www.festivalvedy.sk/wp2/festival-vedy-a-techniky-amavet-2025-otvoril-tyzden-vedy-a-techniky-na-slovensku/'],
+        ['AMAVET, about the association', 'https://www.amavet.sk/amavet-2/']
+      ]
     },
+
     bratislava: {
-      title:'Bratislava Region Award', category:'Public recognition · Slovakia',
-      subtitle:'Exceptional results and representation of the school',logo:'bratislava.png',logoStyle:'bratislava',
-      facts:[['50','students honoured at the 2025 ceremony'],['Regional','public recognition'],['SOSTAR','school represented']],
-      sections:[
-        ['What it recognises','Recognition from the Bratislava Self-Governing Region, the regional authority for Slovakia’s capital and its surrounding area. Its annual student ceremony honours exceptional results and initiative beyond ordinary school responsibilities. In June 2025, Governor Juraj Droba presented awards to 50 secondary-school students.'],
-        ['Why it matters','Recipients are recognised for achievements across academic competitions, sport, the arts and contributions to their communities. It is an acknowledgement beyond the school itself, celebrating both students’ accomplishments and the example they set for others.']
+      short: 'Bratislava Region Award',
+      title: 'Bratislava Region Award',
+      category: 'Bratislavský samosprávny kraj · Slovakia',
+      subtitle: 'An annual ceremony at which the region that governs Slovakia’s capital honours secondary-school students for work done outside what school asked of them.',
+      logo: 'bratislava.png', logoStyle: 'bratislava',
+      lead: ['50', 'students honoured at the June 2025 ceremony'],
+      facts: [
+        ['Juraj Droba', 'Governor who presents it'],
+        ['1 of 8', 'self-governing regions in Slovakia'],
+        ['SOSTAR', 'the school I represented']
       ],
-      connection:'In June 2025, I received this award for my results and representation of SOSTAR with LAVAIQ. My award was presented and signed by Juraj Droba, the Governor of the Bratislava Region.',
-      sources:[['Bratislava Region · 2025 student awards','https://bratislavskykraj.sk/predseda-bsk-ocenil-najuspesnejsich-stredoskolakov-kraja/'],['SOSTAR','https://sostar.sk/']]
+      sections: [
+        ['What the region is', 'The Bratislava Self-Governing Region is the tier of government between the city and the state. It runs the secondary schools in the capital and the districts around it, and once a year it brings the students it wants to point at into one room.'],
+        ['What it is given for', 'Not grades. The list runs across academic competitions, sport, the arts and work done for the community, and the common thread is initiative rather than results in any one subject. The award travels with the school as much as the student.']
+      ],
+      connection: 'I received the award in June 2025 for my results with LAVAIQ and for representing SOSTAR. It was presented and signed by Juraj Droba, the Governor of the Bratislava Region.',
+      sources: [
+        ['Bratislava Region, 2025 student awards', 'https://bratislavskykraj.sk/predseda-bsk-ocenil-najuspesnejsich-stredoskolakov-kraja/'],
+        ['SOSTAR', 'https://sostar.sk/']
+      ]
     },
+
     soc: {
-      title:'SOČ',category:'Independent student research · Slovakia',
-      subtitle:'Stredoškolská odborná činnosť · Secondary School Professional Activity',logo:'soc-clean-v2.svg',
-      facts:[['2,381','students across the 2025 competition'],['17','subject fields'],['272','projects at the 2025 national final']],
-      sections:[
-        ['What it is','SOČ is Slovakia’s nationwide competition for secondary-school students’ independent research and technical work. Students develop a project, write it up and defend it before a panel. Its 17 fields cover a wide range of scientific, technical and other specialist subjects. The competition is coordinated by the State Institute of Vocational Education (ŠIOV).'],
-        ['Why it matters','Projects advance through earlier rounds to the national final, where students present their work to educators and specialists. In 2025, the competition involved 318 schools. A national placing recognises work within its subject field after this progression; the participation figures above describe the whole competition across all fields.']
+      short: 'SOČ',
+      title: 'SOČ',
+      category: 'ŠIOV · Slovakia',
+      subtitle: 'Stredoškolská odborná činnosť. Slovakia’s national competition for independent secondary-school research: write a paper, then defend it in front of a panel.',
+      logo: 'soc-clean-v2.svg',
+      lead: ['2,381', 'students across the 2025 competition'],
+      facts: [
+        ['17 fields', 'informatics through to social sciences'],
+        ['318 schools', 'taking part in 2025'],
+        ['272 projects', 'reaching the national final']
       ],
-      sources:[['ŠIOV · 2025 national competition','https://siov.sk/stredoskolska-odborna-cinnost-predstavi-talenty-na-celostatnom-kole-v-kosiciach/'],['ŠIOV · about SOČ','https://siov.sk/soc/']]
+      sections: [
+        ['How it works', 'You pick a problem, work on it for months, write it up properly and then sit in front of a panel that has read it. School round, regional round, national round. Each field is judged separately, so a placing is a placing within a subject rather than across the whole competition.'],
+        ['Who runs it', 'The State Institute of Vocational Education, ŠIOV, coordinates SOČ nationally. Because it reaches every kind of secondary school rather than only the academic ones, it is often the first time a student has to present technical work to people who are not their teachers.']
+      ],
+      sources: [
+        ['ŠIOV, 2025 national competition', 'https://siov.sk/stredoskolska-odborna-cinnost-predstavi-talenty-na-celostatnom-kole-v-kosiciach/'],
+        ['ŠIOV, about SOČ', 'https://siov.sk/soc/']
+      ]
     },
+
     junior: {
-      title:'Junior Coder',category:'Programming · Žilina, Slovakia',
-      subtitle:'JUNIOR KÓDER · University of Žilina',logo:'uniza.png',logoStyle:'uniza',
-      facts:[['Programming','competition focus'],['UNIZA','university organiser'],['2024','my certificate']],
-      sections:[
-        ['What it is','Junior Coder is a programming competition organised by the Faculty of Management Science and Informatics at the University of Žilina (UNIZA). It gives aspiring programmers an opportunity to test their abilities in an academic environment and meet the university’s computing community.'],
-        ['Its reach','The competition connects school-level programming with university study. For context, the faculty reported 31 finalists from schools across Slovakia in the 2025 edition, illustrating the reach of this growing event.']
+      short: 'Junior Coder',
+      title: 'Junior Coder',
+      category: 'FRI UNIZA · Žilina, Slovakia',
+      subtitle: 'JUNIOR KÓDER. A programming contest run by the informatics faculty at the University of Žilina, held on the faculty’s own machines.',
+      logo: 'uniza.png', logoStyle: 'uniza',
+      lead: ['31', 'finalists in the 2025 edition'],
+      facts: [
+        ['2nd edition', 'in 2025, so the contest is young'],
+        ['FRI', 'Faculty of Management Science and Informatics'],
+        ['1953', 'university founded, as a railway school']
       ],
-      connection:'I received a Certificate of Successful Completion in March 2024 from the Faculty of Management Science and Informatics at the University of Žilina.',
-      sources:[['FRI UNIZA · competition report (2025)','https://www.fri.uniza.sk/aktualita/finale-druheho-rocnika-sutaze-junior-koder-koderka-pozna-svojich-vitazov']]
+      sections: [
+        ['Where it sits', 'The competition is the faculty’s way of meeting the people who might enrol there in two years, and it puts school programming in front of a university panel rather than a classroom one. The 2025 final drew 31 students from schools across Slovakia.'],
+        ['The faculty behind it', 'FRI is one of six faculties at the University of Žilina, with roughly 1,650 students of its own. The university itself started in 1953 as a college of railway transport split off from the Czech Technical University in Prague, and moved to Žilina in the sixties.']
+      ],
+      connection: 'I received a Certificate of Successful Completion in March 2024, from the Faculty of Management Science and Informatics at the University of Žilina.',
+      sources: [
+        ['FRI UNIZA, 2025 competition report', 'https://www.fri.uniza.sk/aktualita/finale-druheho-rocnika-sutaze-junior-koder-koderka-pozna-svojich-vitazov'],
+        ['University of Žilina, profile', 'https://www.uniza.sk/index.php/en/university/general-information/university-profile']
+      ]
     },
+
     universities: {
-      title:'Technology meets finance',category:'Higher education · Bratislava, Slovakia',
-      subtitle:'Two universities. One joint bachelor’s programme.',logo:'stu-official.svg',
-      facts:[['2','partner universities'],['3 years','bachelor’s programme'],['FinTech','shared focus']],
-      sections:[['Slovak University of Technology · STU','STU is a research-oriented technical university in Bratislava, with seven faculties and an Institute of Management. Its teaching and research span engineering, computing, architecture, chemistry and related disciplines. Around 11,000 students study at the university.'],['The technical side · FEI STU','The Faculty of Electrical Engineering and Information Technology provides the engineering and computing setting for the joint programme. This is the technical university behind the STU name on my timeline.']],
-      chapters:[{title:'Bratislava University of Economics and Business',kicker:'The economics side · EUBA',logo:'euba-official.png',paragraphs:['Also widely known as the University of Economics in Bratislava, EUBA specialises in economics, business and management. Its seven faculties cover these fields and their related disciplines. The Faculty of National Economy (NHF EUBA) is the partner faculty in my programme.','FinTech and Financial Innovation is a joint bachelor’s programme with FEI STU. It brings finance and economics together with information technology, including programming, data analysis and applications of artificial intelligence in financial decision-making.']}],
-      connection:'My September 2026–June 2029 study path combines the technical perspective of FEI STU with the financial and economic perspective of NHF EUBA.',
-      sources:[['STU · university profile','https://www.stuba.sk/english/university-profile/about-us.html?page_id=9370'],['EUBA · university','https://euba.sk/en/'],['NHF EUBA · study programmes','https://nhf.euba.sk/uchadzaci-o-studium/studijne-programy']]
+      short: 'FEI STU & NHF EUBA',
+      title: 'Two universities, one degree',
+      category: 'Higher education · Bratislava, Slovakia',
+      subtitle: 'FinTech and Financial Innovation is taught jointly by an engineering faculty and an economics faculty. Neither could run it alone.',
+      logo: 'stu-official.svg',
+      lead: ['1937', 'STU founded, the oldest technical university in Slovakia'],
+      facts: [
+        ['~11,000', 'students at STU'],
+        ['180,000+', 'STU graduates since 1937'],
+        ['2026–2029', 'my three years']
+      ],
+      sections: [
+        ['The technical half', 'The Slovak University of Technology has seven faculties and an Institute of Management, spread across Bratislava and Trnava. The Faculty of Electrical Engineering and Information Technology, FEI STU, is the one on my timeline, and it supplies the programming, mathematics and systems side of the joint degree.'],
+        ['Why it is split', 'Financial technology sits in the gap between two schools that do not usually share a timetable. Putting the degree across both means the same student writes code in one building and models markets in the other, instead of picking a side at eighteen.']
+      ],
+      chapters: [{
+        title: 'Bratislava University of Economics and Business',
+        kicker: 'The economics half',
+        logo: 'euba-official.png',
+        paragraphs: [
+          'EUBA opened in 1940 as the College of Commerce, set up so Slovak students had somewhere to study after the universities in the occupied Czech lands were closed. It now runs seven faculties, more than 7,000 students and 88 accredited programmes.',
+          'The Faculty of National Economy, NHF EUBA, is the partner faculty on this programme. Its side of the curriculum is banking, financial markets and economic analysis, which is where the data work from FEI gets pointed at something.'
+        ]
+      }],
+      connection: 'From September 2026 to June 2029 I will be studying across both: engineering at FEI STU, finance and economics at NHF EUBA.',
+      sources: [
+        ['STU, university profile', 'https://www.stuba.sk/english/university-profile/about-us.html?page_id=9370'],
+        ['EUBA, history', 'https://euba.sk/en/univerzita/history'],
+        ['NHF EUBA, study programmes', 'https://nhf.euba.sk/uchadzaci-o-studium/studijne-programy']
+      ]
     },
+
     founders: {
-      title:'Future Founders',category:'Entrepreneurship · Bratislava, Slovakia',
-      subtitle:'A founder programme powered by The Spot',logo:'the-spot.svg',
-      facts:[['Build','a startup project'],['Mentorship','people from practice'],['The Spot','Bratislava community']],
-      sections:[
-        ['What it is','Future Founders is a programme for students who want to turn an idea into a project. Its secondary-school programme combines mentoring, practical lessons from people working in business and time to build something of your own.'],
-        ['Why it matters','The value is practical experience: working with a team, testing ideas, learning from founders and turning feedback into a better product. It is connected to The Spot, a coworking and entrepreneurial community in Bratislava’s Sky Park, giving participants a setting in which to meet people building businesses.']
+      short: 'Future Founders',
+      title: 'Future Founders',
+      category: 'The Spot · Sky Park, Bratislava',
+      subtitle: 'A founder programme for secondary-school students, run out of a coworking space rather than a school. You arrive with an idea and are expected to leave with something people have used.',
+      logo: 'the-spot.svg',
+      lead: ['Free', 'to join, for secondary-school students'],
+      facts: [
+        ['The Spot', 'runs it'],
+        ['Oct to Aug', 'one school year'],
+        ['Varsity', 'the university version']
       ],
-      connection:'Selected for the programme, I worked with a team on a startup project, with mentoring, masterclasses and workshops in product development and strategy.',
-      sources:[['Future Founders · official programme','https://futurefounders.sk/'],['The Spot · community','https://thespotcowork.com/']]
+      sections: [
+        ['What you actually do', 'You are put in a team and given a year. The sessions are workshops rather than lectures: customer interviews, positioning, pricing, prototyping, pitching. Mentors are founders and operators who come in from the Bratislava startup scene, and they will tell you an idea is weak. The point is to get something in front of real users before the programme ends.'],
+        ['Where it happens', 'The Spot is a coworking space and startup community in Sky Park. Running the programme there means participants work in the same building as people currently running companies, which is where most of the useful feedback comes from. The Spot runs Varsity on the same model for university students.']
+      ],
+      connection: 'I was selected for the programme and spent it building a startup project with a team, through mentoring, masterclasses and workshops on product and strategy.',
+      sources: [
+        ['Future Founders', 'https://futurefounders.sk/'],
+        ['Future Founders Varsity', 'https://varsity.futurefounders.sk/'],
+        ['The Spot, community', 'https://thespotcowork.com/en/community/']
+      ]
     },
+
     sostar: {
-      title:'SOSTAR',category:'Technical education · Bratislava, Slovakia',
-      subtitle:'Secondary Vocational School of Technologies and Crafts',logo:'sostar-circle.svg',
-      facts:[['4 years','vocational programme'],['IT & networks','my specialisation'],['Bratislava','Ivanská cesta 21']],
-      sections:[
-        ['What the school is','SOSTAR is a secondary vocational school combining classroom education with practical technical training. Its Slovak name is Stredná odborná škola technológií a remesiel. It is based in Bratislava, Slovakia.'],
-        ['What my programme involves','Mechanic of Computer Networks is a four-year programme covering computer hardware, software and the design, installation and maintenance of networks. It also introduces programming and web technologies. The programme leads to a school-leaving examination (maturita) and a vocational qualification, combining a route to university with practical preparation for technical work.']
+      short: 'SOSTAR',
+      title: 'SOSTAR',
+      category: 'Vocational school · Bratislava, Slovakia',
+      subtitle: 'Stredná odborná škola technológií a remesiel. A technical secondary school where a third of the week is spent with the hardware rather than reading about it.',
+      logo: 'sostar-circle.svg',
+      lead: ['4 years', 'to a maturita and a trade qualification'],
+      facts: [
+        ['Computer networks', 'my field'],
+        ['Ivanská cesta 21', 'Bratislava'],
+        ['2022–2026', 'my years there']
       ],
-      connection:'I studied here from 2022 to 2026. This is the hardware, software and networking foundation behind my projects, and the school I represented in SOČ and other activities.',
-      sources:[['SOSTAR · Computer Networks programme','https://sostar.sk/pre-uchadzacov-o-studium/studium-2/4-rocne-ucebne-odbory/mechanik-pocitacovych-sieti-3/']]
+      sections: [
+        ['The school', 'SOSTAR teaches technical trades alongside the standard academic subjects, so its students leave with both a school-leaving exam and a qualification they can work with. That combination is the point: university stays open, but so does a job.'],
+        ['My programme', 'Mechanic of Computer Networks runs four years and covers hardware, operating systems and the design, installation and maintenance of networks, with programming and web technologies alongside. Building the network and then having to fix it is a different kind of learning from a lecture about it, and it is the foundation most of my projects sit on.']
+      ],
+      connection: 'I studied here from 2022 to 2026. It is the school I represented at SOČ and at the regional awards.',
+      sources: [
+        ['SOSTAR, Computer Networks programme', 'https://sostar.sk/pre-uchadzacov-o-studium/studium-2/4-rocne-ucebne-odbory/mechanik-pocitacovych-sieti-3/']
+      ]
     },
+
     erasmus: {
-      title:'Erasmus+',category:'International experience · Portugal',
-      subtitle:'European learning mobility, applied to vocational training',logo:'erasmus.svg',
-      facts:[['EU','education programme'],['Portugal','placement location'],['Sustainable IT','my internship focus']],
-      sections:[
-        ['What it is','Erasmus+ is the European Union’s programme supporting education, training, youth and sport. It supports opportunities to study, train and gain experience abroad, including placements for vocational students as well as university exchanges.'],
-        ['Why it matters','A vocational placement puts technical learning into a workplace in another country. Alongside practical skills, it offers experience with different working methods, communication across cultures and greater independence.']
+      short: 'Erasmus+',
+      title: 'Erasmus+',
+      category: 'European Union · placement in Portugal',
+      subtitle: 'Best known for university exchanges, but the same programme sends vocational students abroad to work. That is the half I did.',
+      logo: 'erasmus.svg',
+      lead: ['16 million', 'people have taken part since 1987'],
+      facts: [
+        ['€26.2 bn', 'budget for 2021–2027'],
+        ['1987', 'first year of the programme'],
+        ['Portugal', 'where mine was']
       ],
-      connection:'In November–December 2023, I completed a professional internship at GreenTek in Portugal, focusing on computer hardware recycling and sustainable IT practices.',
-      sources:[['European Commission · Erasmus+','https://erasmus-plus.ec.europa.eu/about-erasmus']]
+      sections: [
+        ['More than an exchange', 'Erasmus+ covers education, training, youth and sport across the EU. Alongside the semesters abroad it funds vocational placements, where a student on a technical course spends weeks inside a real company in another country. Same programme, different half of it.'],
+        ['What a placement is actually like', 'You work rather than study, and the technical part turns out to be the easy half. The rest is doing the job in a second language, in a workplace that organises itself differently from the one at home, with nobody from your school in the room. That is the part you keep.']
+      ],
+      connection: 'In November and December 2023 I did a professional internship at GreenTek in Portugal, working on computer hardware recycling and sustainable IT practices.',
+      sources: [
+        ['European Commission, about Erasmus+', 'https://erasmus-plus.ec.europa.eu/about-erasmus'],
+        ['Erasmus+, history and funding', 'https://erasmus-plus.ec.europa.eu/about-erasmus/history-funding-and-future']
+      ]
     }
   };
+
   const dialog = document.getElementById('recognition-dialog');
   if (!dialog || typeof dialog.showModal !== 'function') return;
+
   const scroll = dialog.querySelector('.context-scroll');
   const closeButton = dialog.querySelector('.context-close');
   const label = dialog.querySelector('.context-bar__label');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const arrow = '<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 15 15 5M5 5h10v10"/></svg>';
+  const linkMark = '<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 15 15 5M6 5h9v9"/></svg>';
   const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const logo = (file, style = '') => `<div class="context-logo ${style ? 'context-logo--' + escape(style) : ''}" aria-hidden="true" data-nosnippet><img src="logos/marks/${escape(file)}" alt="" width="120" height="112" decoding="async" draggable="false"></div>`;
+  const host = url => { try { return new URL(url).hostname.replace(/^www\./,''); } catch { return ''; } };
+  const plate = (file, style = '') => `<div class="context-logo ${style ? 'context-logo--' + escape(style) : ''}" aria-hidden="true" data-nosnippet><img src="logos/marks/${escape(file)}" alt="" width="78" height="78" decoding="async" draggable="false"></div>`;
+  const fact = ([value, meaning]) => `<div><dt>${escape(meaning)}</dt><dd>${escape(value)}</dd></div>`;
+
   let opener = null;
   let closingTimer = null;
+  let titleWatcher = null;
   let scrollY = 0;
   let savedBody = null;
 
   function render(topic, result) {
     const connection = result || topic.connection;
-    label.textContent = ['universities','founders','sostar','erasmus'].includes(opener.dataset.context) ? 'Education & experience / explained' : 'Honors & awards / explained';
-    scroll.innerHTML = `<header class="context-hero"><div><p class="context-kicker">${escape(topic.category)}</p><h2 id="context-title" tabindex="-1">${escape(topic.title)}</h2><p class="context-subtitle">${escape(topic.subtitle)}</p></div>${logo(topic.logo, topic.logoStyle)}</header>
-      <dl class="context-facts">${topic.facts.map(([value, meaning]) => `<div><dt>${escape(meaning)}</dt><dd>${escape(value)}</dd></div>`).join('')}</dl>
-      ${topic.sections.map(([heading, copy]) => `<section class="context-section"><h3>${escape(heading)}</h3><p class="context-copy">${escape(copy)}</p></section>`).join('')}
-      ${(topic.chapters || []).map(chapter => `<section class="context-chapter"><div class="context-chapter__head">${logo(chapter.logo)}<div><p class="context-kicker">${escape(chapter.kicker)}</p><h3>${escape(chapter.title)}</h3></div></div>${chapter.paragraphs.map(copy => `<p class="context-copy">${escape(copy)}</p>`).join('')}</section>`).join('')}
-      ${connection ? `<aside class="context-connection"><p class="context-kicker">My connection</p><p class="context-copy">${escape(connection)}</p></aside>` : ''}
-      <footer class="context-sources"><h3>Explore the official sources</h3><ul>${topic.sources.map(([name,url]) => `<li><a href="${escape(url)}" target="_blank" rel="noopener noreferrer">${escape(name)}${arrow}<span class="sr-only"> (opens in a new tab)</span></a></li>`).join('')}</ul></footer>`;
+    label.textContent = topic.short;
+
+    scroll.innerHTML =
+      `<header class="context-hero">${plate(topic.logo, topic.logoStyle)}<div class="context-hero__text">` +
+        `<p class="context-kicker">${escape(topic.category)}</p>` +
+        `<h2 id="context-title" tabindex="-1">${escape(topic.title)}</h2>` +
+        `<p class="context-subtitle">${escape(topic.subtitle)}</p>` +
+      `</div></header>` +
+
+      `<dl class="context-facts">${fact(topic.lead)}${topic.facts.map(fact).join('')}</dl>` +
+
+      topic.sections.map(([heading, copy]) =>
+        `<section class="context-section"><h3>${escape(heading)}</h3><p class="context-copy">${escape(copy)}</p></section>`).join('') +
+
+      (topic.chapters || []).map(chapter =>
+        `<section class="context-chapter"><div class="context-chapter__head">${plate(chapter.logo)}<div>` +
+          `<p class="context-kicker">${escape(chapter.kicker)}</p><h3>${escape(chapter.title)}</h3>` +
+        `</div></div>${chapter.paragraphs.map(copy => `<p class="context-copy">${escape(copy)}</p>`).join('')}</section>`).join('') +
+
+      (connection ? `<aside class="context-connection"><p class="context-connection__label">In my case</p><p class="context-copy">${escape(connection)}</p></aside>` : '') +
+
+      `<footer class="context-sources"><h3>Check it yourself</h3><ul>${topic.sources.map(([name, url]) =>
+        `<li><a href="${escape(url)}" target="_blank" rel="noopener noreferrer">` +
+          `<span class="context-sources__name">${escape(name)}</span>` +
+          `<span class="context-sources__host">${escape(host(url))}${linkMark}</span>` +
+          `<span class="sr-only"> (opens in a new tab)</span></a></li>`).join('')}</ul></footer>`;
+  }
+
+  /* The bar label is redundant while the title is still on screen, so it waits. */
+  function watchTitle() {
+    if (titleWatcher) { titleWatcher.disconnect(); titleWatcher = null; }
+    if (typeof IntersectionObserver !== 'function') return;
+    const title = dialog.querySelector('#context-title');
+    if (!title) return;
+    dialog.classList.add('has-sticky-label');
+    dialog.classList.remove('is-scrolled');
+    titleWatcher = new IntersectionObserver(
+      ([entry]) => dialog.classList.toggle('is-scrolled', !entry.isIntersecting),
+      {root: scroll, threshold: 0}
+    );
+    titleWatcher.observe(title);
   }
 
   function open(button) {
@@ -132,13 +302,19 @@
     render(topic, button.dataset.contextResult);
     scrollY = window.scrollY;
     savedBody = {};
-    const styles = {position:'fixed',top:`-${scrollY}px`,left:'0',right:'0',paddingRight:`${parseFloat(getComputedStyle(document.body).paddingRight) + window.innerWidth - document.documentElement.clientWidth}px`};
+    /* Locking the page can reclaim the scrollbar's width and widen the viewport,
+       which slides every centred fixed element sideways. scrollbar-gutter:stable
+       makes this zero; where it is unsupported, the nav pads by the same amount. */
+    const gutter = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--lock-gutter', `${gutter}px`);
+    const styles = {position:'fixed',top:`-${scrollY}px`,left:'0',right:'0',paddingRight:`${parseFloat(getComputedStyle(document.body).paddingRight) + gutter}px`};
     for (const name of Object.keys(styles)) { savedBody[name] = document.body.style[name]; document.body.style[name] = styles[name]; }
     document.documentElement.classList.add('context-open');
     dialog.classList.remove('is-closing');
     button.setAttribute('aria-expanded','true');
     dialog.showModal();
     scroll.scrollTop = 0;
+    watchTitle();
     dialog.querySelector('#context-title').focus({preventScroll:true});
   }
 
@@ -151,13 +327,17 @@
     if (!dialog.open || closingTimer !== null) return;
     if (motion.matches) return finishClose();
     dialog.classList.add('is-closing');
-    closingTimer = setTimeout(finishClose, 210);
+    closingTimer = setTimeout(finishClose, 170);
   }
+
   dialog.addEventListener('close', () => {
     clearTimeout(closingTimer);
     closingTimer = null;
     dialog.classList.remove('is-closing');
+    if (titleWatcher) { titleWatcher.disconnect(); titleWatcher = null; }
+    dialog.classList.remove('has-sticky-label','is-scrolled');
     document.documentElement.classList.remove('context-open');
+    document.documentElement.style.removeProperty('--lock-gutter');
     if (savedBody) for (const [name,value] of Object.entries(savedBody)) document.body.style[name] = value;
     savedBody = null;
     const root = document.documentElement;
@@ -167,13 +347,16 @@
     root.style.scrollBehavior = previousBehavior;
     if (opener) { opener.setAttribute('aria-expanded','false'); opener.focus({preventScroll:true}); }
   });
+
   closeButton.addEventListener('click',close);
   dialog.addEventListener('cancel',event => { event.preventDefault();close(); });
+
   let downOutside = false;
   function outside(event) { const r=dialog.getBoundingClientRect(); return event.clientX<r.left || event.clientX>r.right || event.clientY<r.top || event.clientY>r.bottom; }
   dialog.addEventListener('pointerdown',event => { downOutside = event.target === dialog && outside(event); });
   dialog.addEventListener('click',event => { if (downOutside && event.target === dialog && outside(event)) close(); downOutside=false; });
   dialog.addEventListener('pointercancel',() => { downOutside=false; });
+
   document.querySelectorAll('[data-context]').forEach(button => {
     if (!topics[button.dataset.context]) return;
     button.hidden = false;
