@@ -6,6 +6,6 @@
       <stop offset="1" stop-color="#ec3992"/>
     </linearGradient>
   </defs>
-  <ellipse cx="64" cy="64" rx="40" ry="41" fill="none" stroke="#151515" stroke-width="42"/>
+  <ellipse cx="64" cy="64" rx="40" ry="41" fill="none" stroke="#252423" stroke-width="36"/>
   <ellipse cx="64" cy="64" rx="40" ry="41" fill="none" stroke="url(#ring)" stroke-width="26"/>
 </svg>
