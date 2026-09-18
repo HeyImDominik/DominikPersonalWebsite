@@ -1,0 +1,62 @@
+/* The portfolio's structured controls with LAVAIQ's violet atmosphere. */
+.lavaiq-island{
+  --lq-paper:#f5f4fb;isolation:isolate;position:relative;overflow:hidden;
+  grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:36px;padding:clamp(28px,4.4vw,64px);
+  color:var(--lq-paper);background:#050710;border:1px solid #bec4da2e;border-radius:28px;
+  box-shadow:inset 0 1px 0 #ffffff12,0 40px 80px -50px #000;
+  font-family:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+.lavaiq-island::before{content:"";position:absolute;inset:0 15% auto;height:1px;background:linear-gradient(90deg,transparent,#a78bfa55,transparent);z-index:3;}
+.lavaiq-island::after{z-index:0;background:linear-gradient(90deg,#050710 0%,#050710f2 24%,#05071099 49%,transparent 75%),linear-gradient(0deg,#050710 0%,transparent 32%,#05071033 80%,#050710 100%);}
+.lavaiq-island>.lavaiq-sky{position:absolute;inset:-28px;z-index:0;pointer-events:none;overflow:hidden;transform:translate3d(var(--lq-bg-x,0px),var(--lq-bg-y,0px),0);}
+.lavaiq-horizon{position:absolute;right:-43%;bottom:-11%;width:145%;height:100%;max-width:none;object-fit:cover;object-position:center 64%;opacity:.92;mask-image:linear-gradient(to bottom,transparent,#000 23%,#000 70%,transparent);animation:lq-horizon-breathe 18s ease-in-out infinite;}
+.lavaiq-horizon-wash{position:absolute;inset:12% -30% -20% 26%;background:radial-gradient(ellipse at 55% 55%,#a78bfa35,#3b6bf018 40%,transparent 68%);}
+.lavaiq-stars{position:absolute;inset:0;transform:translate3d(var(--lq-star-x,0px),var(--lq-star-y,0px),0);}
+.lavaiq-stars i{position:absolute;left:var(--sx);top:var(--sy);width:var(--ss);height:var(--ss);border-radius:50%;background:#e6e8ff;opacity:var(--so);box-shadow:0 0 5px #b3a3ff55;}
+.lavaiq-island .badge{padding:9px 12px;gap:9px;border:1px solid #c5bdd52e;border-radius:8px;background:#a78bfa0b;color:#c6c2d4;font-family:inherit;font-size:13px;letter-spacing:.015em;text-transform:none;font-weight:500;}
+.lavaiq-island .badge svg{width:19px;height:19px;flex:none;color:#b9a8e9;}
+.lavaiq-island .lavaiq-wordmark{margin:27px 0 15px;font-family:"Sora","Inter",Arial,sans-serif;font-size:clamp(2.2rem,3.7vw,3rem);font-weight:600;line-height:1.1;letter-spacing:.035em;color:#f7f7fc;}
+.lavaiq-wordmark .lavaiq-first{margin-right:.055em;color:inherit;font-family:inherit;font-weight:inherit;}
+.lavaiq-wordmark .lavaiq-iq{color:#a477f5;font-family:inherit;font-weight:inherit;}
+.lavaiq-island .lavaiq-headline{margin:0;font-size:clamp(1.5rem,2.7vw,2.3rem);line-height:1.16;letter-spacing:-.035em;font-weight:500;text-wrap:balance;color:#f0f0f7;}
+.lavaiq-headline span{color:inherit;}
+.lavaiq-island .body{color:#a6a9bc;font-size:1rem;line-height:1.65;max-width:46ch;margin-top:21px;}
+.lavaiq-island .chips{display:flex;flex-wrap:wrap;margin-top:25px;gap:8px;max-width:500px!important;}
+.lavaiq-island .chip{border-radius:8px;border:1px solid #bac3dc26;background:#9cabc60c;color:#a8adbf;padding:9px 12px;font-size:14px;line-height:1.3;}
+.lavaiq-island .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:#bac3dc22;gap:1px;border-radius:18px;border:1px solid #bac3dc22;margin-top:30px;overflow:hidden;}
+.lavaiq-island .stats div{background:#0c101bf2;padding:21px 15px;min-width:0;}
+.lavaiq-island .stats .k{font-size:clamp(1.38rem,2.25vw,1.9rem);font-weight:600;letter-spacing:-.035em;line-height:1.18;color:#fafaff;}
+.lavaiq-island .stats .l{margin-top:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;line-height:1.55;color:#9298aa;overflow-wrap:break-word;}
+.lavaiq-island .link-arrow{margin-top:29px;border-radius:10px;background:#fafaff;color:#090c15;font-family:inherit;font-size:15px;font-weight:600;padding:16px 24px;box-shadow:0 16px 34px -20px #dddfff70;}
+.lavaiq-island .link-arrow:hover{background:#fff;box-shadow:0 18px 36px -18px #bcacff66;}
+.lavaiq-island .link-arrow:focus-visible{outline:2px solid #a78bfa;outline-offset:5px;}
+.lavaiq-island .lavaiq-art{align-self:stretch;min-height:460px;perspective:1000px;flex-direction:column;justify-content:center;pointer-events:none;}
+.lavaiq-shield-motion{width:min(115%,410px);aspect-ratio:1;transform:translate3d(var(--lq-x,0px),var(--lq-y,0px),0) rotateX(var(--lq-rx,0deg)) rotateY(var(--lq-ry,0deg));transform-style:preserve-3d;}
+.lavaiq-shield{width:100%;height:100%;max-width:none;object-fit:contain;filter:drop-shadow(0 22px 40px #4628b061);animation:lq-shield-float 9s ease-in-out infinite;}
+.lavaiq-shield-glow{position:absolute;width:110%;aspect-ratio:1;background:radial-gradient(circle,#a78bfa30,#3b6bf00a 48%,transparent 72%);transform:translate3d(var(--lq-bg-x,0px),var(--lq-bg-y,0px),0);}
+.lavaiq-island:not(.lq-active) .lavaiq-shield,.lavaiq-island:not(.lq-active) .lavaiq-horizon{animation-play-state:paused;}
+@keyframes lq-shield-float{0%,100%{transform:translateY(4px);}50%{transform:translateY(-6px);}}
+@keyframes lq-horizon-breathe{0%,100%{transform:scale(1);opacity:.86;}50%{transform:scale(1.025);opacity:.96;}}
+@media(max-width:940px){
+  .lavaiq-island{grid-template-columns:minmax(0,1fr);gap:0;}
+  .lavaiq-island .lavaiq-art{order:0;min-height:320px;margin:15px -24px -20px;}
+  .lavaiq-shield-motion{width:290px;}
+  .lavaiq-island::after{background:linear-gradient(180deg,#050710 0%,#050710ed 40%,#05071040 70%,#05071040 100%);}
+  .lavaiq-horizon{right:-50%;bottom:-15%;width:200%;height:76%;}
+  .lavaiq-island .body{max-width:56ch;}
+}
+@media(max-width:520px){
+  .lavaiq-island{border-radius:22px;padding:28px 22px;}
+  .lavaiq-island .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .lavaiq-island .chip{padding:9px 6px;font-size:13px;}
+  .lavaiq-island .stats{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:16px;}
+  .lavaiq-island .stats div{padding:18px 13px;}
+  .lavaiq-island .stats .k{font-size:1.5rem;}
+  .lavaiq-island .stats .l{font-size:12px;letter-spacing:.07em;}
+  .lavaiq-island .lavaiq-art{min-height:290px;}
+  .lavaiq-shield-motion{width:250px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .lavaiq-island *{animation:none!important;transition:none!important;}
+  .lavaiq-shield-motion,.lavaiq-island>.lavaiq-sky,.lavaiq-stars,.lavaiq-shield-glow{transform:none!important;}
+}

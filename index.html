@@ -1520,6 +1520,9 @@ section{position:relative}
 </style>
 <noscript><style>.rv,.rvg>.rvc,.letters .lt{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
 <link rel="stylesheet" href="recognition.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Sora:wght@500;600&amp;display=swap">
+<link rel="stylesheet" href="lavaiq-island.css">
+<script src="lavaiq-island.js" defer></script>
 <script src="recognition.js" defer></script>
 </head>
 <body>
@@ -1637,17 +1640,20 @@ section{position:relative}
           <h2 id="work-h" class="rv zoom" style="--d:.1s">Selected Works</h2>
         </div>
 
-        <article class="feature glass rv lift" style="--d:.05s">
+        <article class="feature glass rv lift lavaiq-island" id="lavaiq-project" style="--d:.05s">
+          <div class="lavaiq-sky" aria-hidden="true">
+            <img class="lavaiq-horizon" src="lavaiq/hero-horizon.jpg" alt="" loading="lazy" decoding="async">
+            <div class="lavaiq-horizon-wash"></div>
+            <div class="lavaiq-stars"></div>
+          </div>
           <div class="feature__body">
-            <p class="badge">Currently in Development</p>
-            <h3 class="letters" data-letters=".036">LAVAIQ</h3>
-            <p class="sub">AI-Powered Security</p>
+            <p class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="3.5" width="16" height="12" rx="1.5"/><path d="M2 18h20l-1.5 2h-17L2 18Z"/><path d="m10 7-2 2 2 2m4-4 2 2-2 2"/></svg>Currently in development</p>
+            <h3 class="lavaiq-wordmark"><span class="lavaiq-first">L</span>AVA<span class="lavaiq-iq">IQ</span></h3>
+            <p class="lavaiq-headline">Next-generation<br><span>Android protection</span></p>
 
             <p class="body">
-              A revolutionary mobile security system driven by <b>Artificial Intelligence</b>.
-              Designed to detect sophisticated <b>Zero-Day threats</b> where traditional antiviruses fail.
-              Features a multi-layered defense architecture (Signatures, Heuristics, Anomaly Detection) and complex
-              <b>LLM integration</b> for advanced threat analysis, all while maintaining a privacy-first, on-device approach.
+              Custom machine learning that finds known and unseen malware, with LLM tools that make every result understandable.
+              Four complementary detection layers, on-device analysis and an AI security assistant.
             </p>
 
             <ul class="chips" data-stagger=".045">
@@ -1669,17 +1675,14 @@ section{position:relative}
             </div>
 
             <a class="link-arrow" href="https://lavaiq.com/" target="_blank" rel="noopener noreferrer">
-              More info <svg><use href="#i-arrow"/></svg>
+              Explore LAVAIQ <svg><use href="#i-arrow"/></svg>
             </a>
           </div>
 
-          <div class="feature__media">
-            <span class="device__glow" aria-hidden="true"></span>
-            <div class="device">
-              <div class="device__screen">
-                <img src="/AVUI.jpg" width="620" height="1183" loading="lazy" decoding="async"
-                     alt="LAVAIQ app interface showing a protection shield, scan button and quick-select tools.">
-              </div>
+          <div class="feature__media lavaiq-art" aria-hidden="true">
+            <span class="lavaiq-shield-glow"></span>
+            <div class="lavaiq-shield-motion">
+              <img class="lavaiq-shield" src="lavaiq/glass-shield-3d.png" alt="" width="900" height="900" loading="lazy" decoding="async">
             </div>
           </div>
         </article>
