@@ -10,25 +10,25 @@
       short: 'EUCYS',
       title: 'European Union Contest for Young Scientists',
       category: 'European Commission · Kiel, Germany',
-      subtitle: 'The European Commission has run a science contest for 14 to 20 year olds since 1989. You cannot enter it directly; your country sends you.',
+      subtitle: 'The European Commission’s annual science competition for national winners aged 14 to 20. Around 150 young scientists from almost 40 countries are expected in 2026.',
       logo: 'eucys-black.svg',
-      lead: ['1989', 'First held in Brussels, with 53 entrants'],
+      lead: ['~150', 'young scientists expected in 2026'],
       facts: [
-        ['37th edition', 'Kiel, 22–27 September 2026'],
-        ['~150 a year', 'entrants now'],
-        ['14 to 20', 'eligible ages']
+        ['Almost 40', 'countries represented'],
+        ['National winners', 'route to entry'],
+        ['20 to 25', 'international jurors']
       ],
       sections: [
-        ['Getting a place', 'There is no open application. Each participating country runs its own science competition and sends the projects that win it, which is why the field is small and the age range so wide. In Kiel an international jury reads the written work, walks the exhibition stands and interviews the researchers. Originality counts, but so does whether you can defend your method under questioning.'],
-        ['What winners get', 'Cash prizes are split across first, second and third places. The awards that tend to matter more are the visits: CERN, the European Space Agency, EMBL and other European research institutions host EUCYS winners. The contest was set up in 1989 under Jacques Delors after a challenge from Philips, and it has grown from 53 entrants to roughly 150 a year.']
+        ['Why it matters', 'EUCYS brings together projects selected through national science competitions. Students cannot apply directly, and each country may nominate no more than three projects. Reaching EUCYS therefore means being chosen to represent an entire country at the European level.'],
+        ['How it is judged', 'An international jury evaluates the research, written work, exhibition and interviews. The European Commission awards four first prizes worth €7,000 each, along with second prizes, third prizes and special opportunities at leading research organisations.']
       ],
       chapters: [{
-        title: 'AMAVET runs the Slovak route',
-        kicker: 'How a project gets out of Slovakia',
+        title: 'AMAVET selects the Slovak delegation',
+        kicker: 'The route from Slovakia to EUCYS',
         logo: 'amavet-complete.svg',
-        paragraphs: ['Slovakia fills its EUCYS place through the Festival of Science and Technology, organised by AMAVET. The 2025 national final put 81 students and 60 projects in front of 27 judges drawn from universities, the Slovak Academy of Sciences and industry. The nominations for international contests come out of that room.']
+        paragraphs: ['Slovakia selects its EUCYS representatives through the national Festival of Science and Technology organised by AMAVET. In 2025, its national final brought together 81 students with 60 projects and a 27 member jury from universities, the Slovak Academy of Sciences and industry.']
       }],
-      connection: 'In November 2025 I was selected to represent Slovakia at EUCYS 2026 with LAVAIQ, my Android antivirus built on machine learning. The national round is the selection; the contest itself is still ahead.',
+      connection: 'In November 2025 I was selected to represent Slovakia at EUCYS 2026 with LAVAIQ, my machine learning based Android antivirus. The national final selected the delegation, while EUCYS itself takes place in September 2026.',
       sources: [
         ['European Commission, EUCYS', 'https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/eucys_en'],
         ['European Commission, past contests', 'https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/eucys/past-contests_en'],
@@ -40,19 +40,19 @@
       short: 'Festival of Science and Technology',
       title: 'Festival of Science and Technology',
       category: 'AMAVET · Slovakia',
-      subtitle: 'Festival vedy a techniky AMAVET. A science fair where students defend their own research in front of working scientists, first regionally, then nationally.',
+      subtitle: 'A nationwide science fair in which students present original research at regional rounds and the strongest projects advance to the Slovak final.',
       logo: 'amavet-complete.svg',
-      lead: ['28th', 'edition of the festival in 2025'],
+      lead: ['60 projects', 'at the 2025 national final'],
       facts: [
-        ['60 projects', 'at the 2025 national final'],
-        ['81 students', 'presenting them'],
-        ['27 judges', 'universities, SAV, industry']
+        ['81 students', 'national finalists'],
+        ['27 judges', 'from research and industry'],
+        ['28th edition', 'held in 2025']
       ],
       sections: [
-        ['Regional first', 'The round on this page covers the Bratislava and Trnava regions. Placing there is what puts a project into the national final, and the national final is where nominations to EUCYS and Regeneron ISEF are handed out. It is a ladder, not a single event, and each rung has a different jury.'],
-        ['Who AMAVET is', 'The Association for Youth, Science and Technology has been running since 1990. It is a volunteer organisation more than an institution: clubs across Slovakia, several thousand active members, teachers and researchers who give up weekends. Astronomy, robotics, informatics, biotechnology and earth sciences all sit under the same roof.']
+        ['What the competition is', 'The Festival of Science and Technology, known in Slovak as Festival vedy a techniky AMAVET, is organised by the nonprofit youth science association AMAVET. Students build a research project, present it at a regional fair and defend it before specialists.'],
+        ['Why the result matters', 'Regional placements qualify projects for the national final. The national jury then selects projects for major international science competitions, including EUCYS. In 2025 the final included 60 projects assessed by experts from universities, the Slovak Academy of Sciences and industry.']
       ],
-      connection: 'I took 2nd place at the Bratislava regional round in October 2025 with LAVAIQ. The project went on to the national round and was selected there for EUCYS 2026.',
+      connection: 'I placed 2nd at the Bratislava and Trnava regional round in October 2025 with LAVAIQ. The project advanced to the national final and was selected there for EUCYS 2026.',
       sources: [
         ['AMAVET, regional competition', 'https://www.festivalvedy.sk/wp2/bratislavsky-a-trnavsky-kraj/'],
         ['AMAVET, 2025 national final', 'https://www.festivalvedy.sk/wp2/festival-vedy-a-techniky-amavet-2025-otvoril-tyzden-vedy-a-techniky-na-slovensku/'],
@@ -63,20 +63,20 @@
     bratislava: {
       short: 'Bratislava Region Award',
       title: 'Bratislava Region Award',
-      category: 'Bratislavský samosprávny kraj · Slovakia',
-      subtitle: 'An annual ceremony at which the region that governs Slovakia’s capital honours secondary-school students for work done outside what school asked of them.',
+      category: 'Bratislava Self-Governing Region · Slovakia',
+      subtitle: 'An annual regional honour for secondary-school students whose results, initiative or public contribution go beyond normal school requirements.',
       logo: 'bratislava.png', logoStyle: 'bratislava',
-      lead: ['50', 'students honoured at the June 2025 ceremony'],
+      lead: ['50 students', 'honoured across the region in 2025'],
       facts: [
-        ['Juraj Droba', 'Governor who presents it'],
-        ['1 of 8', 'self-governing regions in Slovakia'],
-        ['SOSTAR', 'the school I represented']
+        ['Annual', 'regional recognition'],
+        ['Juraj Droba', 'award presenter'],
+        ['Multiple fields', 'science, sport, art and service']
       ],
       sections: [
-        ['What the region is', 'The Bratislava Self-Governing Region is the tier of government between the city and the state. It runs the secondary schools in the capital and the districts around it, and once a year it brings the students it wants to point at into one room.'],
-        ['What it is given for', 'Not grades. The list runs across academic competitions, sport, the arts and work done for the community, and the common thread is initiative rather than results in any one subject. The award travels with the school as much as the student.']
+        ['What the award is', 'The Bratislava Self-Governing Region recognises students from secondary schools under its authority near the end of each school year. The 2025 ceremony honoured 50 students from across the region.'],
+        ['Why it is significant', 'This is not a single-subject competition. The region selects students with exceptional results in academic competitions, sport, art, volunteering and civic initiatives. Receiving it means being chosen as one of a small group representing strong student achievement across the capital region.']
       ],
-      connection: 'I received the award in June 2025 for my results with LAVAIQ and for representing SOSTAR. It was presented and signed by Juraj Droba, the Governor of the Bratislava Region.',
+      connection: 'I received the award in June 2025 for my results with LAVAIQ and for representing SOSTAR. Juraj Droba, Governor of the Bratislava Region, presented and signed the award.',
       sources: [
         ['Bratislava Region, 2025 student awards', 'https://bratislavskykraj.sk/predseda-bsk-ocenil-najuspesnejsich-stredoskolakov-kraja/'],
         ['SOSTAR', 'https://sostar.sk/']
@@ -87,17 +87,17 @@
       short: 'SOČ',
       title: 'SOČ',
       category: 'ŠIOV · Slovakia',
-      subtitle: 'Stredoškolská odborná činnosť. Slovakia’s national competition for independent secondary-school research: write a paper, then defend it in front of a panel.',
+      subtitle: 'Slovakia’s nationwide competition for independent secondary-school research. Students write a formal paper and defend it before an expert panel.',
       logo: 'soc-clean-v2.svg',
-      lead: ['2,381', 'students across the 2025 competition'],
+      lead: ['2,381', 'students entered in 2025'],
       facts: [
-        ['17 fields', 'informatics through to social sciences'],
-        ['318 schools', 'taking part in 2025'],
-        ['272 projects', 'reaching the national final']
+        ['318 schools', 'represented nationwide'],
+        ['272 projects', 'reached the national final'],
+        ['17 fields', 'judged separately']
       ],
       sections: [
-        ['How it works', 'You pick a problem, work on it for months, write it up properly and then sit in front of a panel that has read it. School round, regional round, national round. Each field is judged separately, so a placing is a placing within a subject rather than across the whole competition.'],
-        ['Who runs it', 'The State Institute of Vocational Education, ŠIOV, coordinates SOČ nationally. Because it reaches every kind of secondary school rather than only the academic ones, it is often the first time a student has to present technical work to people who are not their teachers.']
+        ['How the competition works', 'SOČ stands for Stredoškolská odborná činnosť. Students develop an original project, document it in a research paper and defend it through school, district, regional and national rounds. Judges assess both the work and the student’s ability to explain and defend it.'],
+        ['How large it is', 'In 2025, 2,381 students from 318 schools entered across 17 subject fields. Only 272 projects reached the national final. Placements are awarded within each field, so a national result identifies one of the strongest projects in that discipline across Slovakia.']
       ],
       sources: [
         ['ŠIOV, 2025 national competition', 'https://siov.sk/stredoskolska-odborna-cinnost-predstavi-talenty-na-celostatnom-kole-v-kosiciach/'],
@@ -109,19 +109,19 @@
       short: 'Junior Coder',
       title: 'Junior Coder',
       category: 'FRI UNIZA · Žilina, Slovakia',
-      subtitle: 'JUNIOR KÓDER. A programming contest run by the informatics faculty at the University of Žilina, held on the faculty’s own machines.',
+      subtitle: 'A national programming competition for secondary-school students organised by the informatics faculty at the University of Žilina.',
       logo: 'uniza.png', logoStyle: 'uniza',
-      lead: ['31', 'finalists in the 2025 edition'],
+      lead: ['31 finalists', 'in the 2025 edition'],
       facts: [
-        ['2nd edition', 'in 2025, so the contest is young'],
-        ['FRI', 'Faculty of Management Science and Informatics'],
-        ['1953', 'university founded, as a railway school']
+        ['University run', 'by FRI UNIZA'],
+        ['National', 'schools from across Slovakia'],
+        ['2nd edition', 'held in 2025']
       ],
       sections: [
-        ['Where it sits', 'The competition is the faculty’s way of meeting the people who might enrol there in two years, and it puts school programming in front of a university panel rather than a classroom one. The 2025 final drew 31 students from schools across Slovakia.'],
-        ['The faculty behind it', 'FRI is one of six faculties at the University of Žilina, with roughly 1,650 students of its own. The university itself started in 1953 as a college of railway transport split off from the Czech Technical University in Prague, and moved to Žilina in the sixties.']
+        ['What the competition is', 'Junior Coder tests programming and problem solving in a university environment. It is organised by the Faculty of Management Science and Informatics, known as FRI, and finalists complete the competition using the faculty’s facilities.'],
+        ['Scale and significance', 'The 2025 final brought together 31 students from secondary schools across Slovakia. Junior Coder is a newer and more specialised contest than the long-running national olympiads, but its value comes from direct evaluation by a university faculty focused on computing and informatics.']
       ],
-      connection: 'I received a Certificate of Successful Completion in March 2024, from the Faculty of Management Science and Informatics at the University of Žilina.',
+      connection: 'I received a Certificate of Successful Completion in March 2024 from the Faculty of Management Science and Informatics at the University of Žilina.',
       sources: [
         ['FRI UNIZA, 2025 competition report', 'https://www.fri.uniza.sk/aktualita/finale-druheho-rocnika-sutaze-junior-koder-koderka-pozna-svojich-vitazov'],
         ['University of Žilina, profile', 'https://www.uniza.sk/index.php/en/university/general-information/university-profile']
@@ -129,34 +129,34 @@
     },
 
     universities: {
-      short: 'FEI STU & NHF EUBA',
+      short: 'FEI STU and NHF EUBA',
       title: 'Two universities, one degree',
       category: 'Higher education · Bratislava, Slovakia',
-      subtitle: 'FinTech and Financial Innovation is taught jointly by an engineering faculty and an economics faculty. Neither could run it alone.',
+      subtitle: 'FinTech and Financial Innovation is a joint bachelor’s programme combining engineering and computer science with finance and economics.',
       logo: 'stu-official.svg',
-      lead: ['1937', 'STU founded, the oldest technical university in Slovakia'],
+      lead: ['2 universities', 'delivering one joint programme'],
       facts: [
-        ['~11,000', 'students at STU'],
-        ['180,000+', 'STU graduates since 1937'],
-        ['2026–2029', 'my three years']
+        ['Almost 11,000', 'students at STU'],
+        ['Over 7,000', 'students at EUBA'],
+        ['3 years', 'standard bachelor’s study']
       ],
       sections: [
-        ['The technical half', 'The Slovak University of Technology has seven faculties and an Institute of Management, spread across Bratislava and Trnava. The Faculty of Electrical Engineering and Information Technology, FEI STU, is the one on my timeline, and it supplies the programming, mathematics and systems side of the joint degree.'],
-        ['Why it is split', 'Financial technology sits in the gap between two schools that do not usually share a timetable. Putting the degree across both means the same student writes code in one building and models markets in the other, instead of picking a side at eighteen.']
+        ['What the programme is', 'The degree is taught jointly by FEI STU and NHF EUBA. FEI provides programming, mathematics, data and technology, while NHF provides economics, banking, financial markets and analysis. The joint structure is the defining feature because students study both sides of financial technology instead of choosing only one.'],
+        ['STU and FEI', 'The Slovak University of Technology is a major public technical university with almost 11,000 students across seven faculties and an Institute of Management. Its Faculty of Electrical Engineering and Information Technology, FEI, delivers the engineering and computing part of the programme.']
       ],
       chapters: [{
         title: 'Bratislava University of Economics and Business',
-        kicker: 'The economics half',
+        kicker: 'EUBA and the finance side',
         logo: 'euba-official.png',
         paragraphs: [
-          'EUBA opened in 1940 as the College of Commerce, set up so Slovak students had somewhere to study after the universities in the occupied Czech lands were closed. It now runs seven faculties, more than 7,000 students and 88 accredited programmes.',
-          'The Faculty of National Economy, NHF EUBA, is the partner faculty on this programme. Its side of the curriculum is banking, financial markets and economic analysis, which is where the data work from FEI gets pointed at something.'
+          'EUBA is a major Slovak public university focused on economics, finance and business. It has seven faculties, more than 7,000 students and over 118,000 graduates.',
+          'The Faculty of National Economy, NHF, delivers the programme’s economics and finance subjects. Together, the two faculties connect software and data skills with the financial systems where they are applied.'
         ]
       }],
-      connection: 'From September 2026 to June 2029 I will be studying across both: engineering at FEI STU, finance and economics at NHF EUBA.',
+      connection: 'Since September 2026 I have been studying across both institutions, with engineering and technology at FEI STU and finance and economics at NHF EUBA.',
       sources: [
         ['STU, university profile', 'https://www.stuba.sk/english/university-profile/about-us.html?page_id=9370'],
-        ['EUBA, history', 'https://euba.sk/en/univerzita/history'],
+        ['EUBA, university profile and history', 'https://euba.sk/en/univerzita/history'],
         ['NHF EUBA, study programmes', 'https://nhf.euba.sk/uchadzaci-o-studium/studijne-programy']
       ]
     },
@@ -165,43 +165,43 @@
       short: 'Future Founders',
       title: 'Future Founders',
       category: 'The Spot · Sky Park, Bratislava',
-      subtitle: 'A founder programme for secondary-school students, run out of a coworking space rather than a school. You arrive with an idea and are expected to leave with something people have used.',
+      subtitle: 'A free eight-month startup programme for secondary-school students who want to turn an idea into a tested project.',
       logo: 'the-spot.svg',
-      lead: ['Free', 'to join, for secondary-school students'],
+      lead: ['8 months', 'of project building and mentoring'],
       facts: [
-        ['The Spot', 'runs it'],
-        ['Oct to Aug', 'one school year'],
-        ['Varsity', 'the university version']
+        ['Free', 'for selected students'],
+        ['Monthly', 'mentor sessions'],
+        ['The Spot', 'startup community in Sky Park']
       ],
       sections: [
-        ['What you actually do', 'You are put in a team and given a year. The sessions are workshops rather than lectures: customer interviews, positioning, pricing, prototyping, pitching. Mentors are founders and operators who come in from the Bratislava startup scene, and they will tell you an idea is weak. The point is to get something in front of real users before the programme ends.'],
-        ['Where it happens', 'The Spot is a coworking space and startup community in Sky Park. Running the programme there means participants work in the same building as people currently running companies, which is where most of the useful feedback comes from. The Spot runs Varsity on the same model for university students.']
+        ['What the programme is', 'Participants work in teams on their own project while learning how to identify a real problem, speak with users, build a prototype, develop a business model and present the result. The programme combines practical lessons with feedback from founders and business professionals.'],
+        ['How participants are selected', 'Every application is reviewed by a three-person panel from The Spot and its mentor community. The panel looks for how applicants think, how motivated they are and how well they respond to feedback. Each selected team is then paired with an experienced mentor for regular project guidance.']
       ],
-      connection: 'I was selected for the programme and spent it building a startup project with a team, through mentoring, masterclasses and workshops on product and strategy.',
+      connection: 'I was selected for the programme and spent eight months building a startup project with a team through mentoring, practical lessons and workshops on product and strategy.',
       sources: [
-        ['Future Founders', 'https://futurefounders.sk/'],
-        ['Future Founders Varsity', 'https://varsity.futurefounders.sk/'],
-        ['The Spot, community', 'https://thespotcowork.com/en/community/']
+        ['Future Founders, programme overview', 'https://futurefounders.sk/stredoskolak'],
+        ['Future Founders, selection process', 'https://futurefounders.sk/hackni-prihlasku'],
+        ['Future Founders, mentors', 'https://futurefounders.sk/mentori']
       ]
     },
 
     sostar: {
       short: 'SOSTAR',
       title: 'SOSTAR',
-      category: 'Vocational school · Bratislava, Slovakia',
-      subtitle: 'Stredná odborná škola technológií a remesiel. A technical secondary school where a third of the week is spent with the hardware rather than reading about it.',
+      category: 'Vocational secondary school · Bratislava, Slovakia',
+      subtitle: 'A technical secondary school that combines general education with practical training for a specific profession.',
       logo: 'sostar-circle.svg',
-      lead: ['4 years', 'to a maturita and a trade qualification'],
+      lead: ['4 years', 'of technical study and practical training'],
       facts: [
-        ['Computer networks', 'my field'],
-        ['Ivanská cesta 21', 'Bratislava'],
-        ['2022–2026', 'my years there']
+        ['Computer networks', 'my study field'],
+        ['Maturita', 'school-leaving qualification'],
+        ['2022–2026', 'my years at SOSTAR']
       ],
       sections: [
-        ['The school', 'SOSTAR teaches technical trades alongside the standard academic subjects, so its students leave with both a school-leaving exam and a qualification they can work with. That combination is the point: university stays open, but so does a job.'],
-        ['My programme', 'Mechanic of Computer Networks runs four years and covers hardware, operating systems and the design, installation and maintenance of networks, with programming and web technologies alongside. Building the network and then having to fix it is a different kind of learning from a lecture about it, and it is the foundation most of my projects sit on.']
+        ['What the school is', 'SOSTAR stands for Stredná odborná škola technológií a remesiel. It is a vocational secondary school in Bratislava where academic subjects are combined with workshops and practical technical training.'],
+        ['My study programme', 'Mechanic of Computer Networks covers computer hardware, operating systems, network design, installation, maintenance and troubleshooting, with programming and web technologies alongside them. The four-year programme ends with the Slovak Maturita and a technical qualification.']
       ],
-      connection: 'I studied here from 2022 to 2026. It is the school I represented at SOČ and at the regional awards.',
+      connection: 'I studied at SOSTAR from 2022 to 2026. It is where I developed my practical IT foundation and the school I represented at SOČ, AMAVET and the regional student awards.',
       sources: [
         ['SOSTAR, Computer Networks programme', 'https://sostar.sk/pre-uchadzacov-o-studium/studium-2/4-rocne-ucebne-odbory/mechanik-pocitacovych-sieti-3/']
       ]
@@ -211,19 +211,19 @@
       short: 'Erasmus+',
       title: 'Erasmus+',
       category: 'European Union · placement in Portugal',
-      subtitle: 'Best known for university exchanges, but the same programme sends vocational students abroad to work. That is the half I did.',
+      subtitle: 'The European Union’s large-scale programme for education, training, youth and sport. It also funds workplace placements for vocational students.',
       logo: 'erasmus.svg',
-      lead: ['16 million', 'people have taken part since 1987'],
+      lead: ['16 million', 'participants since 1987'],
       facts: [
-        ['€26.2 bn', 'budget for 2021–2027'],
-        ['1987', 'first year of the programme'],
-        ['Portugal', 'where mine was']
+        ['€26.2 billion', 'budget for 2021–2027'],
+        ['Vocational training', 'included alongside universities'],
+        ['Portugal', 'location of my placement']
       ],
       sections: [
-        ['More than an exchange', 'Erasmus+ covers education, training, youth and sport across the EU. Alongside the semesters abroad it funds vocational placements, where a student on a technical course spends weeks inside a real company in another country. Same programme, different half of it.'],
-        ['What a placement is actually like', 'You work rather than study, and the technical part turns out to be the easy half. The rest is doing the job in a second language, in a workplace that organises itself differently from the one at home, with nobody from your school in the room. That is the part you keep.']
+        ['What the programme is', 'Erasmus+ supports study, training and international mobility across higher education, vocational education, schools, adult learning, youth and sport. More than 16 million people have participated since the programme began in 1987.'],
+        ['What a vocational placement means', 'Vocational students can spend part of their training working in a company abroad. It is practical work experience rather than a university exchange or a competition, with the added challenge of adapting to another language, workplace and culture.']
       ],
-      connection: 'In November and December 2023 I did a professional internship at GreenTek in Portugal, working on computer hardware recycling and sustainable IT practices.',
+      connection: 'In November and December 2023 I completed a professional placement at GreenTek in Portugal, working on computer hardware recycling and sustainable IT practices.',
       sources: [
         ['European Commission, about Erasmus+', 'https://erasmus-plus.ec.europa.eu/about-erasmus'],
         ['Erasmus+, history and funding', 'https://erasmus-plus.ec.europa.eu/about-erasmus/history-funding-and-future']
